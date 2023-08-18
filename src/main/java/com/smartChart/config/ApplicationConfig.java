@@ -1,6 +1,7 @@
 package com.smartChart.config;
 
 
+import com.smartChart.doctor.repository.DoctorRepository;
 import com.smartChart.patient.entity.Patient;
 import com.smartChart.patient.repository.PatientRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,16 +27,28 @@ public class ApplicationConfig {
 
     private final PatientRepository patientRepository;
 
+    private final DoctorRepository doctorRepository;
 
+
+
+
+    // 등록되 유저가 아닐 경우
     @Bean
     public UserDetailsService userDetailsService() {
-        return username -> patientRepository.findByEmail(username)
+        return patient -> patientRepository.findByEmail(patient)
+                .orElseThrow(() -> new UsernameNotFoundException("등록된 유저가 아닙니다."));
+    }
+
+    @Bean
+    public UserDetailsService doctorDetailsService() {
+        return doctor -> doctorRepository.findByEmail(doctor)
                 .orElseThrow(() -> new UsernameNotFoundException("등록된 유저가 아닙니다."));
     }
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(doctorDetailsService());
         authProvider.setUserDetailsService(userDetailsService());
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;

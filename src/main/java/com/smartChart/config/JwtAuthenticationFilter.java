@@ -24,6 +24,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private  final JwtService jwtService;
     private final UserDetailsService userDetailsService; // database와 매칭할 꺼라서 final
+
     @Override
     protected void doFilterInternal(
          @NonNull HttpServletRequest request,
@@ -43,7 +44,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         jwt = authHeader.substring(7); // Bearer 앞 공간이 7자라서..
         userEmail = jwtService.extractUsername(jwt);
 
-        // 만약 유저가 authentic (관리자)가 아니면 ~
+        // 만약 유저가 있다면 ~
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
 

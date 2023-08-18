@@ -1,4 +1,4 @@
-package com.smartChart.status;
+package com.smartChart.Response;
 
 
 import lombok.Data;

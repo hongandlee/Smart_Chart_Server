@@ -23,13 +23,14 @@ public class SecurityConfiguration  {
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
 
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .antMatchers("/patient/**")
+                .antMatchers("/doctor/**", "/patient/**","/error")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
@@ -41,6 +42,8 @@ public class SecurityConfiguration  {
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
 
+
         return http.build();
     }
+
 }

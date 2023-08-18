@@ -1,7 +1,10 @@
-package com.smartChart.auth;
+package com.smartChart.patient.Service;
 
 
+import com.smartChart.auth.AuthenticationResponse;
 import com.smartChart.config.JwtService;
+import com.smartChart.patient.dto.PatientJoinRequest;
+import com.smartChart.patient.dto.PatientLoginRequest;
 import com.smartChart.patient.entity.Patient;
 import com.smartChart.patient.entity.Role;
 import com.smartChart.patient.repository.PatientRepository;
@@ -13,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class AuthenticationService {
+public class PatientService {
     private final PatientRepository patientRepository;
 
     private final PasswordEncoder passwordEncoder;
@@ -22,7 +25,13 @@ public class AuthenticationService {
 
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(RegisterRequest request) {
+
+    /**
+     * 회원가입
+     * @param request
+     * @return
+     */
+    public AuthenticationResponse register(PatientJoinRequest request) {
         var patient = Patient.builder()
                 // Patient
                 .email(request.getEmail())
@@ -41,7 +50,13 @@ public class AuthenticationService {
         
     }
 
-    public AuthenticationResponse authenticate(AuthenticationRequest request) {
+
+    /**
+     * 로그인
+     * @param request
+     * @return
+     */
+    public AuthenticationResponse authenticate(PatientLoginRequest request) {
         // 유저가 올바르다면..
         authenticationManager.authenticate( // to take object to users' token
             new UsernamePasswordAuthenticationToken(
