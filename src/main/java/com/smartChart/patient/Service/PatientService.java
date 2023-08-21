@@ -18,6 +18,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class PatientService {
@@ -121,5 +123,11 @@ public class PatientService {
                 .expired(false)
                 .build();
         tokenRepository.save(token);
+    }
+
+
+    // select
+    public Optional<Patient> findByEmail(String email) {
+        return patientRepository.findByEmail(email);
     }
 }
