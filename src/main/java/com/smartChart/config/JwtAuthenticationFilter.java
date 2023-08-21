@@ -1,6 +1,7 @@
 package com.smartChart.config;
 
 
+import com.smartChart.token.TokenRepository;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,7 +26,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private  final JwtService jwtService;
     private final UserDetailsService userDetailsService; // database와 매칭할 꺼라서 final
-    private final UserDetailsService doctorDetailsService;
+    private final TokenRepository tokenRepository;
 
     @Override
     protected void doFilterInternal(
@@ -50,9 +51,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
 
+            // 토큰을  찾은 후, 만료되지 않았다고 표시하기.
+            var isTokenValid = tokenRepository.findByToken(jwt)
+                    .map(t -> !t.isExpired() && !t.isRevoked())
+                    .orElse(false);
 
-            // to check that token is validated
-            if (jwtService.isTokenValid(jwt, userDetails)){
+            // to check that token is validated // token이 유요한지 유효하지 않은지 검사
+            if (jwtService.isTokenValid(jwt, userDetails) && isTokenValid){
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                         userDetails,
                         null,
@@ -67,26 +72,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
         }
 
-        // 만약 유저가 있다면 ~
-        if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = this.doctorDetailsService.loadUserByUsername(userEmail);
 
-
-            // to check that token is validated
-            if (jwtService.isTokenValid(jwt, userDetails)){
-                UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                        userDetails,
-                        null,
-                        userDetails.getAuthorities()
-                );
-                authToken.setDetails(
-                        new WebAuthenticationDetailsSource().buildDetails(request)
-                );
-
-                // update the security contextHolder
-                SecurityContextHolder.getContext().setAuthentication(authToken);
-            }
-        }
 
         filterChain.doFilter(request,response);
     }

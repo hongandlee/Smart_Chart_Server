@@ -9,6 +9,9 @@ import com.smartChart.patient.dto.PatientLoginRequest;
 import com.smartChart.patient.entity.Patient;
 import com.smartChart.patient.entity.Role;
 import com.smartChart.patient.repository.PatientRepository;
+import com.smartChart.token.Token;
+import com.smartChart.token.TokenRepository;
+import com.smartChart.token.TokenType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,6 +22,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class PatientService {
     private final PatientRepository patientRepository;
+
+    private final TokenRepository tokenRepository;
 
     private final PasswordEncoder passwordEncoder;
 
@@ -44,12 +49,17 @@ public class PatientService {
                 .role(Role.PATIENT)
                 .build();
         patientRepository.save(patient);
+        var savedPatient = patientRepository.save(patient);
         var jwtToken = jwtService.generateToken(patient);  //  jwtService에서 token 가져오기
+        savePatientToken(savedPatient, jwtToken);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
 
     }
+
+
+
 
 
     /**
@@ -71,11 +81,45 @@ public class PatientService {
                 .orElseThrow();
 
         var jwtToken = jwtService.generateToken(patient);
+        revokeAllPatientTokens(patient); // 모든 사용자 토큰 철회
+        savePatientToken(patient, jwtToken); // 사용자 토큰 저장
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
     }
 
 
+    /**
+     * 모든 환자의 토큰을 철회하기
+     * @param patient
+     */
+    private void revokeAllPatientTokens(Patient patient) {
+        var validPatientTokens = tokenRepository.findAllValidTokensByPatient(patient.getId());
+        if (validPatientTokens.isEmpty())
+            return;
+        validPatientTokens.forEach(t -> {
+            t.setExpired(true);
+            t.setRevoked(true);
+        });
+        tokenRepository.saveAll(validPatientTokens);
+    }
 
+
+
+
+    /**
+     * 환자 토큰 저장
+     * @param patient
+     * @param jwtToken
+     */
+    private void savePatientToken(Patient patient, String jwtToken) {
+        var token = Token.builder()  // 객체를 생성할 수 있는 빌더를 builder() 함수
+                .patient(patient)
+                .token(jwtToken)
+                .tokenType(TokenType.BEARER)
+                .revoked(false)
+                .expired(false)
+                .build();
+        tokenRepository.save(token);
+    }
 }

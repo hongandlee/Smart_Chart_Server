@@ -1,6 +1,7 @@
 package com.smartChart.patient.entity;
 
 
+import com.smartChart.token.Token;
 import lombok.*;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
@@ -46,6 +47,8 @@ public class Patient implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @OneToMany(mappedBy = "patient")
+    private List<Token> tokens;
 
     @UpdateTimestamp
     @Column(name="createdAt", updatable = false) // updatable는 update 시점에 막는 기능

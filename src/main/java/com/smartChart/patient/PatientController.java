@@ -67,6 +67,7 @@ public class PatientController {
         if (authenticationResponse != null) {
             message.setCode(200);
             message.setMessage("성공");
+            message.setData("token : " + authenticationResponse);
         } else {
             message.setCode(500);
             message.setMessage("관리자에게 문의해주시기 바랍니다.");
