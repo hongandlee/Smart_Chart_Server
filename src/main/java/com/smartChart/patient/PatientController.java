@@ -1,14 +1,11 @@
-package com.smartChart.doctor;
+package com.smartChart.patient;
 
 
 import com.smartChart.Response.Message;
-import com.smartChart.doctor.dto.DoctorJoinRequest;
-import com.smartChart.doctor.dto.DoctorLoginRequest;
-import com.smartChart.doctor.service.DoctorService;
-import com.smartChart.patient.dto.PatientLoginRequest;
 import com.smartChart.auth.AuthenticationResponse;
 import com.smartChart.patient.Service.PatientService;
 import com.smartChart.patient.dto.PatientJoinRequest;
+import com.smartChart.patient.dto.PatientLoginRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,26 +18,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.nio.charset.Charset;
 
-@RestController
-@RequestMapping("/doctor")
-@RequiredArgsConstructor
-public class DoctorRestController {
 
-    private final DoctorService service;
+@RestController
+@RequestMapping("/patient")
+@RequiredArgsConstructor
+public class PatientController {
+
+    private final PatientService service;
 
 
 
 
     @PostMapping("/join")
     public ResponseEntity<Message> register (
-            @RequestBody DoctorJoinRequest request
+            @RequestBody PatientJoinRequest request
     ) {
 
         // db insert
-        service.register(request);
+         service.register(request);
 
 
-        // message
+         // message
         HttpHeaders headers= new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
         Message message = new Message();
@@ -55,10 +53,10 @@ public class DoctorRestController {
 
     @PostMapping("/login")
     public ResponseEntity<Message> authenticate (
-            @RequestBody DoctorLoginRequest request
+            @RequestBody PatientLoginRequest request
     ) {
 
-        // db
+        // token
         AuthenticationResponse authenticationResponse = service.authenticate(request);
 
         // message
@@ -76,6 +74,7 @@ public class DoctorRestController {
 
         return new ResponseEntity<>(message, headers, HttpStatus.OK);   // ResponseEntity.ok() - 성공을 의미하는 OK(200 code)와 함께 user 객체를 Return 하는 코드
     }
+
 
 
 

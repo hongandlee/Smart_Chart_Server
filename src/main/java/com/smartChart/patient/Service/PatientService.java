@@ -1,3 +1,4 @@
+
 package com.smartChart.patient.Service;
 
 
@@ -47,7 +48,7 @@ public class PatientService {
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
-        
+
     }
 
 
@@ -59,10 +60,10 @@ public class PatientService {
     public AuthenticationResponse authenticate(PatientLoginRequest request) {
         // 유저가 올바르다면..
         authenticationManager.authenticate( // to take object to users' token
-            new UsernamePasswordAuthenticationToken(
-                    request.getEmail(),
-                    request.getPassword()
-            )
+                new UsernamePasswordAuthenticationToken(
+                        request.getEmail(),
+                        request.getPassword()
+                )
         );
 
         // 유저가 올바르지 않다면...
@@ -74,4 +75,7 @@ public class PatientService {
                 .token(jwtToken)
                 .build();
     }
+
+
+
 }

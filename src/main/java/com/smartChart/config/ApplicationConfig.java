@@ -2,10 +2,8 @@ package com.smartChart.config;
 
 
 import com.smartChart.doctor.repository.DoctorRepository;
-import com.smartChart.patient.entity.Patient;
 import com.smartChart.patient.repository.PatientRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -35,20 +33,20 @@ public class ApplicationConfig {
     // 등록되 유저가 아닐 경우
     @Bean
     public UserDetailsService userDetailsService() {
-        return patient -> patientRepository.findByEmail(patient)
+        return patient -> (UserDetails) patientRepository.findByEmail(patient)
                 .orElseThrow(() -> new UsernameNotFoundException("등록된 유저가 아닙니다."));
     }
 
-    @Bean
-    public UserDetailsService doctorDetailsService() {
-        return doctor -> doctorRepository.findByEmail(doctor)
-                .orElseThrow(() -> new UsernameNotFoundException("등록된 유저가 아닙니다."));
-    }
+//    @Bean
+//    public UserDetailsService doctorDetailsService() {
+//        return doctor -> (UserDetails) doctorRepository.findByEmail(doctor)
+//                .orElseThrow(() -> new UsernameNotFoundException("등록된 유저가 아닙니다."));
+//    }
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(doctorDetailsService());
+//        authProvider.setUserDetailsService(doctorDetailsService());
         authProvider.setUserDetailsService(userDetailsService());
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;

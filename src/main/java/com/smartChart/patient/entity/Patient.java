@@ -55,6 +55,7 @@ public class Patient implements UserDetails {
     @Column(name="updatedAt")
     private Date updatedAt;
 
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));

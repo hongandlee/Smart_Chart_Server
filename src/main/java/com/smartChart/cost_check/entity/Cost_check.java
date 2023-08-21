@@ -2,7 +2,6 @@ package com.smartChart.cost_check.entity;
 
 import com.smartChart.doctor.entity.Doctor;
 import com.smartChart.reservation.entity.Reservation;
-import lombok.*;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;

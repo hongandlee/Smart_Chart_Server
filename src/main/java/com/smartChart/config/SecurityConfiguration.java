@@ -10,9 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
-
-import javax.servlet.Filter;
 
 // binding
 @Configuration
@@ -30,8 +27,24 @@ public class SecurityConfiguration  {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .antMatchers("/doctor/**", "/patient/**","/error")
+                .antMatchers( "/patient/**")
                 .permitAll()
+                .antMatchers( "/doctor/**")
+                .permitAll()
+//
+//                .antMatchers(GET,"/patient/**").hasAuthority(PATIENT_READ.name())
+//                .antMatchers(POST,"/patient/**").hasAuthority(PATIENT_CREATE.name())
+//                .antMatchers(PUT,"/patient/**").hasAuthority(PATIENT_UPDATE.name())
+//                .antMatchers(DELETE,"/patient/**").hasAuthority(PATIENT_DELETE.name())
+//
+//
+//                .antMatchers( "/doctor/**").hasRole(DOCTOR.name())
+//
+//                .antMatchers(GET,"/doctor/**").hasAuthority(DOCTOR_READ.name())
+//                .antMatchers(POST,"/doctor/**").hasAuthority(DOCTOR_CREATE.name())
+//                .antMatchers(PUT,"/doctor/**").hasAuthority(DOCTOR_UPDATE.name())
+//                .antMatchers(DELETE,"/doctor/**").hasAuthority(DOCTOR_DELETE.name())
+
                 .anyRequest()
                 .authenticated()
                 .and()

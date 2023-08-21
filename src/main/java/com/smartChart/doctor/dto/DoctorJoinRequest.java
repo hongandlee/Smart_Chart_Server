@@ -1,6 +1,7 @@
 package com.smartChart.doctor.dto;
 
 
+import com.smartChart.doctor.entity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -40,4 +41,10 @@ public class DoctorJoinRequest {
 
 
     private int hospitalPhoneNumber;
+
+    private String hospitalIntroduce;
+
+    private String hospitalProfileURL;
+
+    private Role role;
 }

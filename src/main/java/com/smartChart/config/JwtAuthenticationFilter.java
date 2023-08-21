@@ -1,5 +1,6 @@
 package com.smartChart.config;
 
+
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,12 +25,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private  final JwtService jwtService;
     private final UserDetailsService userDetailsService; // database와 매칭할 꺼라서 final
+    private final UserDetailsService doctorDetailsService;
 
     @Override
     protected void doFilterInternal(
          @NonNull HttpServletRequest request,
-         @NonNull  HttpServletResponse response,
-         @NonNull  FilterChain filterChain)
+         @NonNull HttpServletResponse response,
+         @NonNull FilterChain filterChain)
 
             throws ServletException, IOException {
 
@@ -48,8 +50,30 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
 
+
             // to check that token is validated
-            if (jwtService.isTokenValid(jwt, userDetails)) {
+            if (jwtService.isTokenValid(jwt, userDetails)){
+                UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
+                        userDetails,
+                        null,
+                        userDetails.getAuthorities()
+                );
+                authToken.setDetails(
+                        new WebAuthenticationDetailsSource().buildDetails(request)
+                );
+
+                // update the security contextHolder
+                SecurityContextHolder.getContext().setAuthentication(authToken);
+            }
+        }
+
+        // 만약 유저가 있다면 ~
+        if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            UserDetails userDetails = this.doctorDetailsService.loadUserByUsername(userEmail);
+
+
+            // to check that token is validated
+            if (jwtService.isTokenValid(jwt, userDetails)){
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                         userDetails,
                         null,
