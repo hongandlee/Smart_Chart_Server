@@ -4,8 +4,8 @@ package com.smartChart.patient.Service;
 
 import com.smartChart.auth.AuthenticationResponse;
 import com.smartChart.config.JwtService;
-import com.smartChart.patient.dto.PatientJoinRequest;
-import com.smartChart.patient.dto.PatientLoginRequest;
+import com.smartChart.patient.dto.RequestDto.PatientJoinRequest;
+import com.smartChart.patient.dto.RequestDto.PatientLoginRequest;
 import com.smartChart.patient.entity.Patient;
 import com.smartChart.patient.entity.Role;
 import com.smartChart.patient.repository.PatientRepository;
@@ -13,6 +13,8 @@ import com.smartChart.token.Token;
 import com.smartChart.token.TokenRepository;
 import com.smartChart.token.TokenType;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,6 +25,9 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class PatientService {
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     private final PatientRepository patientRepository;
 
     private final TokenRepository tokenRepository;
@@ -127,7 +132,11 @@ public class PatientService {
 
 
     // select
-    public Optional<Patient> findByEmail(String email) {
-        return patientRepository.findByEmail(email);
+    public Optional<Patient> findByEmail(String email) { return patientRepository.findByEmail(email);
+    }
+
+
+    public Patient findEmailByEmail(String email) {
+     return patientRepository.findEmailByEmail(email);
     }
 }

@@ -3,6 +3,7 @@ package com.smartChart.doctor;
 
 import com.smartChart.Response.Message;
 import com.smartChart.config.Encrypt;
+import com.smartChart.doctor.dto.DoctorEmailRequest;
 import com.smartChart.doctor.dto.DoctorJoinRequest;
 import com.smartChart.doctor.dto.DoctorLoginRequest;
 import com.smartChart.doctor.entity.Doctor;
@@ -31,6 +32,7 @@ public class DoctorController {
 
     /**
      * 회원가입
+     *
      * @param request
      * @return
      */
@@ -53,7 +55,7 @@ public class DoctorController {
                 request.getHospitalProfileURL(), request.getRole());
 
         // message
-        HttpHeaders headers= new HttpHeaders();
+        HttpHeaders headers = new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
         Message message = new Message();
         message.setCode(200);
@@ -62,11 +64,12 @@ public class DoctorController {
 
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
 
-        }
+    }
 
 
     /**
      * 로그인
+     *
      * @param request
      * @param servletRequest
      * @return
@@ -91,7 +94,6 @@ public class DoctorController {
 
         // select null or 1행   // ** select - saltPassword로 해야함.
         Doctor doctor = doctorService.getUserByLoginIdPassword(request.getEmail(), saltPassword);
-
 
 
         // message
@@ -120,9 +122,14 @@ public class DoctorController {
     }
 
 
-
+    /**
+     * 로그아웃
+     *
+     * @param session
+     * @return
+     */
     @RequestMapping("/sign_out")
-    public String singOut (HttpSession session) {
+    public String singOut(HttpSession session) {
 
         session.removeAttribute("doctorId");
         session.removeAttribute("doctorEmail");
@@ -132,10 +139,34 @@ public class DoctorController {
         // 로그인 화면으로 이동
         return "redirect:/doctor/login-view";
     }
+
+
+    @RequestMapping("/check-email")
+    public ResponseEntity<Message> check_Email(
+            @RequestBody DoctorEmailRequest request
+    ) {
+
+        // db
+        Doctor doctor = doctorService.getDoctorByEmail(request.getEmail());
+
+        // message
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+        Message message = new Message();
+
+        if (doctor != null) {        // 중복
+            message.setCode(300);
+            message.setMessage("중복된 아이디입니다.");
+
+        } else {                     // 중복이 아닐 때
+            message.setCode(200);
+            message.setMessage("사용가능한 아이디입니다.");
+        }
+        return new ResponseEntity<>(message, headers, HttpStatus.OK);
+    }
+
+
 }
-
-
-
 
 
 

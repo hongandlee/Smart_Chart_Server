@@ -4,8 +4,9 @@ package com.smartChart.patient;
 import com.smartChart.Response.Message;
 import com.smartChart.auth.AuthenticationResponse;
 import com.smartChart.patient.Service.PatientService;
-import com.smartChart.patient.dto.PatientJoinRequest;
-import com.smartChart.patient.dto.PatientLoginRequest;
+import com.smartChart.patient.dto.RequestDto.PatientEmailRequest;
+import com.smartChart.patient.dto.RequestDto.PatientJoinRequest;
+import com.smartChart.patient.dto.RequestDto.PatientLoginRequest;
 import com.smartChart.patient.entity.Patient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -107,4 +108,33 @@ public class PatientController {
 
 
 
+
+    /**
+     * 중복된 이메일
+     * @param request
+     * @return
+     */
+    @RequestMapping("/check-email")
+    public ResponseEntity<Message> check_Email (
+            @RequestBody PatientEmailRequest request
+    ) {
+
+        // db
+        Patient patient = service.findEmailByEmail(request.getEmail());
+
+        // message
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+        Message message = new Message();
+
+       if(patient != null) {        // 중복
+           message.setCode(300);
+           message.setMessage("중복된 아이디입니다.");
+
+       } else {                     // 중복이 아닐 때
+           message.setCode(200);
+           message.setMessage("사용가능한 아이디입니다.");
+       }
+        return new ResponseEntity<>(message, headers, HttpStatus.OK);
+    }
 }
