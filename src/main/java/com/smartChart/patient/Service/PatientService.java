@@ -19,6 +19,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -129,6 +130,20 @@ public class PatientService {
                 .build();
         tokenRepository.save(token);
     }
+
+
+
+    // 회원찾기
+    @Transactional(readOnly = true)
+    public Patient 회원찾기(String email) {
+        System.out.println("회원찾기 1111111111111");
+        Patient patient = patientRepository.findByEmail(email).orElseGet(()->{
+            return new Patient(); // null이 아니고 빈 객체를 반환.
+        });
+        System.out.println("회원찾기 22222222222");
+        return patient;
+    }
+
 
 
     // select

@@ -34,18 +34,21 @@ public class Patient implements UserDetails {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "gender", nullable = false)
+    @Column(name = "gender")
     private String gender;
 
-    @Column(name = "age", nullable = false)
+    @Column(name = "age")
     private int age;
 
-    @Column(name = "phoneNumber", nullable = false)
+    @Column(name = "phoneNumber")
     private int phoneNumber;
 
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+
+
 
     @OneToMany(mappedBy = "patient")
     private List<Token> tokens;
