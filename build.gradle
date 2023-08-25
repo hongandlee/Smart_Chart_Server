@@ -46,6 +46,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	// OAuth2
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	// 간이 전자 우편 전송 프로토콜(Simple Mail Transfer Protocol, SMTP)
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
 }
 
 tasks.named('test') {

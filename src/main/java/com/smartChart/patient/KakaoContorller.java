@@ -30,6 +30,12 @@ public class KakaoContorller {
     @Autowired
     private PatientService patientService;
 
+
+    /**
+     * 카카오톡 로그인
+     * @param code
+     * @return
+     */
     @GetMapping("/auth/kakao/callback")
     public String kakaoCallback(String code) {
 

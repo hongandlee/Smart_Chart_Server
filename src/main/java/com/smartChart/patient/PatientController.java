@@ -4,6 +4,8 @@ package com.smartChart.patient;
 import com.smartChart.Response.Message;
 import com.smartChart.auth.AuthenticationResponse;
 import com.smartChart.patient.Service.PatientService;
+import com.smartChart.patient.dto.RequestDto.MailRequest;
+import com.smartChart.patient.dto.ResponseDto.MailResponse;
 import com.smartChart.patient.dto.RequestDto.PatientEmailRequest;
 import com.smartChart.patient.dto.RequestDto.PatientJoinRequest;
 import com.smartChart.patient.dto.RequestDto.PatientLoginRequest;
@@ -138,7 +140,35 @@ public class PatientController {
 
 
 
+    /**
+     * 비밀번호 찾기
+     * @param mailRequest
+     * @return
+     */
+    @PostMapping("/sendEmail")
+    public ResponseEntity<Message> sendEmail(
+            @RequestBody MailRequest mailRequest) {
 
+        Patient patient = service.findEmailByEmail(mailRequest.getEmail());
+
+        // message
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+        Message message = new Message();
+
+
+        if(patient != null) {        // 이메일을 찾았을 경우
+            message.setCode(200);
+            message.setMessage("이메일이 전송되었습니다.");
+            MailResponse mailResponse = service.createMailAndChangePassword(mailRequest.getEmail());
+            service.mailSend(mailResponse);
+
+        } else {                     // 이메일을 찾지 못했을 경우
+            message.setCode(404);
+            message.setMessage("일치하는 회원이 없습니다.");
+        }
+        return new ResponseEntity<>(message, headers, HttpStatus.OK);
+    }
 
 
 
