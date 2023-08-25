@@ -31,4 +31,6 @@ public class PatientJoinRequest {
 
 
     private int phoneNumber;
+
+    private String oauth; // kakao, google
 }

@@ -3,12 +3,13 @@ package com.smartChart.patient;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smartChart.patient.Service.PatientService;
+import com.smartChart.patient.dto.RequestDto.KakaoProfile;
+import com.smartChart.patient.dto.RequestDto.OAuthToken;
 import com.smartChart.patient.dto.RequestDto.PatientJoinRequest;
 import com.smartChart.patient.dto.RequestDto.PatientLoginRequest;
-import com.smartChart.patient.entity.KakaoProfile;
-import com.smartChart.patient.entity.OAuthToken;
 import com.smartChart.patient.entity.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -17,20 +18,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.UUID;
 
 @Controller
 public class KakaoContorller {
 
 
+    @Value("${cos.key}")
+    private String cosKey;
+
     @Autowired
     private PatientService patientService;
 
     @GetMapping("/auth/kakao/callback")
-    public @ResponseBody String kakaoCallback(String code) { // data 리턴해주는 컨틀롤러 함수
+    public String kakaoCallback(String code) {
 
         // POST방식으로 key=value 데이터를 요청(카카오쪽으로)
         // <3가지 요청방식>
@@ -130,38 +131,44 @@ public class KakaoContorller {
        // System.out.println("환자 이름 : " + kakaoProfile.getKakao_account().getEmail() + "_" + kakaoProfile.getId()); //   // 예를 들어 유저네임 중복 안되게 하기 위한 tip
         System.out.println("환자 이름 : " + kakaoProfile.getProperties().getNickname());
         System.out.println("환자 이메일 :" + kakaoProfile.getKakao_account().getEmail());
-        UUID garbagePassword = UUID.randomUUID();  // 임시방편으로 넣으 놓은 비밀번호임. (결국 쓰레기 비밀번호)
-        System.out.println("환자서버 패스워드 :" + garbagePassword);
+        // UUID란 -> 중복되지 않는 어떤 특정 값을 만들어내는 알고리즘
+        //UUID garbagePassword = UUID.randomUUID();  // 임시방편으로 넣으 놓은 비밀번호임. (결국 쓰레기 비밀번호)
+        System.out.println("환자서버 패스워드 :" + cosKey);
 
 
         // dto 값 넣기
         PatientJoinRequest kakaoRequest = PatientJoinRequest.builder()
                         .email(kakaoProfile.getKakao_account().getEmail())
-                        .password(garbagePassword.toString())
+                        .password(cosKey)
                         .name(kakaoProfile.getProperties().getNickname())
+                        .gender("null")
+                        .age(0)
+                        .phoneNumber(0)
+                        .oauth("kakao")
                         .build();
 
         PatientLoginRequest kakaoLoginRequest = PatientLoginRequest.builder()
                 .email(kakaoProfile.getKakao_account().getEmail())
-                .password(garbagePassword.toString())
+                .password(cosKey.toString())
                 .build();
-        System.out.println("111111111111111");
+
 
         // 가입자 혹은 비가입자 체크 해서 처리
         System.out.println(kakaoRequest.getEmail());
         Patient originPatient = patientService.회원찾기(kakaoRequest.getEmail());
-        System.out.println("22222222222");
+
 
         // 비가입자일 경우 -> 회원가입
         if(originPatient.getEmail() == null) {
-            System.out.println("기존 회원이 아닙니다.........");
+            System.out.println("기존 회원이 아니기에 자동 회원가입을 진행합니다.");
             patientService.register(kakaoRequest);
         }
-        System.out.println("333333333333");
+
+        System.out.println("자동 로그인을 진행합니다.");
         // 가입자일 경우 -> 로그인
         patientService.authenticate(kakaoLoginRequest);
-        System.out.println("444444444444");
 
-        return "회원가입 완료 및 로그인 처리 완료"; // "카카오 토큰 요청 완료: 토큰 요청에 대한 응답 :"
+
+        return "redirect:/patient/page-view";
     }
 }

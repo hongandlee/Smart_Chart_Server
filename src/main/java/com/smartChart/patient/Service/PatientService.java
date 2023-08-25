@@ -55,6 +55,7 @@ public class PatientService {
                 .age(request.getAge())
                 .phoneNumber(request.getPhoneNumber())
                 .role(Role.PATIENT)
+                .oauth(request.getOauth())
                 .build();
         patientRepository.save(patient);
         var savedPatient = patientRepository.save(patient);
@@ -136,11 +137,9 @@ public class PatientService {
     // 회원찾기
     @Transactional(readOnly = true)
     public Patient 회원찾기(String email) {
-        System.out.println("회원찾기 1111111111111");
-        Patient patient = patientRepository.findByEmail(email).orElseGet(()->{
+        Patient patient = patientRepository.findByEmail(email).orElseGet(()->{ // orElseGet 만약 회원을 찾았는데 없으면 빈 객체를 리턴해라.
             return new Patient(); // null이 아니고 빈 객체를 반환.
         });
-        System.out.println("회원찾기 22222222222");
         return patient;
     }
 

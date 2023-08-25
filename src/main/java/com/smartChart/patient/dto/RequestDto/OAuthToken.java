@@ -1,4 +1,4 @@
-package com.smartChart.patient.entity;
+package com.smartChart.patient.dto.RequestDto;
 
 import lombok.Data;
 

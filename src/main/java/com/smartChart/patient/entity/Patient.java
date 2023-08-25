@@ -17,7 +17,7 @@ import java.util.List;
 @Getter
 @AllArgsConstructor // 모든 값이 있는 생성자
 @NoArgsConstructor // 기본 생성자
-@Builder(toBuilder = true) // 수정 시 기존 객체 그대로, 세팅한 값만 변경
+@Builder(toBuilder = true)
 @Table(name = "patient") //엔티티와 매핑할 테이블을 지정.
 @Entity
 public class Patient implements UserDetails {
@@ -25,22 +25,25 @@ public class Patient implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "email", nullable = false)
+
+    @Column(name = "email", nullable = false)  // nullable = false  -> not null 조건
     private String email;
+
 
     @Column(name = "password", nullable = false)
     private String password;
 
+
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "gender")
+    @Column(name = "gender", nullable = true)
     private String gender;
 
-    @Column(name = "age")
+    @Column(name = "age", nullable = true)
     private int age;
 
-    @Column(name = "phoneNumber")
+    @Column(name = "phoneNumber", nullable = true)
     private int phoneNumber;
 
 
@@ -48,6 +51,7 @@ public class Patient implements UserDetails {
     private Role role;
 
 
+    private String oauth; // kakao, google
 
 
     @OneToMany(mappedBy = "patient")
