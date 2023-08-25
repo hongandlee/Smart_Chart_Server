@@ -179,11 +179,13 @@ public class PatientService {
     //임시 비밀번호로 업데이트
     public void updatePassword(String str, String patientEmail) {
         String updatePassword = str;
+        String encodedPassword = passwordEncoder.encode(updatePassword);
+
         Patient patient = patientRepository.findEmailByEmail(patientEmail);
         patient = patient.toBuilder() // toBuilder는 기존값 유지하고 일부만 변경
-                .password(updatePassword)
+                .password(encodedPassword)
                 .build();
-        patient = patientRepository.save(patient);
+                 patientRepository.save(patient);
     }
 
 

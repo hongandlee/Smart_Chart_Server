@@ -156,8 +156,12 @@ public class PatientController {
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
         Message message = new Message();
 
+        // 카카오톡 사용자는 이메일 발송 불가
+        if(patient.getOauth() != null) {
+            message.setCode(403);
+            message.setMessage("카카오톡 회원가입자는 카카오톡으로 문의해주세요.");
 
-        if(patient != null) {        // 이메일을 찾았을 경우
+        }  else if(patient != null) {        // 이메일을 찾았을 경우
             message.setCode(200);
             message.setMessage("이메일이 전송되었습니다.");
             MailResponse mailResponse = service.createMailAndChangePassword(mailRequest.getEmail());
