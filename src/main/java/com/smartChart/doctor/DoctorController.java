@@ -3,11 +3,13 @@ package com.smartChart.doctor;
 
 import com.smartChart.Response.Message;
 import com.smartChart.config.Encrypt;
-import com.smartChart.doctor.dto.DoctorEmailRequest;
 import com.smartChart.doctor.dto.DoctorJoinRequest;
 import com.smartChart.doctor.dto.DoctorLoginRequest;
+import com.smartChart.doctor.dto.RequestDto.DoctorEmailRequest;
 import com.smartChart.doctor.entity.Doctor;
 import com.smartChart.doctor.service.DoctorService;
+import com.smartChart.patient.dto.RequestDto.MailRequest;
+import com.smartChart.patient.dto.ResponseDto.MailResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -28,6 +30,9 @@ import java.nio.charset.Charset;
 public class DoctorController {
 
     private final DoctorService doctorService;
+
+
+
 
 
     /**
@@ -65,6 +70,9 @@ public class DoctorController {
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
 
     }
+
+
+
 
 
     /**
@@ -122,6 +130,9 @@ public class DoctorController {
     }
 
 
+
+
+
     /**
      * 로그아웃
      *
@@ -166,97 +177,38 @@ public class DoctorController {
     }
 
 
+
+
+
+
+
+    /**
+     * 비밀번호 찾기
+     * @param mailRequest
+     * @return
+     */
+    @PostMapping("/sendEmail")
+    public ResponseEntity<Message> sendEmail(
+            @RequestBody MailRequest mailRequest) {
+
+
+        // message
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+        Message message = new Message();
+
+
+        if(message != null) {        // 이메일을 찾았을 경우
+            message.setCode(200);
+            message.setMessage("이메일이 전송되었습니다.");
+            MailResponse mailResponse = doctorService.createMailAndChangePassword(mailRequest.getEmail());
+            doctorService.mailSend(mailResponse);
+
+        } else {                     // 이메일을 찾지 못했을 경우
+            message.setCode(404);
+            message.setMessage("일치하는 회원이 없습니다.");
+        }
+        return new ResponseEntity<>(message, headers, HttpStatus.OK);
+    }
+
 }
-
-
-
-
-
-//
-//
-//import com.smartChart.Response.Message;
-//import com.smartChart.doctor.dto.DoctorJoinRequest;
-//import com.smartChart.doctor.dto.DoctorLoginRequest;
-//import com.smartChart.doctor.service.DoctorService;
-//import com.smartChart.auth.AuthenticationResponse;
-//import lombok.RequiredArgsConstructor;
-//import org.springframework.http.HttpHeaders;
-//import org.springframework.http.HttpStatus;
-//import org.springframework.http.MediaType;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.web.bind.annotation.*;
-//
-//import java.nio.charset.Charset;
-//
-//@RestController
-//@RequestMapping("/doctor")
-//@RequiredArgsConstructor
-//public class DoctorController {
-//
-//    private final DoctorService service;
-//
-//
-//    @PostMapping("/join")
-//    public ResponseEntity<Message> register(
-//            @RequestBody DoctorJoinRequest request
-//    ) {
-//
-//        // db insert
-//        service.register(request);
-//
-//
-//        // message
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
-//        Message message = new Message();
-//
-//        message.setCode(200);
-//        message.setMessage("성공");
-//
-//        return new ResponseEntity<>(message, headers, HttpStatus.OK); // ResponseEntity는 사용자의 HttpRequest에 대한 응답 데이터를 포함하는 클래스이다. 따라서 HttpStatus, HttpHeaders, HttpBody를 포함
-//
-//    }
-//
-//
-//    @PostMapping("/login")
-//    public ResponseEntity<Message> authenticate(
-//            @RequestBody DoctorLoginRequest request
-//    ) {
-//
-//        // db
-//        AuthenticationResponse authenticationResponse = service.authenticate(request);
-//
-//        // message
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
-//        Message message = new Message();
-//
-//        if (authenticationResponse != null) {
-//            message.setCode(200);
-//            message.setMessage("성공");
-//        } else {
-//            message.setCode(500);
-//            message.setMessage("관리자에게 문의해주시기 바랍니다.");
-//        }
-//
-//        return new ResponseEntity<>(message, headers, HttpStatus.OK);   // ResponseEntity.ok() - 성공을 의미하는 OK(200 code)와 함께 user 객체를 Return 하는 코드
-//    }
-//
-//
-//    @PutMapping ("/patch")
-//    public String patch() {
-//            return"Put:: doctor controller";
-//    }
-//
-//    @GetMapping("/get")
-//    public String get() {
-//        return"Get:: doctor controller";
-//    }
-//
-//
-//    @DeleteMapping("/delete")
-//    public String delete() {
-//        return"Delete:: doctor controller";
-//    }
-//
-//}

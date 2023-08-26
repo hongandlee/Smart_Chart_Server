@@ -11,6 +11,8 @@ import com.smartChart.patient.dto.RequestDto.PatientJoinRequest;
 import com.smartChart.patient.dto.RequestDto.PatientLoginRequest;
 import com.smartChart.patient.entity.Patient;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -27,6 +29,8 @@ import java.util.Optional;
 @RequestMapping("/patient")
 @RequiredArgsConstructor
 public class PatientController {
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final PatientService service;
 

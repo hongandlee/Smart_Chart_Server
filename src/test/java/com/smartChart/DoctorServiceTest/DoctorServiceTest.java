@@ -42,4 +42,41 @@ public class DoctorServiceTest {
         logger.info("##### 로그인 #####");
         doctorService.getUserByLoginIdPassword("dbfl@dbfl.com","dbfl");
     }
+
+
+
+//    @DisplayName("메일 내용을 생성하고 임시 비밀번호로 회원 비밀번호를 변경")
+//    @Transactional
+//    @Test
+    void createMailAndChangePassword() {
+        logger.info("########### 메일 내용을 생성하고 임시 비밀번호로 회원 비밀번호를 변경");
+        doctorService.createMailAndChangePassword("library@doctor.com");
+
+    }
+
+
+
+//    @DisplayName("임시 비밀번호로 업데이트")
+//    @Transactional
+//    @Test
+    void updatePassword() {
+        logger.info("##############임시 비밀번호로 업데이트");
+        doctorService.updatePassword("23fsfdfsfsdfsdf", "library@doctor.com");
+    }
+
+
+
+
+//    @DisplayName("랜덤함수로 임시비밀번호 구문 만들기")
+//    @Transactional
+//    @Test
+    void getTempPassword() {
+        logger.info("################# 랜덤함수로 임시비밀번호 구문 만들기");
+        doctorService.getTempPassword();
+    }
+
+
+
+
+
 }

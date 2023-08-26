@@ -1,9 +1,16 @@
 package com.smartChart.doctor.service;
 
+import com.smartChart.config.Encrypt;
 import com.smartChart.doctor.entity.Doctor;
 import com.smartChart.doctor.entity.Role;
 import com.smartChart.doctor.repository.DoctorRepository;
+import com.smartChart.patient.dto.ResponseDto.MailResponse;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,7 +18,17 @@ import org.springframework.stereotype.Service;
 public class DoctorService {
 
 
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     private final DoctorRepository doctorRepository;
+
+    private final PasswordEncoder passwordEncoder;
+
+
+    private final JavaMailSender mailSender;
+
+
 
     // 회원가입
     public Doctor addDoctor(
@@ -50,6 +67,79 @@ public class DoctorService {
 
 
 
+
+    // 메일 내용을 생성하고 임시 비밀번호로 회원 비밀번호를 변경
+    public MailResponse createMailAndChangePassword(String doctorEmail) {
+        String str = getTempPassword();
+        MailResponse mailRequest = new MailResponse();
+        mailRequest.setAddress(doctorEmail);
+        mailRequest.setTitle("Smart Chart 임시비밀번호 안내입니다." );
+        mailRequest.setMessage("안녕하세요." + "\n" +"Smart Chart 변경된 비밀번호는 " + str + "입니다.");
+        updatePassword(str, doctorEmail);
+        return mailRequest;
+    }
+
+
+
+
+    //임시 비밀번호로 업데이트
+    public void updatePassword(String str, String doctorEmail) {  // str : 임시 비밀번호
+        String updatePassword = str;
+
+        Doctor doctor = doctorRepository.findByEmail(doctorEmail);
+        // salt 생성
+        String salt = Encrypt.getSalt();
+        // 최종 password 생성
+        String saltPassword = Encrypt.getEncrypt(updatePassword, salt);
+
+        // db
+        doctor = doctor.toBuilder() // toBuilder는 기존값 유지하고 일부만 변경
+                .password(saltPassword)
+                .salt(salt)
+                .build();
+        doctorRepository.save(doctor);
+    }
+
+
+
+
+
+    // 랜덤함수로 임시비밀번호 구문 만들기
+    public String getTempPassword(){
+        char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+                'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+
+        String str = "";
+
+        // 문자 배열 길이의 값을 랜덤으로 10개를 뽑아 구문을 작성함
+        int idx = 0;
+        for (int i = 0; i < 10; i++) {
+            idx = (int) (charSet.length * Math.random());
+            str += charSet[idx];
+        }
+        return str;
+    }
+
+
+
+    // 메일보내기
+    public void mailSend(MailResponse mailRequest) {
+        logger.info("################### 전송 완료!");
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(mailRequest.getAddress());
+        message.setSubject(mailRequest.getTitle());
+        message.setText(mailRequest.getMessage());
+        message.setFrom("dbfl9532@naver.com");
+        message.setReplyTo("dbfl9532@naver.com");
+        logger.info("######################  message"+message);
+        mailSender.send(message);
+    }
+
+
+
+
+
+
     // select
     public Doctor getDoctorByEmail(String email) {
 
@@ -62,90 +152,16 @@ public class DoctorService {
         return doctorRepository.findByEmailAndPassword(email, password);
     }
 
-}
 
 
 
 
-//
-//
-//import com.smartChart.auth.AuthenticationResponse;
-//import com.smartChart.config.JwtService;
-//import com.smartChart.doctor.dto.DoctorJoinRequest;
-//import com.smartChart.doctor.dto.DoctorLoginRequest;
-//import com.smartChart.doctor.entity.Doctor;
-//import com.smartChart.doctor.entity.Role;
-//import com.smartChart.doctor.repository.DoctorRepository;
-//import lombok.RequiredArgsConstructor;
-//import org.springframework.security.authentication.AuthenticationManager;
-//import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-//import org.springframework.security.crypto.password.PasswordEncoder;
-//import org.springframework.stereotype.Service;
-//
-//@Service
-//@RequiredArgsConstructor
-//public class DoctorService {
-//
-//    private final DoctorRepository doctorRepository;
-//
-//    private final PasswordEncoder passwordEncoder;
-//
-//    private final JwtService jwtService;
-//
-//    private final AuthenticationManager authenticationManager;
-//
-//
-//    /**
-//     * 회원가입
-//     * @param request
-//     * @return
-//     */
-//    public AuthenticationResponse register(DoctorJoinRequest request) {
-//        var doctor = Doctor.builder()
-//                // Doctor
-//                .email(request.getEmail())
-//                .password(passwordEncoder.encode(request.getPassword()))
-//                .name(request.getName())
-//                .gender(request.getGender())
-//                .age(request.getAge())
-//                .phoneNumber(request.getPhoneNumber())
-//                .hospitalName(request.getHospitalName())
-//                .hospitalAddress(request.getHospitalAddress())
-//                .hospitalPhoneNumber(request.getHospitalPhoneNumber())
-//                .role(Role.DOCTOR)
-//                .build();
-//        doctorRepository.save(doctor);
-//        var jwtToken = jwtService.generateToken(doctor);  //  jwtService에서 token 가져오기
-//        return AuthenticationResponse.builder()
-//                .token(jwtToken)
-//                .build();
-//
-//    }
-//
-//
-//    /**
-//     * 로그인
-//     * @param request
-//     * @return
-//     */
-//    public AuthenticationResponse authenticate(DoctorLoginRequest request) {
-//        // 유저가 올바르다면..
-//        authenticationManager.authenticate( // to take object to users' token
-//                new UsernamePasswordAuthenticationToken(
-//                        request.getEmail(),
-//                        request.getPassword()
-//                )
-//        );
-//
-//        // 유저가 올바르지 않다면...
-//        var doctor = doctorRepository.findByEmail(request.getEmail())
-//                .orElseThrow();
-//
-//        var jwtToken = jwtService.generateToken(doctor);
-//        return AuthenticationResponse.builder()
-//                .token(jwtToken)
-//                .build();
-//    }
-//
-//
-//}
+
+
+
+
+} // end
+
+
+
+

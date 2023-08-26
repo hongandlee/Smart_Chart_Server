@@ -8,6 +8,8 @@ import com.smartChart.patient.dto.RequestDto.OAuthToken;
 import com.smartChart.patient.dto.RequestDto.PatientJoinRequest;
 import com.smartChart.patient.dto.RequestDto.PatientLoginRequest;
 import com.smartChart.patient.entity.Patient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -23,6 +25,8 @@ import org.springframework.web.client.RestTemplate;
 @Controller
 public class KakaoContorller {
 
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Value("${cos.key}")
     private String cosKey;
@@ -87,8 +91,7 @@ public class KakaoContorller {
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("카카오 엑세스 토큰 : " + oAuthToken.getAccess_token());
-
+        logger.info("####################### 카카오 엑세스 토큰 : " + oAuthToken.getAccess_token());
 
 
         RestTemplate rt2 = new RestTemplate();
@@ -117,7 +120,7 @@ public class KakaoContorller {
         );
 
 
-        System.out.println(response2.getBody());
+        logger.info(response2.getBody());
 
 
         ObjectMapper objectMapper2 = new ObjectMapper();
@@ -130,16 +133,16 @@ public class KakaoContorller {
         }
 
         // Patient 오브젝트 : name, email, password
-        System.out.println("카카오 아이디(번호) : " + kakaoProfile.getId());
-        System.out.println("카카오 이메일 : " + kakaoProfile.getKakao_account().getEmail());
+        logger.info("####################### 카카오 아이디(번호) : " + kakaoProfile.getId());
+        logger.info("####################### 카카오 이메일 : " + kakaoProfile.getKakao_account().getEmail());
 
 
        // System.out.println("환자 이름 : " + kakaoProfile.getKakao_account().getEmail() + "_" + kakaoProfile.getId()); //   // 예를 들어 유저네임 중복 안되게 하기 위한 tip
-        System.out.println("환자 이름 : " + kakaoProfile.getProperties().getNickname());
-        System.out.println("환자 이메일 :" + kakaoProfile.getKakao_account().getEmail());
+        logger.info("####################### 환자 이름 : " + kakaoProfile.getProperties().getNickname());
+        logger.info("####################### 환자 이메일 :" + kakaoProfile.getKakao_account().getEmail());
         // UUID란 -> 중복되지 않는 어떤 특정 값을 만들어내는 알고리즘
         //UUID garbagePassword = UUID.randomUUID();  // 임시방편으로 넣으 놓은 비밀번호임. (결국 쓰레기 비밀번호)
-        System.out.println("환자서버 패스워드 :" + cosKey);
+        logger.info("####################### 환자서버 패스워드 :" + cosKey);
 
 
         // dto 값 넣기
@@ -160,17 +163,17 @@ public class KakaoContorller {
 
 
         // 가입자 혹은 비가입자 체크 해서 처리
-        System.out.println(kakaoRequest.getEmail());
+        logger.info("#######################", kakaoRequest.getEmail());
         Patient originPatient = patientService.회원찾기(kakaoRequest.getEmail());
 
 
         // 비가입자일 경우 -> 회원가입
         if(originPatient.getEmail() == null) {
-            System.out.println("기존 회원이 아니기에 자동 회원가입을 진행합니다.");
+            logger.info("####################### 기존 회원이 아니기에 자동 회원가입을 진행합니다.");
             patientService.register(kakaoRequest);
         }
 
-        System.out.println("자동 로그인을 진행합니다.");
+        logger.info("####################### 자동 로그인을 진행합니다.");
         // 가입자일 경우 -> 로그인
         patientService.authenticate(kakaoLoginRequest);
 
