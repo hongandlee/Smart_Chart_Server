@@ -41,6 +41,9 @@ public class DoctorService {
             int phoneNumber,
             String hospitalName,
             String hospitalAddress,
+            int mapx,
+            int mapy,
+            String category,
             int hospitalPhoneNumber,
             String hospitalIntroduce,
             String hospitalProfileURL,
@@ -56,6 +59,9 @@ public class DoctorService {
                 .phoneNumber(phoneNumber)
                 .hospitalName(hospitalName)
                 .hospitalAddress(hospitalAddress)
+                .mapx(mapx)
+                .mapy(mapy)
+                .category(category)
                 .hospitalPhoneNumber(hospitalPhoneNumber)
                 .hospitalIntroduce(hospitalIntroduce)
                 .hospitalProfileURL(hospitalProfileURL)

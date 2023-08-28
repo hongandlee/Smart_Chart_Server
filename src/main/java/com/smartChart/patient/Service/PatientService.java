@@ -97,7 +97,7 @@ public class PatientService {
 
         // 유저가 올바르지 않다면...
         var patient = patientRepository.findByEmail(request.getEmail())
-                .orElseThrow();
+                .orElseThrow(() -> new RuntimeException("code: 500" + "message : 로그인 정보가 올바르지 않습니다."));
 
         var jwtToken = jwtService.generateToken(patient);
         revokeAllPatientTokens(patient); // 모든 사용자 토큰 철회

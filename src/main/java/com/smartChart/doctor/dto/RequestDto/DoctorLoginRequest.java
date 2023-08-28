@@ -1,4 +1,4 @@
-package com.smartChart.doctor.dto;
+package com.smartChart.doctor.dto.RequestDto;
 
 
 import lombok.AllArgsConstructor;

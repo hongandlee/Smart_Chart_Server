@@ -1,4 +1,4 @@
-package com.smartChart.doctor.dto;
+package com.smartChart.doctor.dto.RequestDto;
 
 
 import com.smartChart.doctor.entity.Role;
@@ -38,6 +38,12 @@ public class DoctorJoinRequest {
 
 
     private String hospitalAddress;
+
+    private int mapx;
+
+    private int mapy;
+
+    private String category;
 
 
     private int hospitalPhoneNumber;

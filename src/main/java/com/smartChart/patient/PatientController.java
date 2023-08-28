@@ -5,10 +5,10 @@ import com.smartChart.Response.Message;
 import com.smartChart.auth.AuthenticationResponse;
 import com.smartChart.patient.Service.PatientService;
 import com.smartChart.patient.dto.RequestDto.MailRequest;
-import com.smartChart.patient.dto.ResponseDto.MailResponse;
 import com.smartChart.patient.dto.RequestDto.PatientEmailRequest;
 import com.smartChart.patient.dto.RequestDto.PatientJoinRequest;
 import com.smartChart.patient.dto.RequestDto.PatientLoginRequest;
+import com.smartChart.patient.dto.ResponseDto.MailResponse;
 import com.smartChart.patient.entity.Patient;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -103,7 +103,6 @@ public class PatientController {
             message.setCode(500);
             message.setMessage("관리자에게 문의해주시기 바랍니다.");
         }
-
         return new ResponseEntity<>(message, headers, HttpStatus.OK);   // ResponseEntity.ok() - 성공을 의미하는 OK(200 code)와 함께 user 객체를 Return 하는 코드
     }
 
@@ -179,5 +178,9 @@ public class PatientController {
     }
 
 
+
+
+
+   // @GetMapping("/reservation-map-view")
 
 }

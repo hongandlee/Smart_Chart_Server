@@ -3,8 +3,8 @@ package com.smartChart.doctor;
 
 import com.smartChart.Response.Message;
 import com.smartChart.config.Encrypt;
-import com.smartChart.doctor.dto.DoctorJoinRequest;
-import com.smartChart.doctor.dto.DoctorLoginRequest;
+import com.smartChart.doctor.dto.RequestDto.DoctorJoinRequest;
+import com.smartChart.doctor.dto.RequestDto.DoctorLoginRequest;
 import com.smartChart.doctor.dto.RequestDto.DoctorEmailRequest;
 import com.smartChart.doctor.entity.Doctor;
 import com.smartChart.doctor.service.DoctorService;
@@ -15,10 +15,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -56,7 +53,8 @@ public class DoctorController {
         doctorService.addDoctor(
                 request.getEmail(), saltPassword, salt, request.getName(), request.getGender(),
                 request.getAge(), request.getPhoneNumber(), request.getHospitalName(),
-                request.getHospitalAddress(), request.getHospitalPhoneNumber(), request.getHospitalIntroduce(),
+                request.getHospitalAddress(), request.getMapx(), request.getMapy(), request.getCategory(),
+                request.getHospitalPhoneNumber(), request.getHospitalIntroduce(),
                 request.getHospitalProfileURL(), request.getRole());
 
         // message
@@ -210,5 +208,8 @@ public class DoctorController {
         }
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
+
+
+
 
 }

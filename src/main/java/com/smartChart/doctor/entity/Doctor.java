@@ -46,6 +46,15 @@ public class Doctor {
     @Column(name = "hospitalAddress", nullable = false)
     private String hospitalAddress;
 
+    @Column(name= "mapx", nullable = false)
+    private int  mapx;
+
+    @Column(name= "mapy", nullable = false)
+    private int mapy;
+
+    @Column(name = "category", nullable = false)
+    private String category;
+
     @Column(name = "hospitalPhoneNumber")
     private Integer hospitalPhoneNumber;
 

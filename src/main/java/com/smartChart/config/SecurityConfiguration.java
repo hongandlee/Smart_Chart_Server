@@ -29,12 +29,14 @@ public class SecurityConfiguration  {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .antMatchers( "/patient/**")
+                .antMatchers( "/patient/**","/error")
                 .permitAll()
+                .antMatchers("/codes/**").permitAll()
                 .antMatchers( "/doctor/**")
                 .permitAll()
-                .antMatchers("/","/css/**","/images/**","/js/**","/image/**","/login/oauth2/**","/auth/**", "/websocket/**", "/static/**").permitAll()
+                .antMatchers("/","/css/**","/images/**","/js/**","/image/**","/login/oauth2/**","/auth/**", "/websocket/**", "/static/**","/api/**","/naver/**").permitAll()
                 .antMatchers("/login", "/join").permitAll() // 로그인, 회원가입 접근 가능
+                .antMatchers("/ws/**").permitAll()
 //
 //                .antMatchers(GET,"/patient/**").hasAuthority(PATIENT_READ.name())
 //                .antMatchers(POST,"/patient/**").hasAuthority(PATIENT_CREATE.name())

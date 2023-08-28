@@ -3,7 +3,11 @@ package com.smartChart.doctor.repository;
 
 import com.smartChart.doctor.entity.Doctor;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
@@ -12,5 +16,12 @@ public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
 
 
   Doctor findByEmailAndPassword(String email, String password);
+
+
+
+  @Query(value = "select d.hospitalName, d.hospitalAddress, d.mapx, d.mapy, d.category, d.hospitalPhoneNumber, d.hospitalIntroduce, d.hospitalProfileURL from Doctor d where category=:category")
+  public List<Doctor> findByCategory(@Param("category") String category);
+
+
 
 }
