@@ -19,9 +19,12 @@ public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
 
 
 
-  @Query(value = "select d.hospitalName, d.hospitalAddress, d.mapx, d.mapy, d.category, d.hospitalPhoneNumber, d.hospitalIntroduce, d.hospitalProfileURL from Doctor d where category=:category")
-  public List<Doctor> findByCategory(@Param("category") String category);
+  @Query(value = "SELECT d.id, d.hospitalName, d.hospitalAddress, d.mapx, d.mapy, d.category, d.hospitalPhoneNumber, d.hospitalIntroduce, d.hospitalProfileURL FROM doctor d WHERE d.category = :category", nativeQuery = true)
+  public List<HospitalInterface> findDoctorByCategory(@Param("category") String category);
 
 
+//  @Query(value = "SELECT * FROM doctor d WHERE d.category = :category", nativeQuery = true)
+//  public List<Doctor> findDoctorByCategory(@Param("category")String category);
 
+  Doctor findById(int id);
 }

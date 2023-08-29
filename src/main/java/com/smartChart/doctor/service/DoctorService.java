@@ -4,6 +4,7 @@ import com.smartChart.config.Encrypt;
 import com.smartChart.doctor.entity.Doctor;
 import com.smartChart.doctor.entity.Role;
 import com.smartChart.doctor.repository.DoctorRepository;
+import com.smartChart.doctor.repository.HospitalInterface;
 import com.smartChart.patient.dto.ResponseDto.MailResponse;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -12,6 +13,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -162,9 +165,16 @@ public class DoctorService {
 
 
 
+    // select - 카테고리별 의사 리스트
+    public List<HospitalInterface> findDoctorByCategory (String category) {
+        return doctorRepository.findDoctorByCategory(category);
+    }
 
 
-
+    // select - 의사 1명 조회
+    public Doctor findById (int id) {
+        return doctorRepository.findById(id);
+    }
 
 } // end
 

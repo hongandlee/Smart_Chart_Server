@@ -46,12 +46,9 @@ public class PatientService {
     private final JavaMailSender mailSender;
 
 
-
-
-
-
     /**
      * 회원가입
+     *
      * @param request
      * @return
      */
@@ -78,11 +75,9 @@ public class PatientService {
     }
 
 
-
-
-
     /**
      * 로그인
+     *
      * @param request
      * @return
      */
@@ -108,10 +103,9 @@ public class PatientService {
     }
 
 
-
-
     /**
      * 모든 환자의 토큰을 철회하기
+     *
      * @param patient
      */
     private void revokeAllPatientTokens(Patient patient) {
@@ -126,10 +120,9 @@ public class PatientService {
     }
 
 
-
-
     /**
      * 환자 토큰 저장
+     *
      * @param patient
      * @param jwtToken
      */
@@ -145,23 +138,19 @@ public class PatientService {
     }
 
 
-
-
     /**
      * 카카오톡 로그인으로 회원찾기
+     *
      * @param email
      * @return
      */
     @Transactional(readOnly = true)
     public Patient 회원찾기(String email) {
-        Patient patient = patientRepository.findByEmail(email).orElseGet(()->{ // orElseGet 만약 회원을 찾았는데 없으면 빈 객체를 리턴해라.
+        Patient patient = patientRepository.findByEmail(email).orElseGet(() -> { // orElseGet 만약 회원을 찾았는데 없으면 빈 객체를 리턴해라.
             return new Patient(); // null이 아니고 빈 객체를 반환.
         });
         return patient;
     }
-
-
-
 
 
     // 메일 내용을 생성하고 임시 비밀번호로 회원 비밀번호를 변경
@@ -169,8 +158,8 @@ public class PatientService {
         String str = getTempPassword();
         MailResponse mailRequest = new MailResponse();
         mailRequest.setAddress(patientEmail);
-        mailRequest.setTitle("Smart Chart 임시비밀번호 안내입니다." );
-        mailRequest.setMessage("안녕하세요." + "\n" +"Smart Chart 변경된 비밀번호는 " + str + "입니다.");
+        mailRequest.setTitle("Smart Chart 임시비밀번호 안내입니다.");
+        mailRequest.setMessage("안녕하세요." + "\n" + "Smart Chart 변경된 비밀번호는 " + str + "입니다.");
         updatePassword(str, patientEmail);
         return mailRequest;
     }
@@ -185,16 +174,14 @@ public class PatientService {
         patient = patient.toBuilder() // toBuilder는 기존값 유지하고 일부만 변경
                 .password(encodedPassword)
                 .build();
-                 patientRepository.save(patient);
+        patientRepository.save(patient);
     }
 
 
-
-
     // 랜덤함수로 임시비밀번호 구문 만들기
-    public String getTempPassword(){
-        char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
-                'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+    public String getTempPassword() {
+        char[] charSet = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+                'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 
         String str = "";
 
@@ -208,7 +195,6 @@ public class PatientService {
     }
 
 
-
     // 메일보내기
     public void mailSend(MailResponse mailRequest) {
         logger.info("################### 전송 완료!");
@@ -218,21 +204,23 @@ public class PatientService {
         message.setText(mailRequest.getMessage());
         message.setFrom("dbfl9532@naver.com");
         message.setReplyTo("dbfl9532@naver.com");
-        logger.info("######################  message"+message);
+        logger.info("######################  message" + message);
         mailSender.send(message);
     }
 
 
-
-
-
-
     // select
-    public Optional<Patient> findByEmail(String email) { return patientRepository.findByEmail(email);
+    public Optional<Patient> findByEmail(String email) {
+        return patientRepository.findByEmail(email);
     }
 
 
     public Patient findEmailByEmail(String email) {
-     return patientRepository.findEmailByEmail(email);
+        return patientRepository.findEmailByEmail(email);
+    }
+
+    public Patient findPatientById(Integer id) {
+
+        return patientRepository.findPatientById(id);
     }
 }

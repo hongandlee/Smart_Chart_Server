@@ -3,6 +3,8 @@ package com.smartChart.patient;
 
 import com.smartChart.Response.Message;
 import com.smartChart.auth.AuthenticationResponse;
+import com.smartChart.doctor.repository.HospitalInterface;
+import com.smartChart.doctor.service.DoctorService;
 import com.smartChart.patient.Service.PatientService;
 import com.smartChart.patient.dto.RequestDto.MailRequest;
 import com.smartChart.patient.dto.RequestDto.PatientEmailRequest;
@@ -22,6 +24,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.nio.charset.Charset;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -30,9 +35,15 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class PatientController {
 
+
+
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final PatientService service;
+
+    private final DoctorService doctorService;
+
+
 
 
     /**
@@ -180,7 +191,35 @@ public class PatientController {
 
 
 
+    /**
+     * 병원 검색하기
+     * @return
+     */
+    @GetMapping("/reservation-map-view")
+    public Map<String, Object> reservation() {
 
-   // @GetMapping("/reservation-map-view")
+        // db
+       List<HospitalInterface> skinHospital = doctorService.findDoctorByCategory("피부과");
+        List<HospitalInterface> eyeHospital = doctorService.findDoctorByCategory("안과");
+        List<HospitalInterface> internalHospital = doctorService.findDoctorByCategory("내과");
+        List<HospitalInterface> noseHospital = doctorService.findDoctorByCategory("이비인후과");
+        List<HospitalInterface> dentalHospital = doctorService.findDoctorByCategory("치과");
+        List<HospitalInterface> orthopedicsHospital = doctorService.findDoctorByCategory("정형외과");
+        List<HospitalInterface> otherHospital = doctorService.findDoctorByCategory("기타");
+
+
+       Map<String, Object> result = new HashMap<>();
+       result.put("피부과", skinHospital);
+       result.put("안과", eyeHospital);
+       result.put("내과", internalHospital);
+       result.put("이비인후과",noseHospital);
+       result.put("치과",dentalHospital);
+       result.put("정형외과", orthopedicsHospital);
+       result.put("기타", otherHospital);
+
+       return result;
+    }
+
+
 
 }
