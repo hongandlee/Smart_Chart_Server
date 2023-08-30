@@ -6,6 +6,7 @@ import com.smartChart.doctor.service.DoctorService;
 import com.smartChart.patient.Service.PatientService;
 import com.smartChart.patient.entity.Patient;
 import com.smartChart.reservation.dto.ReservationRequest;
+import com.smartChart.reservation.dto.ReservationResponse;
 import com.smartChart.reservation.entity.Reservation;
 import com.smartChart.reservation.service.ReservationService;
 import lombok.RequiredArgsConstructor;
@@ -39,7 +40,27 @@ public class ReservationController {
 
 
     @GetMapping("/reservation-view/{doctorId}")
-    public 
+    public ResponseEntity<ReservationResponse> reservation_view(
+            @PathVariable int doctorId,
+            HttpSession session){
+
+        // session
+        Integer patientId = (Integer)session.getAttribute("patientId");
+
+        // db
+        Patient patient = patientService.findPatientById(patientId);
+        Doctor doctor = doctorService.findById(doctorId);
+
+        ReservationResponse response = new ReservationResponse();
+        response.setPatientName(patient.getName());
+        response.setPatiengGender(patient.getGender());
+        response.setPatientgAge(patient.getAge());
+        response.setPatiengPhoneNumber(patient.getPhoneNumber());
+        response.setHospitalName(doctor.getHospitalName());
+        response.setDoctorId(doctorId);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 
 
 
@@ -49,7 +70,7 @@ public class ReservationController {
 
 
     /**
-     * 병원 예약 중복 체크
+     * 병원 예약 가능 조회
      */
     @RequestMapping("/check-reservation")
     public ResponseEntity<Message> check_reservation (
@@ -118,5 +139,8 @@ public class ReservationController {
 
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
+
+
+
 
 }

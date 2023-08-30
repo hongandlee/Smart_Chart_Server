@@ -27,4 +27,7 @@ public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
 //  public List<Doctor> findDoctorByCategory(@Param("category")String category);
 
   Doctor findById(int id);
+
+
+  // Doctor findHospitalNameById(@Param("id") Integer id);
 }
