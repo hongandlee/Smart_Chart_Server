@@ -34,29 +34,26 @@ public class DoctorReservationController {
     private final ReservationService reservationService;
 
 
-
-
     @GetMapping("/reservation")
     public ResponseEntity<SearchResponse> reservationCheck(
             @RequestBody SearchRequest request,
-            HttpSession session){
+            HttpSession session) {
 
         // session
-        Integer doctorId = (Integer)session.getAttribute("doctorId");
+        Integer doctorId = (Integer) session.getAttribute("doctorId");
 
         SearchResponse response = new SearchResponse();
-        if(request.getReservationTime() == null){
+        if (request.getReservationTime() == null) {
             // db
-            List<ReservationInterface> reservationList = reservationService.findAllByReservationDateAndReservationTimeAndDoctorId(request.getReservationDate(),doctorId);
+            List<ReservationInterface> reservationList = reservationService.findAllByReservationDateAndReservationTimeAndDoctorId(request.getReservationDate(), doctorId);
             response.setData(reservationList);
         } else {
-            List<ReservationInterface> reservation = reservationService.findReservationByReservationDateAndReservationTimeAndDoctorId(request.getReservationDate(), request.getReservationTime(),doctorId);
+            List<ReservationInterface> reservation = reservationService.findReservationByReservationDateAndReservationTimeAndDoctorId(request.getReservationDate(), request.getReservationTime(), doctorId);
             response.setData(reservation);
         }
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-
 
 
 

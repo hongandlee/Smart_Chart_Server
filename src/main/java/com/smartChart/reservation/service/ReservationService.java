@@ -13,7 +13,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.sql.Time;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +25,14 @@ public class ReservationService {
     private final ReservationRepository reservationRepository;
 
     private final PatientService patientService;
+
+
+
+
+    // 예약 조회 by ID
+    public Reservation findById(int reservationId) {
+        return reservationRepository.findById(reservationId);
+    }
 
 
     // 예약 가능 조회
@@ -55,10 +62,31 @@ public class ReservationService {
                             .doctor(doctorId)
                             .reservationDate(reservationDate)
                             .reservationTime(reservationTime)
+                            .reservationStatus("미완료")
                             .build());
             return reservation;
 
     }
+
+
+
+    // update - 예약 확정 상태
+    public Reservation updateReservationStatusById(int reservationId) {
+
+        Reservation reservation = reservationRepository.findById(reservationId);
+        if (reservation != null) {
+            reservation = reservation.toBuilder() // toBuilder는 기존값 유지하고 일부만 변경
+                    .reservationStatus("완료")
+                    .build();
+
+            reservation = reservationRepository.save(reservation);
+
+            logger.info("######### 예약 상태가 완료로 변경");
+        }
+        return reservation;
+
+    }
+
 
 
 

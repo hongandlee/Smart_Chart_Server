@@ -38,6 +38,9 @@ public class Reservation {
     @Column(name = "reservationTime", nullable = false)
     private Time reservationTime;
 
+    @Column(name = "reservationStatus")
+    private String reservationStatus;
+
     @Column(name = "paymentStatus")
     private String paymentStatus;
 

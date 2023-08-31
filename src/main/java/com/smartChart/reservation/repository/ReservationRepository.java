@@ -18,8 +18,14 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
   Reservation findByReservationDateAndReservationTimeAndDoctorId(Date reservationDate, Time reservationTime, int doctorId);
 
 
+  // select  - ID
+   Reservation findById(int reservationId);
 
-  // 날짜, 시간,
+
+
+
+
+  // 날짜, 시간, doctorId
   @Query(nativeQuery = true, value =  "select A.id, B.name, A.reservationDate, A.reservationTime, B.phoneNumber\n" +
           "from reservation AS A\n" +
           "join patient AS B\n" +
@@ -31,8 +37,10 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
           @Param("doctorId") int doctorId);
 
 
-  
-  // 리스트 - 날짜, 시간
+
+
+
+  // 리스트 - 날짜, 시간, doctorId
   @Query(nativeQuery = true, value =  "select A.id, B.name, A.reservationDate, A.reservationTime, B.phoneNumber\n" +
           "from reservation AS A\n" +
           "join patient AS B\n" +
@@ -41,4 +49,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
   public List<ReservationInterface> findAllByReservationDateAndReservationTimeAndDoctorId(
           @Param("reservationDate") Date reservationDate,
           @Param("doctorId") int doctorId);
+
+
+
 }

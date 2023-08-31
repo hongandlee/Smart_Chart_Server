@@ -1,7 +1,6 @@
-package com.smartChart.reservation_check.entity;
+package com.smartChart.reservation.entity;
 
 import com.smartChart.doctor.entity.Doctor;
-import com.smartChart.reservation.entity.Reservation;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
