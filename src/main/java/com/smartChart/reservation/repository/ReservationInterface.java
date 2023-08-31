@@ -22,4 +22,7 @@ public interface ReservationInterface {
     int getPhoneNumber();
 
 
+    String getReservationStatus();
+
+    String getPaymentStatus();
 }

@@ -34,6 +34,12 @@ public class DoctorReservationController {
     private final ReservationService reservationService;
 
 
+    /**
+     * 예약 관리
+     * @param request
+     * @param session
+     * @return
+     */
     @GetMapping("/reservation")
     public ResponseEntity<SearchResponse> reservationCheck(
             @RequestBody SearchRequest request,

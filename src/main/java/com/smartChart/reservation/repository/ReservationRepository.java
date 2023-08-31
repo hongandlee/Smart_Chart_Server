@@ -26,7 +26,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 
 
   // 날짜, 시간, doctorId
-  @Query(nativeQuery = true, value =  "select A.id, B.name, A.reservationDate, A.reservationTime, B.phoneNumber\n" +
+  @Query(nativeQuery = true, value =  "select A.id, B.name, A.reservationDate, A.reservationTime, B.phoneNumber, A.reservationStatus, A.paymentStatus\n" +
           "from reservation AS A\n" +
           "join patient AS B\n" +
           "on A.patientId = B.id\n" +
@@ -41,7 +41,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 
 
   // 리스트 - 날짜, 시간, doctorId
-  @Query(nativeQuery = true, value =  "select A.id, B.name, A.reservationDate, A.reservationTime, B.phoneNumber\n" +
+  @Query(nativeQuery = true, value =  "select A.id, B.name, A.reservationDate, A.reservationTime, B.phoneNumber, A.reservationStatus, A.paymentStatus\n" +
           "from reservation AS A\n" +
           "join patient AS B\n" +
           "on A.patientId = B.id\n" +

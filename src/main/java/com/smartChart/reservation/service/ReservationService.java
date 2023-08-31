@@ -63,6 +63,8 @@ public class ReservationService {
                             .reservationDate(reservationDate)
                             .reservationTime(reservationTime)
                             .reservationStatus("미완료")
+                            .paymentStatus("미완료")
+                            .patientPaymentStatus("미완료")
                             .build());
             return reservation;
 

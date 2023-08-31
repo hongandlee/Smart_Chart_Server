@@ -44,6 +44,10 @@ public class Reservation {
     @Column(name = "paymentStatus")
     private String paymentStatus;
 
+
+    @Column(name = "patientPaymentStatus")
+    private String patientPaymentStatus;
+
     @UpdateTimestamp
     @Column(name="createdAt", updatable = false) // updatable는 update 시점에 막는 기능
     private Date createdAt;
