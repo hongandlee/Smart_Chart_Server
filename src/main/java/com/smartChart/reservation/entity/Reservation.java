@@ -30,8 +30,10 @@ public class Reservation {
     @JoinColumn(name="doctorId")
     private Doctor doctor;
 
+
     @Column(name = "reservationDate", nullable = false)
     private Date reservationDate;
+
 
     @Column(name = "reservationTime", nullable = false)
     private Time reservationTime;

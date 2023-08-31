@@ -25,7 +25,7 @@ import java.nio.charset.Charset;
 @RestController
 @RequestMapping("/patient")
 @RequiredArgsConstructor
-public class ReservationController {
+public class PatientReservationController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -38,7 +38,12 @@ public class ReservationController {
 
 
 
-
+    /**
+     * 예약 하기 화면
+     * @param doctorId
+     * @param session
+     * @return
+     */
     @GetMapping("/reservation-view/{doctorId}")
     public ResponseEntity<ReservationResponse> reservation_view(
             @PathVariable int doctorId,
@@ -91,7 +96,7 @@ public class ReservationController {
 
         } else {                     // 예약 불가능
             message.setCode(409);
-            message.setMessage("예약 마감입니다.");
+            message.setMessage("예약이 불가능합니다.");
         }
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
@@ -101,7 +106,7 @@ public class ReservationController {
 
 
     /**
-     * 병원 예약학기
+     * 병원 예약하기
      * @param request
      * @param session
      * @return
@@ -139,6 +144,8 @@ public class ReservationController {
 
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
+
+
 
 
 
