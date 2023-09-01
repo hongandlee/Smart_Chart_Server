@@ -11,7 +11,6 @@ import java.util.Date;
 @Getter
 @AllArgsConstructor // 모든 값이 있는 생성자
 @NoArgsConstructor // 기본 생성자
-@Builder(toBuilder = true) // 수정 시 기존 객체 그대로, 세팅한 값만 변경
 @Table(name = "sample_answer") //엔티티와 매핑할 테이블을 지정.
 @Entity
 public class Sample_answer {
@@ -19,13 +18,14 @@ public class Sample_answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본키 생성을 데이터베이스에게 위임하는 방식으로 id값을 따로 할당하지 않아도 데이터베이스가 자동으로 AUTO_INCREMENT를 하여 기본키를 생성
     private int id;
 
+    @Column(name = "yes", nullable = false)
+    private String yes;
 
-    @ManyToOne
-    @JoinColumn(name="questionId")
-    private Sample_question sample_question;
+    @Column(name = "no", nullable = false)
+    private String no;
 
-    @Column(name = "answerSample", nullable = false)
-    private String answerSample;
+    @Column(name = "unawareness", nullable = false)
+    private String unawareness;
 
     @UpdateTimestamp
     @Column(name="createdAt", updatable = false) // updatable는 update 시점에 막는 기능
@@ -34,4 +34,6 @@ public class Sample_answer {
     @UpdateTimestamp
     @Column(name="updatedAt")
     private Date updatedAt;
+
+
 }

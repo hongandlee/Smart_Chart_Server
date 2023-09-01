@@ -25,7 +25,7 @@ public class Survey {
     private Reservation reservation;
 
     @ManyToOne
-    @JoinColumn(name="questionId")
+    @JoinColumn(name="questionId", updatable = false)
     private Sample_question sample_question;
 
     @ManyToOne
