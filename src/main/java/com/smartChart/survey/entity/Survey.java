@@ -1,5 +1,6 @@
 package com.smartChart.survey.entity;
 
+import com.smartChart.patient.entity.Patient;
 import com.smartChart.reservation.entity.Reservation;
 import lombok.*;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -26,6 +27,10 @@ public class Survey {
     @ManyToOne
     @JoinColumn(name="questionId")
     private Sample_question sample_question;
+
+    @ManyToOne
+    @JoinColumn(name="patientId")
+    private Patient patient;
 
     @Column(name = "answer", nullable = false)
     private String answer;

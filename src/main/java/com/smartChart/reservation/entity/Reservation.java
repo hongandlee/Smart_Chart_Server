@@ -1,6 +1,7 @@
 package com.smartChart.reservation.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.smartChart.doctor.entity.Doctor;
 import com.smartChart.patient.entity.Patient;
 import lombok.*;
@@ -30,7 +31,7 @@ public class Reservation {
     @JoinColumn(name="doctorId")
     private Doctor doctor;
 
-
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "reservationDate", nullable = false)
     private Date reservationDate;
 

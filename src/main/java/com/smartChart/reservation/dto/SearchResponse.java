@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SearchResponse {
-
+  //  @Value("#{T(java.time.format.DateTimeFormatter).ofPattern('yyyy-MM-dd').format(myDate)}")
     private Object data;
 
 

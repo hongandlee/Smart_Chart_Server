@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -34,6 +35,8 @@ public class DoctorReservationController {
     private final ReservationService reservationService;
 
 
+    public static final String CURRENT_DATE = LocalDate.now().toString();
+
     /**
      * 예약 관리
      * @param request
@@ -45,6 +48,7 @@ public class DoctorReservationController {
             @RequestBody SearchRequest request,
             HttpSession session) {
 
+
         // session
         Integer doctorId = (Integer) session.getAttribute("doctorId");
 
@@ -54,14 +58,35 @@ public class DoctorReservationController {
             List<ReservationInterface> reservationList = reservationService.findAllByReservationDateAndReservationTimeAndDoctorId(request.getReservationDate(), doctorId);
             response.setData(reservationList);
         } else {
+            // db
             List<ReservationInterface> reservation = reservationService.findReservationByReservationDateAndReservationTimeAndDoctorId(request.getReservationDate(), request.getReservationTime(), doctorId);
             response.setData(reservation);
         }
-
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 
+    /**
+     * 예약 관리 화면 (최근 예약 건수 10개)
+     * @param session
+     * @return
+     */
+    @GetMapping("/reservation-view")
+    public ResponseEntity<SearchResponse> reservation_view(
+            HttpSession session) {
+
+
+        // session
+        Integer doctorId = (Integer) session.getAttribute("doctorId");
+
+        SearchResponse response = new SearchResponse();
+
+        // db
+        List<ReservationInterface> reservationList = reservationService.findByDoctorIdOrderByIdDesc(doctorId);
+        response.setData(reservationList);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 
 
 } // end

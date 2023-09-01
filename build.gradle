@@ -50,6 +50,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	// sms 문자 발송
 	implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+
+
 }
 
 tasks.named('test') {

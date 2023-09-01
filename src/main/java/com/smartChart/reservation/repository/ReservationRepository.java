@@ -52,4 +52,17 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 
 
 
+
+
+  // 리스트 - LocalDateTime날짜, 시간, doctorId
+  @Query(nativeQuery = true, value =  "select A.id, B.name, A.reservationDate, A.reservationTime, B.phoneNumber, A.reservationStatus, A.paymentStatus\n" +
+          "from reservation AS A\n" +
+          "join patient AS B\n" +
+          "on A.patientId = B.id\n" +
+          "where A.doctorId = :doctorId\n"
+          + "order by A.id desc LIMIT 10")
+  public List<ReservationInterface> findByDoctorIdOrderByIdDesc(
+          @Param("doctorId") int doctorId);
+
+
 }

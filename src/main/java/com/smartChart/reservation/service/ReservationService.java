@@ -52,6 +52,16 @@ public class ReservationService {
         return reservationRepository.findAllByReservationDateAndReservationTimeAndDoctorId(reservationDate,  doctorId);
     }
 
+
+
+    // 최근 날짜 조회
+    public List<ReservationInterface> findByDoctorIdOrderByIdDesc(int doctorId) {
+        return reservationRepository.findByDoctorIdOrderByIdDesc( doctorId);
+    }
+
+
+
+
     // 예약하기
     public Reservation addReservation (Patient patientId, Doctor doctorId, Date reservationDate, Time reservationTime) {
 
