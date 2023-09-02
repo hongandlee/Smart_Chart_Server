@@ -13,6 +13,7 @@ public interface ReservationInterface {
 
     String getName();
 
+    int getPatientId();
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     Date getReservationDate();

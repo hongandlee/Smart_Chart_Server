@@ -1,7 +1,6 @@
 package com.smartChart.survey.entity;
 
 import com.smartChart.patient.entity.Patient;
-import com.smartChart.reservation.entity.Reservation;
 import lombok.*;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -10,6 +9,7 @@ import java.util.Date;
 
 @ToString // 객체 예쁘게 출력
 @Getter
+@Setter
 @AllArgsConstructor // 모든 값이 있는 생성자
 @NoArgsConstructor // 기본 생성자
 @Builder(toBuilder = true) // 수정 시 기존 객체 그대로, 세팅한 값만 변경
@@ -20,17 +20,15 @@ public class Survey {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본키 생성을 데이터베이스에게 위임하는 방식으로 id값을 따로 할당하지 않아도 데이터베이스가 자동으로 AUTO_INCREMENT를 하여 기본키를 생성
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name="reservationId")
-    private Reservation reservation;
 
     @ManyToOne
-    @JoinColumn(name="questionId", updatable = false)
+    @JoinColumn(name="questionId", nullable = false)
     private Sample_question sample_question;
 
     @ManyToOne
-    @JoinColumn(name="patientId")
+    @JoinColumn(name="patientId", nullable = false)
     private Patient patient;
+
 
     @Column(name = "answer", nullable = false)
     private String answer;
@@ -42,4 +40,13 @@ public class Survey {
     @UpdateTimestamp
     @Column(name="updatedAt")
     private Date updatedAt;
+
+
+
+    public Survey( Patient patient, Sample_question sample_question, String answer) {
+            this.patient = patient;
+            this.sample_question = sample_question;
+            this.answer = answer;
+    }
+
 }

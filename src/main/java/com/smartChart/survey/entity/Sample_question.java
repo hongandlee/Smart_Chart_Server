@@ -19,10 +19,6 @@ public class Sample_question {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본키 생성을 데이터베이스에게 위임하는 방식으로 id값을 따로 할당하지 않아도 데이터베이스가 자동으로 AUTO_INCREMENT를 하여 기본키를 생성
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name="answerId")
-    private Sample_answer sampleAnswer;
-
 
     @Column(name = "question", nullable = false)
     private String question;

@@ -12,6 +12,13 @@ import java.util.List;
 public interface Sample_question_Repository extends JpaRepository<Sample_question, Integer> {
 
 
-    @Query(nativeQuery = true, value =  "select id, question from sample_question")
-    public List<SurveyInterface> findIdAndQustion();
+    @Query(nativeQuery = true, value =  "select A.questionId, B.question, A.yes, A.no,A.unawareness\n" +
+    "from sample_question AS B\n" +
+    "join sample_answer AS A\n" +
+    "on A.questionId = B.id")
+    public List<SurveyInterface> findQuestionAndQuestionIdAndYesAndNoAndUnawareness();
+
+    Sample_question findAllById(int id);
+
+    List<Sample_question> findAllListById(int id);
 }
