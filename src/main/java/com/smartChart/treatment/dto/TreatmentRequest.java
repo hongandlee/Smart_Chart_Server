@@ -13,4 +13,11 @@ import lombok.NoArgsConstructor;
 public class TreatmentRequest {
 
     private int reservationId;
+    private String medicalHistory;
+    private String mainSymptoms;
+    private String  currentSymptoms;
+    private String treatmentPlan;
+    private String note;
+
+
 }

@@ -1,6 +1,7 @@
 package com.smartChart.treatment.entity;
 
 
+import com.smartChart.doctor.entity.Doctor;
 import com.smartChart.reservation.entity.Reservation;
 import lombok.*;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -23,6 +24,10 @@ public class Treatment {
     @ManyToOne
     @JoinColumn(name="reservationId")
     private Reservation reservation;
+
+    @ManyToOne
+    @JoinColumn(name="doctorId")
+    private Doctor doctor;
 
     @Column(name = "medicalHistory", nullable = false)
     private String medicalHistory;
