@@ -1,4 +1,4 @@
-package com.smartChart.reservation.dto;
+package com.smartChart.survey.dto;
 
 
 import lombok.AllArgsConstructor;
@@ -10,8 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder  // 객체를 생성할 수 있는 빌더를 builder() 함수를 통해 얻고 거기에 셋팅하고자 하는 값을 셋팅하고 마지막에 build()를 통해 빌더를 작동 시켜 객체를 생성
 @AllArgsConstructor
 @NoArgsConstructor
-public class SearchResponse {
+public class DoctorSurveyRequest {
 
-    private Object data;
-
+    private int patientId;
 }

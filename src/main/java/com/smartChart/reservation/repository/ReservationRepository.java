@@ -2,6 +2,7 @@ package com.smartChart.reservation.repository;
 
 
 import com.smartChart.reservation.entity.Reservation;
+import com.smartChart.treatment.dto.DoctorTreatmentInterface;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -55,7 +56,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 
 
   // 최신 예약건 10개
-  @Query(nativeQuery = true, value =  "select A.id, B.name, A.reservationDate, A.reservationTime, B.phoneNumber, A.reservationStatus, A.paymentStatus\n" +
+  @Query(nativeQuery = true, value =  "select A.id, B.name,A.patientId, A.reservationDate, A.reservationTime, B.phoneNumber, A.reservationStatus, A.paymentStatus\n" +
           "from reservation AS A\n" +
           "join patient AS B\n" +
           "on A.patientId = B.id\n" +
@@ -64,5 +65,17 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
   public List<ReservationInterface> findByDoctorIdOrderByIdDesc(
           @Param("doctorId") int doctorId);
 
+
+
+  @Query(nativeQuery = true, value =  "select B.id, A.hospitalName, B.reservationDate, C.name, C.phoneNumber, C.gender, C.age\n" +
+          "from reservation AS B\n" +
+          "join doctor AS A\n" +
+          "on B.doctorId = A.id\n" +
+          "join patient AS C\n" +
+          "on C.id = B.patientId\n" +
+          "where B.id = :reservationId"
+  )
+  public List<DoctorTreatmentInterface> findByReservationId(
+          @Param("reservationId") int reservationId);
 
 }

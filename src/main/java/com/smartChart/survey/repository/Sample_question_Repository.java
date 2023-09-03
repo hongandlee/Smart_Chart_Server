@@ -1,6 +1,7 @@
 package com.smartChart.survey.repository;
 
 
+import com.smartChart.survey.dto.SurveyInterface;
 import com.smartChart.survey.entity.Sample_question;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

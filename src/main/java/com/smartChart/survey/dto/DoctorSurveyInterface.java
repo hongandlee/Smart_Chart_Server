@@ -1,6 +1,6 @@
-package com.smartChart.survey.repository;
+package com.smartChart.survey.dto;
 
-public interface SurveyInterface {
+public interface DoctorSurveyInterface {
 
 
     String getQuestion();
@@ -12,4 +12,10 @@ public interface SurveyInterface {
     String getNo();
 
     String getUnawareness();
+
+    String getAnswer();
+
+    String getName();
+
+
 }

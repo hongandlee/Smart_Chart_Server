@@ -1,11 +1,12 @@
 package com.smartChart.survey.service;
 
 
+import com.smartChart.survey.dto.DoctorSurveyInterface;
 import com.smartChart.survey.entity.Sample_answer;
 import com.smartChart.survey.entity.Sample_question;
 import com.smartChart.survey.repository.Sample_answer_Repository;
 import com.smartChart.survey.repository.Sample_question_Repository;
-import com.smartChart.survey.repository.SurveyInterface;
+import com.smartChart.survey.dto.SurveyInterface;
 import com.smartChart.survey.repository.SurveyRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -70,6 +71,12 @@ public class SurveyService {
 
 
 
+    public List<DoctorSurveyInterface> selectSurvey(int patientId) {
+        return surveyRepository.findByPatientId(patientId);
+    }
+
+
+
     public List<SurveyInterface> selectQuestions () {
         return questionRepository.findQuestionAndQuestionIdAndYesAndNoAndUnawareness();
     }
@@ -96,6 +103,7 @@ public class SurveyService {
     public Sample_answer selectAnswerById(int answerId) {
         return answerRepository.findAllById(answerId);
     }
+
 
 
 }

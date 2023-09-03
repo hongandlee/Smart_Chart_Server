@@ -11,7 +11,7 @@ import com.smartChart.survey.dto.SurveyDTO;
 import com.smartChart.survey.entity.Sample_answer;
 import com.smartChart.survey.entity.Sample_question;
 import com.smartChart.survey.entity.Survey;
-import com.smartChart.survey.repository.SurveyInterface;
+import com.smartChart.survey.dto.SurveyInterface;
 import com.smartChart.survey.repository.SurveyRepository;
 import com.smartChart.survey.service.SurveyService;
 import lombok.RequiredArgsConstructor;
