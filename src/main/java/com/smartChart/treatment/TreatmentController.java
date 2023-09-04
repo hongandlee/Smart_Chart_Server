@@ -63,9 +63,12 @@ public class TreatmentController {
     }
 
 
-
-
-
+    /**
+     * 진료 관리 저장
+     * @param request
+     * @param session
+     * @return
+     */
     @Transactional
     @PostMapping("/treatment")
     public ResponseEntity<Message> treatment(

@@ -67,6 +67,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 
 
 
+  // 진료 관리 조회
   @Query(nativeQuery = true, value =  "select B.id, A.hospitalName, B.reservationDate, C.name, C.phoneNumber, C.gender, C.age\n" +
           "from reservation AS B\n" +
           "join doctor AS A\n" +
@@ -77,5 +78,10 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
   )
   public List<DoctorTreatmentInterface> findByReservationId(
           @Param("reservationId") int reservationId);
+
+
+
+
+
 
 }

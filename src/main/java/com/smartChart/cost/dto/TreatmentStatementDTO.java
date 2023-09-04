@@ -1,4 +1,4 @@
-package com.smartChart.treatment.dto;
+package com.smartChart.cost.dto;
 
 
 import lombok.AllArgsConstructor;
@@ -10,9 +10,11 @@ import lombok.NoArgsConstructor;
 @Builder  // 객체를 생성할 수 있는 빌더를 builder() 함수를 통해 얻고 거기에 셋팅하고자 하는 값을 셋팅하고 마지막에 build()를 통해 빌더를 작동 시켜 객체를 생성
 @AllArgsConstructor
 @NoArgsConstructor
-public class TreatmentResponse {
+public class TreatmentStatementDTO {
 
-    private Object data;
+    private int reservationId;
 
-    private Object data2;
+    private int costId;
+
+
 }
