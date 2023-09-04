@@ -25,4 +25,9 @@ public interface CostRepository extends JpaRepository<Cost, Integer> {
 
     Cost findById(int costId);
 
+
+
+
+
+
 }

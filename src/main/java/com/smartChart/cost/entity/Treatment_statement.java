@@ -29,9 +29,11 @@ public class Treatment_statement {
     @JoinColumn(name="doctorId")
     private Doctor doctor;
 
-    @ManyToOne
-    @JoinColumn(name="costId")
-    private Cost cost;
+    @Column(name = "treatment", nullable = false)
+    private String treatment;
+
+    @Column(name = "cost", nullable = false)
+    private int cost;
 
 
     @UpdateTimestamp

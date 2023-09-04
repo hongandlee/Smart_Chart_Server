@@ -7,6 +7,7 @@ import com.smartChart.cost.dto.DoctorCostInterface;
 import com.smartChart.cost.dto.TreatmentStatementDTO;
 import com.smartChart.cost.entity.Cost;
 import com.smartChart.cost.entity.Treatment_statement;
+import com.smartChart.cost.repository.CostRepository;
 import com.smartChart.cost.repository.TreatmentStatementRepository;
 import com.smartChart.cost.service.TreatmentStatementService;
 import com.smartChart.doctor.entity.Doctor;
@@ -42,7 +43,7 @@ public class TreatmentStatementController {
     private final ReservationService reservationService;
     private final TreatmentStatementService treatmentStatementService;
     private final TreatmentStatementRepository treatmentStatementRepository;
-
+    private final CostRepository costRepository;
 
 
     /**
@@ -79,7 +80,7 @@ public class TreatmentStatementController {
      * @return
      */
     @PostMapping("/treatment_statement")
-    public ResponseEntity<Message> cost (
+    public ResponseEntity<Message> treatmentStatement (
             @RequestBody List<TreatmentStatementDTO> treatmentStatementDTOList,
             HttpSession session){
 
@@ -96,8 +97,8 @@ public class TreatmentStatementController {
             Reservation reservation = reservationService.findById(treatmentStatementDTO.getReservationId());
             treatmentStatement.setReservation(reservation);
             treatmentStatement.setDoctor(doctor);
-            Cost cost = treatmentStatementService.selectCostById(treatmentStatementDTO.getCostId());
-            treatmentStatement.setCost(cost);
+            treatmentStatement.setTreatment(treatmentStatementDTO.getTreatment());
+            treatmentStatement.setCost(treatmentStatementDTO.getCost());
             treatmentStatementsToSave.add(treatmentStatement);
         }
         treatmentStatementRepository.saveAll(treatmentStatementsToSave);
@@ -117,17 +118,16 @@ public class TreatmentStatementController {
 
 
 
-
     /**
      * 기본 치료비 책정
-     * @param request
+     * @param requestList
      * @param session
      * @return
      */
     @Transactional
     @PostMapping("/cost")
     public ResponseEntity<Message> cost (
-            @RequestBody CostRequest request,
+            @RequestBody List<CostRequest> requestList,
             HttpSession session) {
 
         // session
@@ -135,7 +135,17 @@ public class TreatmentStatementController {
         Doctor doctor = doctorService.findById(doctorId);
 
 
-        Cost cost = treatmentStatementService.addCost(doctor, request.getTreatment(), request.getCost());
+        List<Cost> costToSave = new ArrayList<>();
+
+        for(CostRequest costRequest : requestList) {
+            Cost cost = new Cost();
+            cost.setDoctor(doctor);
+            cost.setTreatment(costRequest.getTreatment());
+            cost.setCost(costRequest.getCost());
+            costToSave.add(cost);
+        }
+        costRepository.saveAll(costToSave);
+
 
         // message
         HttpHeaders headers = new HttpHeaders();

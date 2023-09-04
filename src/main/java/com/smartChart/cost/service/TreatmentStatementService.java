@@ -2,6 +2,7 @@ package com.smartChart.cost.service;
 
 
 import com.smartChart.cost.dto.DoctorCostInterface;
+import com.smartChart.cost.dto.PatientCostInterface;
 import com.smartChart.cost.entity.Cost;
 import com.smartChart.cost.repository.CostRepository;
 import com.smartChart.cost.repository.TreatmentStatementRepository;
@@ -22,21 +23,7 @@ public class TreatmentStatementService {
     private final CostRepository costRepository;
     private final ReservationRepository reservationRepository;
 
-    // insert
-//    public Treatment_statement addCost (Reservation reservationId, Doctor doctorId, Date date, String treatment,
-//                                        int cost) {
-//
-//        Treatment_statement treatmentCost = costRepository.save(
-//                Treatment_statement.builder()
-//                        .reservation(reservationId)
-//                        .doctor(doctorId)
-//                        .treatment(treatment)
-//                        .cost(cost)
-//                        .build());
-//
-//        return treatmentCost;
-//
-//    }
+
 
 
 
@@ -63,4 +50,7 @@ public class TreatmentStatementService {
 
 
     public Cost selectCostById(int costId){ return costRepository.findById(costId);}
+
+
+    public List<PatientCostInterface> selectCostByPatientId(int patientId) {return treatmentStatementRepository.findByPatientId(patientId);}
 }

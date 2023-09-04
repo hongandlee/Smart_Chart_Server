@@ -14,7 +14,9 @@ public class TreatmentStatementDTO {
 
     private int reservationId;
 
-    private int costId;
+    private String treatment;
+
+    private int cost;
 
 
 }
