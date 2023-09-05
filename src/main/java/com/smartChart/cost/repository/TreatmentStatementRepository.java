@@ -29,4 +29,7 @@ public interface TreatmentStatementRepository extends JpaRepository<Treatment_st
     public List<PatientCostInterface> findByPatientId(
             @Param("patientId") int patientId);
 
+
+
+
 }

@@ -3,6 +3,8 @@ package com.smartChart.cost.service;
 
 import com.smartChart.cost.dto.DoctorCostInterface;
 import com.smartChart.cost.dto.PatientCostInterface;
+import com.smartChart.cost.dto.PatientCostSumInterface;
+import com.smartChart.cost.dto.PatientCostViewInterface;
 import com.smartChart.cost.entity.Cost;
 import com.smartChart.cost.repository.CostRepository;
 import com.smartChart.cost.repository.TreatmentStatementRepository;
@@ -53,4 +55,8 @@ public class TreatmentStatementService {
 
 
     public List<PatientCostInterface> selectCostByPatientId(int patientId) {return treatmentStatementRepository.findByPatientId(patientId);}
+
+    public List<PatientCostViewInterface> selectCostByReservationId(int reservationId) {return costRepository.findByReservationId(reservationId);}
+
+    public List<PatientCostSumInterface> selectSumByReservationId(int reservationId) {return costRepository.findSumByReservationId(reservationId);}
 }
