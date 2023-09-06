@@ -46,8 +46,9 @@ mail/
 ## naver
 naver/
 
-## jwtService
-JwtService/
+##
+/PaymentsApiController
+
 
 
 
