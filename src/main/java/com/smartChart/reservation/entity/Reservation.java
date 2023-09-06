@@ -32,11 +32,11 @@ public class Reservation {
     private Doctor doctor;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "reservationDate", nullable = false)
+    @Column(name = "reservationDate", updatable = false)
     private Date reservationDate;
 
 
-    @Column(name = "reservationTime", nullable = false)
+    @Column(name = "reservationTime", updatable = false)
     private Time reservationTime;
 
     @Column(name = "reservationStatus")
@@ -48,6 +48,11 @@ public class Reservation {
 
     @Column(name = "patientPaymentStatus")
     private String patientPaymentStatus;
+
+
+    @Column(name = "amount")
+    private Integer amount;
+
 
     @UpdateTimestamp
     @Column(name="createdAt", updatable = false) // updatable는 update 시점에 막는 기능

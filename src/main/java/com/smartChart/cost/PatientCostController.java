@@ -49,9 +49,12 @@ public class PatientCostController {
     }
 
 
-
-
-
+    /**
+     * 환자 진료비 보기
+     * @param request
+     * @param session
+     * @return
+     */
     @GetMapping("/cost")
     public ResponseEntity<PatientCostResponse> cost (
             @RequestBody PatientCostRequest request,

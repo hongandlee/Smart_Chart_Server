@@ -45,6 +45,7 @@ public class TreatmentStatementService {
 
 
 
+
     // 진료치 청구 화면 조회 (치료내역서, 가격)
     public List<DoctorCostInterface> selectCostList(int doctorId) {
         return costRepository.findByDoctorId(doctorId);
@@ -58,5 +59,15 @@ public class TreatmentStatementService {
 
     public List<PatientCostViewInterface> selectCostByReservationId(int reservationId) {return costRepository.findByReservationId(reservationId);}
 
-    public List<PatientCostSumInterface> selectSumByReservationId(int reservationId) {return costRepository.findSumByReservationId(reservationId);}
+    public List<PatientCostSumInterface> selectSumByReservationId(int reservationId) {
+
+        return costRepository.findSumByReservationId(reservationId);}
+
+
+    // sum조회
+    public Integer selectByReservationId(int reservationId) {
+        return costRepository.findSUMbyReservationId(reservationId);
+    }
+
+
 }

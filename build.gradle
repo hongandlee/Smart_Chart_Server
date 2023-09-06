@@ -50,7 +50,14 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	// sms 문자 발송
 	implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+	// 아임포트 결제
+	allprojects {
+		repositories {
 
+			maven { url 'https://jitpack.io' }
+		}
+	}
+	implementation 'com.github.iamport:iamport-rest-client-java:0.2.21'
 
 }
 
