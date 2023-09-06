@@ -53,3 +53,7 @@ PayController/
 
 ## 자바스크립트
 js/
+
+
+## html
+*.html
