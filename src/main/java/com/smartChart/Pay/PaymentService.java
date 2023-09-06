@@ -8,10 +8,11 @@ import com.smartChart.reservation.entity.Reservation;
 import com.smartChart.reservation.repository.ReservationRepository;
 import com.smartChart.reservation.service.ReservationService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class PaymentService {
@@ -43,21 +44,18 @@ public class PaymentService {
         //int형으로 비교해주기 위해 형변환 필요.
 
         if(irsp.getResponse().getAmount().intValue()!=amount) {
-            throw new RuntimeException("결제된 금액과 서버 내역의 금액이 다릅니다.");
+            log.info("##########결제된 금액과 아임포트 서버 내역의 금액이 다릅니다.");
+            throw new RuntimeException("결제된 금액과 아임포트 서버 내역의 금액이 다릅니다.");
+        } else if (amount!=sum){
+            log.info("##########결제된 금액과 Database 서버 내역의 금액이 다릅니다.");
+            throw new RuntimeException("결제된 금액과 Database 서버 내역의 금액이 다릅니다."); //DB에서 물건가격과 실제 결제금액이 일치하는지 확인하기. 만약 다르면 예외 발생시키기.!
+        } else {
+            //아임포트에서 서버쪽 결제내역과 DB의 결제 내역 금액이 같으면 DB에 결제 정보를 삽입.
+            reservation = reservation.toBuilder()
+                    .amount(amount)
+                    .build();
+            reservationRepository.save(reservation);
         }
-
-
-        //DB에서 물건가격과 실제 결제금액이 일치하는지 확인하기. 만약 다르면 예외 발생시키기.!
-        if(amount!=sum){
-            throw new RuntimeException("결제된 금액과 서버 내역의 금액이 다릅니다.");
-        }
-
-
-        //아임포트에서 서버쪽 결제내역과 DB의 결제 내역 금액이 같으면 DB에 결제 정보를 삽입.
-        reservation = reservation.toBuilder()
-                        .amount(amount)
-                        .build();
-        reservationRepository.save(reservation);
 
     }
 
