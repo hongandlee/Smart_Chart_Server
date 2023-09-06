@@ -47,7 +47,7 @@ public class PaymentService {
         }
 
 
-        //DB에서 물건가격과 실제 결제금액이 일치하는지 확인하기. 만약 다르면 예외 발생시키기.
+        //DB에서 물건가격과 실제 결제금액이 일치하는지 확인하기. 만약 다르면 예외 발생시키기.!
         if(amount!=sum){
             throw new RuntimeException("결제된 금액과 서버 내역의 금액이 다릅니다.");
         }
