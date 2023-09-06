@@ -46,9 +46,10 @@ mail/
 ## naver
 naver/
 
-##
+## 아임포트 컨트롤러
 PayController/
 
 
 
-
+## 자바스크립트
+js/
