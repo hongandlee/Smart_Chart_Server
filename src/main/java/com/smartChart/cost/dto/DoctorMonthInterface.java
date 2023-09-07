@@ -2,7 +2,8 @@ package com.smartChart.cost.dto;
 
 public interface DoctorMonthInterface {
 
-    Integer getMonth();
+    String getYEAR_MONTH();
+
 
     Integer getSum();
     Integer getPatientCount();

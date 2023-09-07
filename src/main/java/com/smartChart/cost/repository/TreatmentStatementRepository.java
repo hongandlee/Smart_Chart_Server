@@ -34,17 +34,35 @@ public interface TreatmentStatementRepository extends JpaRepository<Treatment_st
 
 
     // 월별 매출
-    @Query(nativeQuery = true, value =  " SELECT MONTH(B.reservationDate) AS `MONTH`, sum(A.cost) AS `SUM`, COUNT(DISTINCT B.id) AS `patientCount`\n" +
+    @Query(nativeQuery = true, value =  " SELECT CONCAT(YEAR(B.reservationDate), '-', LPAD(MONTH(B.reservationDate), 2, '0')) AS `YEAR_MONTH`, sum(A.cost) AS `SUM`, COUNT(DISTINCT B.id) AS `patientCount`\n" +
             "  FROM `reservation` AS B\n" +
             "  join `treatment_statement` AS A\n" +
             "  on B.id = A.reservationId\n" +
             "  join `patient` AS C\n" +
             "  on B.patientId = C.id\n" +
             "  where A.doctorId = :doctorId\n" +
-            "  GROUP BY `MONTH`;")
+            "  GROUP BY `YEAR_MONTH`")
 
     public List<DoctorMonthInterface> findByDoctorId(
             @Param("doctorId") int doctorId);
+
+
+
+    // 월별 매출 최신순
+    @Query(nativeQuery = true, value =  " SELECT CONCAT(YEAR(B.reservationDate), '-', LPAD(MONTH(B.reservationDate), 2, '0')) AS `YEAR_MONTH`, sum(A.cost) AS `SUM`, COUNT(DISTINCT B.id) AS `patientCount`\n" +
+            "  FROM `reservation` AS B\n" +
+            "  join `treatment_statement` AS A\n" +
+            "  on B.id = A.reservationId\n" +
+            "  join `patient` AS C\n" +
+            "  on B.patientId = C.id\n" +
+            "  where A.doctorId = :doctorId\n" +
+            "  GROUP BY `YEAR_MONTH`\n" +
+            "  ORDER BY `YEAR_MONTH` DESC;\n")
+
+    public List<DoctorMonthInterface> findRecentByDoctorId(
+            @Param("doctorId") int doctorId);
+
+
 
 
 
@@ -60,6 +78,24 @@ public interface TreatmentStatementRepository extends JpaRepository<Treatment_st
 
     public List<DoctorYearInterface> findYearByDoctorId(
             @Param("doctorId") int doctorId);
+
+
+
+    // 년별 매출 최신순
+    @Query(nativeQuery = true, value =  "SELECT YEAR(B.reservationDate) AS `YEAR`, sum(A.cost) AS `SUM`, COUNT(DISTINCT B.id) AS `patientCount`\n" +
+            "  FROM `reservation` AS B\n" +
+            "  join `treatment_statement` AS A\n" +
+            "  on B.id = A.reservationId\n" +
+            "  join `patient` AS C\n" +
+            "  on B.patientId = C.id\n" +
+            "  where A.doctorId = :doctorId\n" +
+            "  GROUP BY `YEAR`\n" +
+            "  ORDER BY `YEAR` DESC")
+
+    public List<DoctorYearInterface> findRecentYearByDoctorId(
+            @Param("doctorId") int doctorId);
+
+
 
 
 
@@ -80,6 +116,26 @@ public interface TreatmentStatementRepository extends JpaRepository<Treatment_st
 
 
 
+
+    // 주간 매출 최신순
+    @Query(nativeQuery = true, value =  "SELECT DATE_FORMAT(DATE_SUB(B.reservationDate, INTERVAL (DAYOFWEEK(B.reservationDate)-1) DAY), '%Y-%m-%d') as start,\n" +
+            "       DATE_FORMAT(DATE_SUB(B.reservationDate, INTERVAL (DAYOFWEEK(B.reservationDate)-7) DAY), '%Y-%m-%d') as end,\n" +
+            "  sum(A.cost) AS `SUM`, COUNT(DISTINCT B.id) AS `patientCount`\n" +
+            "  FROM `reservation` AS B\n" +
+            "  join `treatment_statement` AS A\n" +
+            "  on B.id = A.reservationId\n" +
+            "  join `patient` AS C\n" +
+            "  on B.patientId = C.id\n" +
+            "  where A.doctorId = :doctorId\n" +
+            "  GROUP BY start, end\n" +
+            "  ORDER BY start DESC, end DESC")
+
+    public List<DoctorWeekInterface> findRecentWeekByDoctorId(
+            @Param("doctorId") int doctorId);
+
+
+
+
     // 일별 매출
     @Query(nativeQuery = true, value =  "SELECT DATE(B.reservationDate) AS `DATE`, sum(A.cost) AS `SUM`, COUNT(DISTINCT B.id) AS `patientCount`\n" +
             "  FROM `reservation` AS B\n" +
@@ -94,6 +150,21 @@ public interface TreatmentStatementRepository extends JpaRepository<Treatment_st
             @Param("doctorId") int doctorId);
 
 
+
+
+    // 일별 매출 최신순
+    @Query(nativeQuery = true, value =  "SELECT DATE(B.reservationDate) AS `DATE`, sum(A.cost) AS `SUM`, COUNT(DISTINCT B.id) AS `patientCount`\n" +
+            "  FROM `reservation` AS B\n" +
+            "  join `treatment_statement` AS A\n" +
+            "  on B.id = A.reservationId\n" +
+            "  join `patient` AS C\n" +
+            "  on B.patientId = C.id\n" +
+            "  where A.doctorId = :doctorId\n" +
+            "  GROUP BY `DATE`\n" +
+            "  order by `DATE` desc")
+
+    public List<DoctorDateInterface> findRecentDateByDoctorId(
+            @Param("doctorId") int doctorId);
 
 
 

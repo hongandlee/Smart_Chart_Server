@@ -73,10 +73,25 @@ public class TreatmentStatementService {
         return treatmentStatementRepository.findByDoctorId(doctorId);
     }
 
+
+    // 최신 월별조회
+    public List<DoctorMonthInterface> selectRecentIncomeByDoctorId(int doctorId) {
+        return treatmentStatementRepository.findRecentByDoctorId(doctorId);
+    }
+
+
+
     // 년별조회
     public List<DoctorYearInterface> selectYearByDoctorId(int doctorId) {
         return treatmentStatementRepository.findYearByDoctorId(doctorId);
     }
+
+
+    // 최신 년별조회
+    public List<DoctorYearInterface> selectRecentYearByDoctorId(int doctorId) {
+        return treatmentStatementRepository.findRecentYearByDoctorId(doctorId);
+    }
+
 
 
     // 주간조회
@@ -85,11 +100,21 @@ public class TreatmentStatementService {
     }
 
 
+    // 최신 주간조회
+    public List<DoctorWeekInterface> selectRecentWeekByDoctorId(int doctorId) {
+        return treatmentStatementRepository.findRecentWeekByDoctorId(doctorId);
+    }
+
     // 일별조회
     public List<DoctorDateInterface> selectDateDoctorId(int doctorId) {
         return treatmentStatementRepository.findDateByDoctorId(doctorId);
     }
 
+
+    // 최신 일별조회
+    public List<DoctorDateInterface> selectRecentDateDoctorId(int doctorId) {
+        return treatmentStatementRepository.findRecentDateByDoctorId(doctorId);
+    }
 
     // 기간별 조회
     public List<DoctorPeriodInterface> selectPeriodDoctorId(int doctorId, Date startDate, Date endDate) {

@@ -13,9 +13,17 @@ public class DoctorIncomeDTO {
 
     private Object Month;
 
+    private Object RecentMonth;
+
     private Object Year;
+
+    private Object RecentYear;
 
     private Object Week;
 
+    private Object RecentWeek;
+
     private Object Date;
+
+    private Object RecentDate;
 }
