@@ -1,6 +1,8 @@
 package com.smartChart.reservation.repository;
 
 
+import com.smartChart.reservation.dto.ReservationInterface;
+import com.smartChart.reservation.dto.WaitingInterface;
 import com.smartChart.reservation.entity.Reservation;
 import com.smartChart.treatment.dto.DoctorTreatmentInterface;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -82,4 +84,12 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 
 
 
+ // 환자 대기 관리 조회
+  @Query(value = "SELECT A.id, A.reservationDate AS reservationDate, A.reservationTime, B.name AS patientName\n" +
+          "FROM reservation A\n" +
+          "LEFT join patient AS B\n" +
+          "on B.id = A.patientId\n" +
+          "WHERE A.reservationDate = (SELECT MAX(reservationDate) FROM reservation WHERE doctorId = :doctorId)", nativeQuery = true)
+  List<WaitingInterface> findRecentReservations(
+          @Param("doctorId") int doctorId);
 }

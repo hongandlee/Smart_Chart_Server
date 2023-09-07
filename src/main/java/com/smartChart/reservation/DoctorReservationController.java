@@ -1,11 +1,13 @@
 package com.smartChart.reservation;
 
 
+import com.smartChart.Response.DataResponse;
 import com.smartChart.doctor.service.DoctorService;
 import com.smartChart.patient.Service.PatientService;
 import com.smartChart.reservation.dto.SearchRequest;
 import com.smartChart.reservation.dto.SearchResponse;
-import com.smartChart.reservation.repository.ReservationInterface;
+import com.smartChart.reservation.dto.ReservationInterface;
+import com.smartChart.reservation.dto.WaitingInterface;
 import com.smartChart.reservation.service.ReservationService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -83,6 +85,25 @@ public class DoctorReservationController {
 
         // db
         List<ReservationInterface> reservationList = reservationService.findByDoctorIdOrderByIdDesc(doctorId);
+        response.setData(reservationList);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+
+
+    @GetMapping("/waiting-list-view")
+    public ResponseEntity<DataResponse> waiting_list_view(
+            HttpSession session) {
+
+
+        // session
+        Integer doctorId = (Integer) session.getAttribute("doctorId");
+
+
+        // db
+        List<WaitingInterface> reservationList = reservationService.findRecentReservations(doctorId);
+        DataResponse response = new DataResponse();
         response.setData(reservationList);
 
         return new ResponseEntity<>(response, HttpStatus.OK);

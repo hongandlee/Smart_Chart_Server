@@ -4,8 +4,9 @@ package com.smartChart.reservation.service;
 import com.smartChart.doctor.entity.Doctor;
 import com.smartChart.patient.Service.PatientService;
 import com.smartChart.patient.entity.Patient;
+import com.smartChart.reservation.dto.WaitingInterface;
 import com.smartChart.reservation.entity.Reservation;
-import com.smartChart.reservation.repository.ReservationInterface;
+import com.smartChart.reservation.dto.ReservationInterface;
 import com.smartChart.reservation.repository.ReservationRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -60,6 +61,11 @@ public class ReservationService {
     }
 
 
+
+    // 환자 대기 관리 조회
+    public List<WaitingInterface> findRecentReservations(int doctorId) {
+        return reservationRepository.findRecentReservations(doctorId);
+    }
 
 
     // 예약하기

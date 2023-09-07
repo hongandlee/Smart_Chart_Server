@@ -1,4 +1,4 @@
-package com.smartChart.reservation.repository;
+package com.smartChart.reservation.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
