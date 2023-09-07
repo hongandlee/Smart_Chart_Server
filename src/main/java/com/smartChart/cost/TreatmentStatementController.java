@@ -2,9 +2,7 @@ package com.smartChart.cost;
 
 
 import com.smartChart.Response.Message;
-import com.smartChart.cost.dto.CostRequest;
-import com.smartChart.cost.dto.DoctorCostInterface;
-import com.smartChart.cost.dto.TreatmentStatementDTO;
+import com.smartChart.cost.dto.*;
 import com.smartChart.cost.entity.Cost;
 import com.smartChart.cost.entity.Treatment_statement;
 import com.smartChart.cost.repository.CostRepository;
@@ -158,5 +156,48 @@ public class TreatmentStatementController {
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
 
+
+
+
+
+    // 매출 조회
+    @GetMapping("/month-sales-view")
+    public ResponseEntity<DoctorIncomeDTO> sales_view (HttpSession session) {
+
+        // session
+        Integer doctorId = (Integer) session.getAttribute("doctorId");
+
+        // db
+        List<DoctorMonthInterface> monthIncome = treatmentStatementService.selectIncomeByDoctorId(doctorId);
+        List<DoctorYearInterface> yearIncome = treatmentStatementService.selectYearByDoctorId(doctorId);
+        List<DoctorWeekInterface> weekIncome = treatmentStatementService.selectWeekByDoctorId(doctorId);
+        List<DoctorDateInterface> dateIncome = treatmentStatementService.selectDateDoctorId(doctorId);
+
+        DoctorIncomeDTO response = new DoctorIncomeDTO();
+        response.setMonth(monthIncome);
+        response.setYear(yearIncome);
+        response.setWeek(weekIncome);
+        response.setDate(dateIncome);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+
+
+    // 기간별 조회
+    @GetMapping("/period-sales")
+    public ResponseEntity<DoctorPeriodResponse> period_sales (
+            @RequestBody DoctorPeriodRequest periodDTO,
+            HttpSession session) {
+
+        // session
+        Integer doctorId = (Integer) session.getAttribute("doctorId");
+
+        List<DoctorPeriodInterface> periodIncome = treatmentStatementService.selectPeriodDoctorId(doctorId, periodDTO.getStartDate(),periodDTO.getEndDate());
+        DoctorPeriodResponse response = new DoctorPeriodResponse();
+        response.setPeriod(periodIncome);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 
 } // end

@@ -1,10 +1,7 @@
 package com.smartChart.cost.service;
 
 
-import com.smartChart.cost.dto.DoctorCostInterface;
-import com.smartChart.cost.dto.PatientCostInterface;
-import com.smartChart.cost.dto.PatientCostSumInterface;
-import com.smartChart.cost.dto.PatientCostViewInterface;
+import com.smartChart.cost.dto.*;
 import com.smartChart.cost.entity.Cost;
 import com.smartChart.cost.repository.CostRepository;
 import com.smartChart.cost.repository.TreatmentStatementRepository;
@@ -14,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -69,5 +67,33 @@ public class TreatmentStatementService {
         return costRepository.findSUMbyReservationId(reservationId);
     }
 
+
+    // 월별조회
+    public List<DoctorMonthInterface> selectIncomeByDoctorId(int doctorId) {
+        return treatmentStatementRepository.findByDoctorId(doctorId);
+    }
+
+    // 년별조회
+    public List<DoctorYearInterface> selectYearByDoctorId(int doctorId) {
+        return treatmentStatementRepository.findYearByDoctorId(doctorId);
+    }
+
+
+    // 주간조회
+    public List<DoctorWeekInterface> selectWeekByDoctorId(int doctorId) {
+        return treatmentStatementRepository.findWeekByDoctorId(doctorId);
+    }
+
+
+    // 일별조회
+    public List<DoctorDateInterface> selectDateDoctorId(int doctorId) {
+        return treatmentStatementRepository.findDateByDoctorId(doctorId);
+    }
+
+
+    // 기간별 조회
+    public List<DoctorPeriodInterface> selectPeriodDoctorId(int doctorId, Date startDate, Date endDate) {
+        return treatmentStatementRepository.findPeriodByDoctorIdAndStartDateAndEndDate(doctorId, startDate, endDate);
+    }
 
 }
