@@ -13,4 +13,8 @@ import lombok.NoArgsConstructor;
 public class DoctorPeriodResponse {
 
     private Object period;
+
+    private Object recent;
+
+    private Object sales;
 }

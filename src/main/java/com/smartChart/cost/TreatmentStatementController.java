@@ -170,23 +170,35 @@ public class TreatmentStatementController {
         // db
         List<DoctorMonthInterface> monthIncome = treatmentStatementService.selectIncomeByDoctorId(doctorId);
         List<DoctorMonthInterface> monthRecentIncome = treatmentStatementService.selectRecentIncomeByDoctorId(doctorId);
+        List<DoctorGenderMonthInterface> monthGenderIncome = treatmentStatementService.selectGenderByDoctorId(doctorId);
+        List<DoctorMonthInterface> monthSales = treatmentStatementService.selectSalesByDoctorId(doctorId);
+        List<DoctorAgeMonthInterface> monthAge = treatmentStatementService.selectAgeByDoctorId(doctorId);
         List<DoctorYearInterface> yearIncome = treatmentStatementService.selectYearByDoctorId(doctorId);
         List<DoctorYearInterface> yearRecentIncome = treatmentStatementService.selectRecentYearByDoctorId(doctorId);
+        List<DoctorYearInterface> yearSales = treatmentStatementService.selectYearSalesByDoctorId(doctorId);
         List<DoctorWeekInterface> weekIncome = treatmentStatementService.selectWeekByDoctorId(doctorId);
         List<DoctorWeekInterface> weekRecentIncome = treatmentStatementService.selectRecentWeekByDoctorId(doctorId);
+        List<DoctorWeekInterface> weekSales = treatmentStatementService.selectWeekSalesByDoctorId(doctorId);
         List<DoctorDateInterface> dateIncome = treatmentStatementService.selectDateDoctorId(doctorId);
         List<DoctorDateInterface> dateRecentIncome = treatmentStatementService.selectRecentDateDoctorId(doctorId);
+        List<DoctorDateInterface> dateSales = treatmentStatementService.selectDateSalesDoctorId(doctorId);
 
 
         DoctorIncomeDTO response = new DoctorIncomeDTO();
         response.setMonth(monthIncome);
         response.setRecentMonth(monthRecentIncome);
+        response.setGenderMonth(monthGenderIncome);
+        response.setSalesMonth(monthSales);
+        response.setAverageAgeMonth(monthAge);
         response.setYear(yearIncome);
         response.setRecentYear(yearRecentIncome);
+        response.setSalesYear(yearSales);
         response.setWeek(weekIncome);
         response.setRecentWeek(weekRecentIncome);
+        response.setSalesWeek(weekSales);
         response.setDate(dateIncome);
         response.setRecentDate(dateRecentIncome);
+        response.setSalesDate(dateSales);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -203,8 +215,14 @@ public class TreatmentStatementController {
         Integer doctorId = (Integer) session.getAttribute("doctorId");
 
         List<DoctorPeriodInterface> periodIncome = treatmentStatementService.selectPeriodDoctorId(doctorId, periodDTO.getStartDate(),periodDTO.getEndDate());
+        List<DoctorPeriodInterface> periodRecentIncome = treatmentStatementService.selectRecentPeriodDoctorId(doctorId, periodDTO.getStartDate(),periodDTO.getEndDate());
+        List<DoctorPeriodInterface> periodSales = treatmentStatementService.selectSalesPeriodDoctorId(doctorId, periodDTO.getStartDate(),periodDTO.getEndDate());
+
+
         DoctorPeriodResponse response = new DoctorPeriodResponse();
         response.setPeriod(periodIncome);
+        response.setRecent(periodRecentIncome);
+        response.setSales(periodSales);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

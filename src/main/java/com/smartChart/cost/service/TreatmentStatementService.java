@@ -80,6 +80,21 @@ public class TreatmentStatementService {
     }
 
 
+    // 월별 성벌조회
+    public List<DoctorGenderMonthInterface> selectGenderByDoctorId(int doctorId) {
+        return treatmentStatementRepository.findGenderByDoctorId(doctorId);
+    }
+
+    // 월별 매출 많은 순 조회
+    public List<DoctorMonthInterface> selectSalesByDoctorId(int doctorId) {
+        return treatmentStatementRepository.findSalesByDoctorId(doctorId);
+    }
+
+
+    // 월별 매출 평균 나이 조회
+    public List<DoctorAgeMonthInterface> selectAgeByDoctorId(int doctorId) {
+        return treatmentStatementRepository.findAgeMonthByDoctorId(doctorId);
+    }
 
     // 년별조회
     public List<DoctorYearInterface> selectYearByDoctorId(int doctorId) {
@@ -92,6 +107,10 @@ public class TreatmentStatementService {
         return treatmentStatementRepository.findRecentYearByDoctorId(doctorId);
     }
 
+    // 년별 매출이 많은 순 조회
+    public List<DoctorYearInterface> selectYearSalesByDoctorId(int doctorId) {
+        return treatmentStatementRepository.findYearSalesByDoctorId(doctorId);
+    }
 
 
     // 주간조회
@@ -105,6 +124,12 @@ public class TreatmentStatementService {
         return treatmentStatementRepository.findRecentWeekByDoctorId(doctorId);
     }
 
+
+    // 주간 매출이 많은 순 조회
+    public List<DoctorWeekInterface> selectWeekSalesByDoctorId(int doctorId) {
+        return treatmentStatementRepository.findWeekSalesByDoctorId(doctorId);
+    }
+
     // 일별조회
     public List<DoctorDateInterface> selectDateDoctorId(int doctorId) {
         return treatmentStatementRepository.findDateByDoctorId(doctorId);
@@ -116,9 +141,26 @@ public class TreatmentStatementService {
         return treatmentStatementRepository.findRecentDateByDoctorId(doctorId);
     }
 
+
+    // 일별 매출 많은 순 조회
+    public List<DoctorDateInterface> selectDateSalesDoctorId(int doctorId) {
+        return treatmentStatementRepository.findDateSalesByDoctorId(doctorId);
+    }
+
     // 기간별 조회
     public List<DoctorPeriodInterface> selectPeriodDoctorId(int doctorId, Date startDate, Date endDate) {
         return treatmentStatementRepository.findPeriodByDoctorIdAndStartDateAndEndDate(doctorId, startDate, endDate);
+    }
+
+    // 기간별 최신순
+    public List<DoctorPeriodInterface> selectRecentPeriodDoctorId(int doctorId, Date startDate, Date endDate) {
+        return treatmentStatementRepository.findRecentPeriodByDoctorIdAndStartDateAndEndDate(doctorId, startDate, endDate);
+    }
+
+
+    // 기간별 매출이 많은 순
+    public List<DoctorPeriodInterface> selectSalesPeriodDoctorId(int doctorId, Date startDate, Date endDate) {
+        return treatmentStatementRepository.findSalesPeriodByDoctorIdAndStartDateAndEndDate(doctorId, startDate, endDate);
     }
 
 }

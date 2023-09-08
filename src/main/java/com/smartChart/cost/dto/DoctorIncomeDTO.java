@@ -15,15 +15,27 @@ public class DoctorIncomeDTO {
 
     private Object RecentMonth;
 
+    private Object GenderMonth;
+
+    private Object SalesMonth;
+
+    private Object AverageAgeMonth;
+
     private Object Year;
 
     private Object RecentYear;
+
+    private Object SalesYear;
 
     private Object Week;
 
     private Object RecentWeek;
 
+    private Object SalesWeek;
+
     private Object Date;
 
     private Object RecentDate;
+
+    private Object SalesDate;
 }
