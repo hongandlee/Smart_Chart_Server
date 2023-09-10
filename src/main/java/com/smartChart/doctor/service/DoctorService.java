@@ -1,6 +1,8 @@
 package com.smartChart.doctor.service;
 
 import com.smartChart.config.Encrypt;
+import com.smartChart.doctor.dto.RequestDto.DoctorHospitalInterface;
+import com.smartChart.doctor.dto.RequestDto.DoctorMypageInterface;
 import com.smartChart.doctor.entity.Doctor;
 import com.smartChart.doctor.entity.Role;
 import com.smartChart.doctor.repository.DoctorRepository;
@@ -175,6 +177,45 @@ public class DoctorService {
     public Doctor findById (int id) {
         return doctorRepository.findById(id);
     }
+
+
+    // 의사 마이페이지 조회
+    public List<DoctorMypageInterface> selectInfoByDoctorId(int doctorId) { return doctorRepository.findDoctorInfoById(doctorId);}
+
+    // 의사 병원페이지 조회
+    public List<DoctorHospitalInterface> selectHospitalByDoctorId(int doctorId) { return doctorRepository.findHospitalInfoById(doctorId);}
+
+    // 의사 마이페이지 수정
+    public Doctor updateDoctorById(Integer doctorId, String name, String gender, Integer age, Integer phoneNumber) {
+        Doctor doctor = doctorRepository.findDoctorById(doctorId);
+        if(doctor != null) {
+            doctor = doctor.toBuilder()
+                    .name(name)
+                    .gender(gender)
+                    .age(age)
+                    .phoneNumber(phoneNumber)
+                    .build();
+            doctor = doctorRepository.save(doctor);
+        }
+
+        return doctor;
+    }
+
+
+    public Doctor updateHospitalById(Integer doctorId, String hospitalName, int hospitalPhoneNumber, String hospitalIntroduce) {
+        Doctor doctor = doctorRepository.findDoctorById(doctorId);
+        if(doctor != null) {
+            doctor = doctor.toBuilder()
+                    .hospitalName(hospitalName)
+                    .hospitalPhoneNumber(hospitalPhoneNumber)
+                    .hospitalIntroduce(hospitalIntroduce)
+                    .build();
+            doctor = doctorRepository.save(doctor);
+        }
+
+        return doctor;
+    }
+
 
 
 

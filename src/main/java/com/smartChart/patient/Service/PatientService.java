@@ -4,14 +4,16 @@ package com.smartChart.patient.Service;
 
 import com.smartChart.auth.AuthenticationResponse;
 import com.smartChart.config.JwtService;
+import com.smartChart.patient.dto.RequestDto.PatientJoinRequest;
+import com.smartChart.patient.dto.RequestDto.PatientLoginRequest;
 import com.smartChart.patient.dto.RequestDto.PatientMypageInterface;
 import com.smartChart.patient.dto.RequestDto.PatientMypageListInterface;
 import com.smartChart.patient.dto.ResponseDto.MailResponse;
-import com.smartChart.patient.dto.RequestDto.PatientJoinRequest;
-import com.smartChart.patient.dto.RequestDto.PatientLoginRequest;
 import com.smartChart.patient.entity.Patient;
 import com.smartChart.patient.entity.Role;
 import com.smartChart.patient.repository.PatientRepository;
+import com.smartChart.reservation.entity.Reservation;
+import com.smartChart.reservation.repository.ReservationRepository;
 import com.smartChart.token.Token;
 import com.smartChart.token.TokenRepository;
 import com.smartChart.token.TokenType;
@@ -45,8 +47,13 @@ public class PatientService {
 
     private final AuthenticationManager authenticationManager;
 
+    private final ReservationRepository reservationRepository;
 
     private final JavaMailSender mailSender;
+
+
+
+
 
 
     /**
@@ -248,6 +255,17 @@ public class PatientService {
         }
 
         return patient;
+    }
+
+
+
+
+    // 마이페이지 취소
+    public void deleteReservationById(int reservationId) {
+        Reservation reservation = reservationRepository.findById(reservationId);
+        if (reservation != null) {
+            reservationRepository.delete(reservation);
+        }
     }
 
 }

@@ -16,6 +16,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -245,8 +246,17 @@ public class PatientController {
 
 
 
-    // 환자 마이페이지 수정
-    @PutMapping("/page")
+
+
+
+
+    /**
+     * 환자 마이페이지 예약 수정
+     * @param request
+     * @param session
+     * @return
+     */
+    @PatchMapping("/page")
     public ResponseEntity<Message> patientPage(
             @RequestBody  PatientMypageUpdateRequest request,
             HttpSession session
@@ -275,8 +285,37 @@ public class PatientController {
     }
 
 
+    /**
+     * 환자 페이지 예약 취소
+     * @param request
+     * @param session
+     * @return
+     */
+    @Transactional
+    @DeleteMapping("/page-cancel")
+    public ResponseEntity<Message> deletePage(
+            @RequestBody  PatientMypageCancelRequest request,
+            HttpSession session
+    ) {
 
-    
+        // session
+        Integer patientId = (Integer) session.getAttribute("patientId");
+
+        patientService.deleteReservationById(request.getReservationId());
+
+
+        // message
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+        Message message = new Message();
+
+        message.setCode(200);
+        message.setMessage("예약이 삭제 되었습니다.");
+
+        return new ResponseEntity<>(message, headers, HttpStatus.OK);
+
+    }
+
 
 
 }

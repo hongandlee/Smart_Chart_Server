@@ -7,6 +7,8 @@ import java.util.Date;
 
 public interface PatientMypageListInterface {
 
+
+    int getId();
     String getHospitalName();
 
 

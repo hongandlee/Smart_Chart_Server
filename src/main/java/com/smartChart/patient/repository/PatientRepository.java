@@ -36,7 +36,7 @@ public interface PatientRepository extends JpaRepository<Patient, Integer> {
 
 
     // 환자 마이페이지 리스트
-    @Query(nativeQuery = true, value =  "select A.hospitalName, B.reservationDate, B.reservationTime, B.reservationStatus\n" +
+    @Query(nativeQuery = true, value =  "select B.id, A.hospitalName, B.reservationDate, B.reservationTime, B.reservationStatus\n" +
             "from reservation AS B\n" +
             "join doctor AS A\n" +
             "on B.doctorId = A.id\n" +

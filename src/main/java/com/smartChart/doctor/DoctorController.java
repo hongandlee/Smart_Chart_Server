@@ -3,23 +3,24 @@ package com.smartChart.doctor;
 
 import com.smartChart.Response.Message;
 import com.smartChart.config.Encrypt;
-import com.smartChart.doctor.dto.RequestDto.DoctorJoinRequest;
-import com.smartChart.doctor.dto.RequestDto.DoctorLoginRequest;
-import com.smartChart.doctor.dto.RequestDto.DoctorEmailRequest;
+import com.smartChart.doctor.dto.RequestDto.*;
 import com.smartChart.doctor.entity.Doctor;
 import com.smartChart.doctor.service.DoctorService;
 import com.smartChart.patient.dto.RequestDto.MailRequest;
+import com.smartChart.patient.dto.RequestDto.PatientMypageUpdateRequest;
 import com.smartChart.patient.dto.ResponseDto.MailResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.nio.charset.Charset;
+import java.util.List;
 
 @RestController
 @RequestMapping("/doctor")
@@ -210,6 +211,122 @@ public class DoctorController {
     }
 
 
+    /**
+     * 의사 마이페이지 조회
+     * @param session
+     * @return
+     */
+    @GetMapping("/page-view")
+    public ResponseEntity<DoctorMypageResponse> doctorMypage (
+            HttpSession session
+    ) {
 
+        // session
+        Integer doctorId = (Integer) session.getAttribute("doctorId");
+
+        // db
+        List<DoctorMypageInterface> patientInfo = doctorService.selectInfoByDoctorId(doctorId);
+        DoctorMypageResponse response = new DoctorMypageResponse();
+        response.setMyPage(patientInfo);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+
+    /**
+     * 의사 병원페이지 조회
+     * @param session
+     * @return
+     */
+    @GetMapping("/hospital-view")
+    public ResponseEntity<DoctorHospitalResponse> hospitalMypage (
+            HttpSession session
+    ) {
+
+        // session
+        Integer doctorId = (Integer) session.getAttribute("doctorId");
+
+        // db
+        List<DoctorHospitalInterface> hospitalInfo = doctorService.selectHospitalByDoctorId(doctorId);
+        DoctorHospitalResponse response = new DoctorHospitalResponse();
+        response.setHospitalPage(hospitalInfo);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+
+    /**
+     * 의사 병원페이지 수정 
+     * @param request
+     * @param session
+     * @return
+     */
+    @Transactional
+    @PatchMapping("/hospital")
+    public ResponseEntity<Message> hospitalPage(
+            @RequestBody DoctorHospitalRequest request,
+            HttpSession session
+    ) {
+
+        // session
+        Integer doctorId = (Integer) session.getAttribute("doctorId");
+
+        Doctor doctor = doctorService.updateHospitalById(doctorId, request.getHospitalName(), request.getHospitalPhoneNumber(), request.getHospitalIntroduction());
+
+
+        // message
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+        Message message = new Message();
+
+        if(doctor != null) {
+            message.setCode(200);
+            message.setMessage("업데이트 되었습니다.");
+        } else {
+            message.setCode(500);
+            message.setMessage("관리자에게 문의해주세요.");
+        }
+        return new ResponseEntity<>(message, headers, HttpStatus.OK);
+
+    }
+
+
+
+
+
+    /**
+     * 의사 마이페이지 수정
+     * @param request
+     * @param session
+     * @return
+     */
+    @Transactional
+    @PatchMapping("/page")
+    public ResponseEntity<Message> patientPage(
+            @RequestBody PatientMypageUpdateRequest request,
+            HttpSession session
+    ) {
+
+        // session
+        Integer doctorId = (Integer) session.getAttribute("doctorId");
+
+        Doctor doctor = doctorService.updateDoctorById(doctorId, request.getName(), request.getGender(), request.getAge(), request.getPhoneNumber());
+
+
+        // message
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+        Message message = new Message();
+
+        if(doctor != null) {
+            message.setCode(200);
+            message.setMessage("업데이트 되었습니다.");
+        } else {
+            message.setCode(500);
+            message.setMessage("관리자에게 문의해주세요.");
+        }
+        return new ResponseEntity<>(message, headers, HttpStatus.OK);
+
+    }
 
 }
