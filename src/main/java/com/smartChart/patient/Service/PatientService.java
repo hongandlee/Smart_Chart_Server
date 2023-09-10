@@ -4,6 +4,8 @@ package com.smartChart.patient.Service;
 
 import com.smartChart.auth.AuthenticationResponse;
 import com.smartChart.config.JwtService;
+import com.smartChart.patient.dto.RequestDto.PatientMypageInterface;
+import com.smartChart.patient.dto.RequestDto.PatientMypageListInterface;
 import com.smartChart.patient.dto.ResponseDto.MailResponse;
 import com.smartChart.patient.dto.RequestDto.PatientJoinRequest;
 import com.smartChart.patient.dto.RequestDto.PatientLoginRequest;
@@ -24,6 +26,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -223,4 +226,28 @@ public class PatientService {
 
         return patientRepository.findPatientById(id);
     }
+
+
+    // 마이페이지 조회
+    public List<PatientMypageInterface> selectInfoByPatientId(int patientId) { return patientRepository.findById(patientId);}
+
+    public List<PatientMypageListInterface> selectListByPatientId(int patientId) {return patientRepository.finListByPatientId(patientId);}
+
+
+    // 마이페이지 업데이트
+    public Patient updatePatientById(Integer patientId, String name, String gender, Integer age, Integer phoneNumber) {
+        Patient patient = patientRepository.findPatientById(patientId);
+        if(patient != null) {
+            patient = patient.toBuilder()
+                    .name(name)
+                    .gender(gender)
+                    .age(age)
+                    .phoneNumber(phoneNumber)
+                    .build();
+            patient = patientRepository.save(patient);
+        }
+
+        return patient;
+    }
+
 }

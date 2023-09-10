@@ -6,10 +6,7 @@ import com.smartChart.auth.AuthenticationResponse;
 import com.smartChart.doctor.repository.HospitalInterface;
 import com.smartChart.doctor.service.DoctorService;
 import com.smartChart.patient.Service.PatientService;
-import com.smartChart.patient.dto.RequestDto.MailRequest;
-import com.smartChart.patient.dto.RequestDto.PatientEmailRequest;
-import com.smartChart.patient.dto.RequestDto.PatientJoinRequest;
-import com.smartChart.patient.dto.RequestDto.PatientLoginRequest;
+import com.smartChart.patient.dto.RequestDto.*;
 import com.smartChart.patient.dto.ResponseDto.MailResponse;
 import com.smartChart.patient.entity.Patient;
 import lombok.RequiredArgsConstructor;
@@ -44,7 +41,7 @@ public class PatientController {
     private final DoctorService doctorService;
 
 
-
+    private final PatientService patientService;
 
     /**
      * 환자 회원가입
@@ -220,6 +217,66 @@ public class PatientController {
        return result;
     }
 
+
+
+
+    /**
+     * 환자 - 마이페이지  조회
+     * @param session
+     * @return
+     */
+    @GetMapping("/page-view")
+    public ResponseEntity<PatientMypageResponse> patientMypage (
+            HttpSession session
+    ) {
+
+        // session
+        Integer patientId = (Integer) session.getAttribute("patientId");
+
+        // db
+        List<PatientMypageInterface> patientInfo = patientService.selectInfoByPatientId(patientId);
+        List<PatientMypageListInterface> patientList = patientService.selectListByPatientId(patientId);
+        PatientMypageResponse response = new PatientMypageResponse();
+        response.setMyPage(patientInfo);
+        response.setMyPageList(patientList);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+
+
+
+    // 환자 마이페이지 수정
+    @PutMapping("/page")
+    public ResponseEntity<Message> patientPage(
+            @RequestBody  PatientMypageUpdateRequest request,
+            HttpSession session
+    ) {
+
+        // session
+        Integer patientId = (Integer) session.getAttribute("patientId");
+
+        Patient patient = patientService.updatePatientById(patientId, request.getName(), request.getGender(), request.getAge(), request.getPhoneNumber());
+
+
+        // message
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+        Message message = new Message();
+
+        if(patient != null) {
+            message.setCode(200);
+            message.setMessage("업데이트 되었습니다.");
+        } else {
+            message.setCode(500);
+            message.setMessage("관리자에게 문의해주세요.");
+        }
+        return new ResponseEntity<>(message, headers, HttpStatus.OK);
+
+    }
+
+
+
+    
 
 
 }

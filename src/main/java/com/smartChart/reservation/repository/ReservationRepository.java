@@ -84,6 +84,35 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 
 
 
+    @Query(nativeQuery = true, value =  "select A.id, B.name,A.patientId, A.reservationDate, A.reservationTime, B.phoneNumber, A.reservationStatus, A.paymentStatus\n" +
+            "from reservation AS A\n" +
+            "join patient AS B\n" +
+            "on A.patientId = B.id\n" +
+            "where A.doctorId = :doctorId\n"
+            + "order by A.id desc")
+    public List<ReservationInterface> findByPatientIdOrderByIdDesc(
+            @Param("doctorId") int doctorId);
+
+
+
+
+  // 환자 마이페이지 예약 리스트 조회
+  @Query(nativeQuery = true, value =  "select B.id, A.hospitalName, B.reservationDate, B.reservationTime, B.reservationStatus\n" +
+          "from reservation AS B\n" +
+          "join doctor AS A\n" +
+          "on B.doctorId = A.id\n" +
+          "join patient AS C\n" +
+          "on C.id = B.patientId\n" +
+          "where C.id = :patientId"
+  )
+  public List<DoctorTreatmentInterface> finListdByPatientId(
+          @Param("patientId") int patientId);
+
+
+
+
+
+
  // 환자 대기 관리 조회
   @Query(value = "SELECT A.id, A.reservationDate AS reservationDate, A.reservationTime, B.name AS patientName\n" +
           "FROM reservation A\n" +
@@ -92,4 +121,8 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
           "WHERE A.reservationDate = (SELECT MAX(reservationDate) FROM reservation WHERE doctorId = :doctorId)", nativeQuery = true)
   List<WaitingInterface> findRecentReservations(
           @Param("doctorId") int doctorId);
+
+
+
+
 }
