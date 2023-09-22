@@ -1,6 +1,7 @@
 package com.smartChart.patient.dto.RequestDto;
 
 
+import com.smartChart.patient.entity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,6 +32,8 @@ public class PatientJoinRequest {
 
 
     private int phoneNumber;
+
+    private Role role;
 
     private String oauth; // kakao, google
 }

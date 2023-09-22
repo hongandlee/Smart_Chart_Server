@@ -8,6 +8,7 @@ import com.smartChart.doctor.service.DoctorService;
 import com.smartChart.patient.Service.PatientService;
 import com.smartChart.patient.dto.RequestDto.*;
 import com.smartChart.patient.dto.ResponseDto.MailResponse;
+import com.smartChart.patient.dto.ResponseDto.PatientLoginResponse;
 import com.smartChart.patient.entity.Patient;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -80,24 +81,21 @@ public class PatientController {
      * @return
      */
     @PostMapping("/login")
-    public ResponseEntity<Message> authenticate (
+    public ResponseEntity<PatientLoginResponse> authenticate (
             @RequestBody PatientLoginRequest request,
             HttpServletRequest servletRequest
     ) {
-
         // token
         AuthenticationResponse authenticationResponse = service.authenticate(request);
 
-        // message
-        HttpHeaders headers= new HttpHeaders();
-        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
-        Message message = new Message();
+        PatientLoginResponse response = new PatientLoginResponse();
+
 
         if (authenticationResponse != null) {
-            message.setCode(200);
-            message.setMessage("성공");
-            message.setData("token : " + authenticationResponse);
-
+            response.setCode(200);
+            response.setMessage("성공");
+            response.setRole("PATIENT");
+            response.setToken(authenticationResponse);
 
             // db 환자 정보
             Optional<Patient> patient = service.findByEmail(request.getEmail());
@@ -109,10 +107,10 @@ public class PatientController {
                 session.setAttribute("patientName", patient.get().getName());
             }
         } else {
-            message.setCode(500);
-            message.setMessage("관리자에게 문의해주시기 바랍니다.");
+            response.setCode( 500);
+            response.setMessage("관리자에게 문의해주시기 바랍니다.");
         }
-        return new ResponseEntity<>(message, headers, HttpStatus.OK);   // ResponseEntity.ok() - 성공을 의미하는 OK(200 code)와 함께 user 객체를 Return 하는 코드
+        return new ResponseEntity<>(response, HttpStatus.OK);   // ResponseEntity.ok() - 성공을 의미하는 OK(200 code)와 함께 user 객체를 Return 하는 코드
     }
 
 

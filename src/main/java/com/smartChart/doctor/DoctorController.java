@@ -4,6 +4,7 @@ package com.smartChart.doctor;
 import com.smartChart.Response.Message;
 import com.smartChart.config.Encrypt;
 import com.smartChart.doctor.dto.RequestDto.*;
+import com.smartChart.doctor.dto.ResponseDto.DoctorLoginResponse;
 import com.smartChart.doctor.entity.Doctor;
 import com.smartChart.doctor.service.DoctorService;
 import com.smartChart.patient.dto.RequestDto.MailRequest;
@@ -82,7 +83,7 @@ public class DoctorController {
      * @return
      */
     @PostMapping("/login")
-    public ResponseEntity<Message> authenticate(
+    public ResponseEntity<DoctorLoginResponse> authenticate(
             @RequestBody DoctorLoginRequest request,
             HttpServletRequest servletRequest
     ) {
@@ -102,15 +103,12 @@ public class DoctorController {
         // select null or 1행   // ** select - saltPassword로 해야함.
         Doctor doctor = doctorService.getUserByLoginIdPassword(request.getEmail(), saltPassword);
 
-
-        // message
-        Message message = new Message();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+        DoctorLoginResponse response = new DoctorLoginResponse();
 
         if (doctor != null) {
-            message.setCode(200);
-            message.setMessage("성공");
+            response.setCode(200);
+            response.setMessage("성공");
+            response.setRole("DOCTOR");
 
             // 세션에 유저 정보
             HttpSession session = servletRequest.getSession();
@@ -120,11 +118,11 @@ public class DoctorController {
             session.setAttribute("doctorHospitalPhoneNumber", doctor.getHospitalPhoneNumber());
 
         } else {
-            message.setCode(500);
-            message.setMessage("관리자에게 문의해주시기 바랍니다.");
+            response.setCode(500);
+            response.setMessage("관리자에게 문의해주시기 바랍니다.");
         }
 
-        return new ResponseEntity<>(message, headers, HttpStatus.OK);
+        return new ResponseEntity<>(response, HttpStatus.OK);
 
     }
 

@@ -8,6 +8,7 @@ import com.smartChart.patient.dto.RequestDto.OAuthToken;
 import com.smartChart.patient.dto.RequestDto.PatientJoinRequest;
 import com.smartChart.patient.dto.RequestDto.PatientLoginRequest;
 import com.smartChart.patient.entity.Patient;
+import com.smartChart.patient.entity.Role;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,7 +78,6 @@ public class KakaoContorller {
                 HttpMethod.POST,
                 kakaoTokenRequest, // header 값과 body 값이 들어있음
                 String.class // 응답은 String으로 받음
-
         );
 
 
@@ -153,6 +153,7 @@ public class KakaoContorller {
                         .gender("null")
                         .age(0)
                         .phoneNumber(0)
+                        .role(Role.PATIENT)
                         .oauth("kakao")
                         .build();
 

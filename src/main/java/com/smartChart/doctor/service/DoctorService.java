@@ -70,7 +70,7 @@ public class DoctorService {
                 .hospitalPhoneNumber(hospitalPhoneNumber)
                 .hospitalIntroduce(hospitalIntroduce)
                 .hospitalProfileURL(hospitalProfileURL)
-                .role(role)
+                .role(Role.DOCTOR)
                 .build());
 
 
