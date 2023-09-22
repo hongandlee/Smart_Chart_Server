@@ -7,7 +7,8 @@
 
 - 프로젝트는 2023년 8월 11일 ~ 현재 진행 중 입니다. (백엔드 1명, 프론트 엔드 2명)
 
-- OAuth 2.0 시퀀스 다이어그램 : https://drive.google.com/file/d/1IQdlAdb0iBbZVr_KZd2akMV8AP3Cokz9/view?usp=sharing
+- 블로그 : https://dbfl720.tistory.com
+- OAuth 2.0, 결제, Jwt 시퀀스 다이어그램 : https://drive.google.com/file/d/1IQdlAdb0iBbZVr_KZd2akMV8AP3Cokz9/view?usp=sharing
 - 기획 Figma 사이트 : https://www.figma.com/file/s4tvcCbhoY5xAF6ZQFh2Gd/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%B0%A8%ED%8A%B8?type=design&node-id=0-1&mode=design&t=cctDsTWrkLHSc4if-0
 - DB 설계 사이트 : https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=0
 - 환자 API 명세서 사이트 : https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=1565076207
@@ -18,3 +19,5 @@
 
 
 <img width="813" alt="스크린샷 2023-09-12 오후 7 52 50" src="https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/eed6601f-d69e-4166-85a3-53a94b54cbab">
+<img width="775" alt="스크린샷 2023-09-15 오후 8 22 23" src="https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/e3a9c60e-09ad-492b-8cb0-0fcc1c561d45">
+<img width="768" alt="스크린샷 2023-09-15 오후 8 20 36" src="https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/6ed052f0-a076-419b-9d24-cf39147bec29">
