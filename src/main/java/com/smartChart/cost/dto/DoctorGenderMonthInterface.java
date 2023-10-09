@@ -11,4 +11,6 @@ public interface DoctorGenderMonthInterface {
     Integer getMaleCount();
 
     Integer getFemaleCount();
+
+    Integer getAverageAge();
 }
