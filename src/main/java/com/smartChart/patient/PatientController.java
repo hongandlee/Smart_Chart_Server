@@ -81,7 +81,7 @@ public class PatientController {
      * @return
      */
   //  @PostMapping(value = "/login")
-    @RequestMapping(value="/login", method = {RequestMethod.POST})
+    @PostMapping("/login")
     public ResponseEntity<PatientLoginResponse> authenticate (
             @RequestBody PatientLoginRequest request,
             HttpServletRequest servletRequest

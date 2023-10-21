@@ -1,6 +1,10 @@
 server:
   port: 8080
 spring:
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://smart-chart.crbbls80erbp.ap-northeast-2.rds.amazonaws.com:3306/smart_chart?useSSL=false&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
@@ -19,10 +23,6 @@ spring:
         format_sql: true # jpa ???? ??????? ????? ??? SQL ???? ????
 
 
-  mvc:
-    hiddenmethod:
-      filter:
-        enabled: ture
 
 
   security:
@@ -95,7 +95,5 @@ naver:
   client:
     id: yM8RRFvCe5dD3Ki1IREe
     secret: 5rdfphHO_E
-
-
 
 
