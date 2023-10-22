@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class SurveyDTO {
 
 
-   private int questionId;
+   private int questionNumber;
 
    private String answer;
 

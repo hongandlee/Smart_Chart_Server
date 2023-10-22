@@ -2,11 +2,11 @@ package com.smartChart.survey.service;
 
 
 import com.smartChart.survey.dto.DoctorSurveyInterface;
+import com.smartChart.survey.dto.SurveyInterface;
 import com.smartChart.survey.entity.Sample_answer;
 import com.smartChart.survey.entity.Sample_question;
 import com.smartChart.survey.repository.Sample_answer_Repository;
 import com.smartChart.survey.repository.Sample_question_Repository;
-import com.smartChart.survey.dto.SurveyInterface;
 import com.smartChart.survey.repository.SurveyRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

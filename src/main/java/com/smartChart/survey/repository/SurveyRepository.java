@@ -1,7 +1,7 @@
 package com.smartChart.survey.repository;
 
-import com.smartChart.survey.dto.DoctorSurveyInterface;
 import com.smartChart.survey.entity.Survey;
+import com.smartChart.survey.dto.DoctorSurveyInterface;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,16 +14,12 @@ public interface SurveyRepository extends JpaRepository<Survey, Integer> {
 
 
 
-    @Query(nativeQuery = true, value =  "select D.name, C.answer, A.questionId, B.question, A.yes, A.no,A.unawareness\n" +
-            "from sample_question AS B\n" +
-            "join sample_answer AS A\n" +
-            "on A.questionId = B.id\n" +
-            "join survey AS C\n" +
-            "on C.questionId = B.id\n" +
+    @Query(nativeQuery = true, value =  "select C.questionNumber, C.answer\n" +
+            "from survey AS C\n" +
             "join patient AS D\n" +
             "on D.id = C.patientId\n" +
             "where C.patientId = :patientId\n" +
-            "order by B.id asc"
+            "order by C.id asc"
     )
     public List<DoctorSurveyInterface> findByPatientId(
             @Param("patientId") int patientId);

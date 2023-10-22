@@ -1,6 +1,9 @@
 package com.smartChart.survey;
 
 
+import com.smartChart.survey.entity.Sample_answer;
+import com.smartChart.survey.entity.Sample_question;
+import com.smartChart.survey.entity.Survey;
 import com.smartChart.Response.DataResponse;
 import com.smartChart.Response.Message;
 import com.smartChart.patient.Service.PatientService;
@@ -8,9 +11,6 @@ import com.smartChart.patient.entity.Patient;
 import com.smartChart.survey.dto.AnswerRequest;
 import com.smartChart.survey.dto.QuestionRequest;
 import com.smartChart.survey.dto.SurveyDTO;
-import com.smartChart.survey.entity.Sample_answer;
-import com.smartChart.survey.entity.Sample_question;
-import com.smartChart.survey.entity.Survey;
 import com.smartChart.survey.dto.SurveyInterface;
 import com.smartChart.survey.repository.SurveyRepository;
 import com.smartChart.survey.service.SurveyService;
@@ -82,7 +82,7 @@ public class SurveyController {
 
 
 
-    
+
     /**
      * 기본 건강체크 Survey
      * @param surveyDTOList
@@ -104,9 +104,8 @@ public class SurveyController {
 
         for(SurveyDTO surveyDTO : surveyDTOList) {
             Survey survey = new Survey();
-            Sample_question sampleQuestion = surveyService.selectSampleQuestionById(surveyDTO.getQuestionId());
             survey.setPatient(patient);
-            survey.setSample_question(sampleQuestion);
+            survey.setQuestionNumber(surveyDTO.getQuestionNumber());
             survey.setAnswer(surveyDTO.getAnswer());
             surveyToSave.add(survey);
         }
@@ -124,6 +123,50 @@ public class SurveyController {
         return new ResponseEntity<>(message, headers, HttpStatus.OK); // ResponseEntity는 사용자의 HttpRequest에 대한 응답 데이터를 포함하는 클래스이다. 따라서 HttpStatus, HttpHeaders, HttpBody를 포함
 
     }
+
+
+    
+//    /**
+//     * 기본 건강체크 Survey
+//     * @param surveyDTOList
+//     * @param session
+//     * @return
+//     */
+//    @Transactional
+//    @PostMapping("/health-check")
+//    public ResponseEntity<Message> health_check(
+//            @RequestBody List<SurveyDTO> surveyDTOList,
+//            HttpSession session) {
+//
+//        // session
+//        Integer patientId = (Integer)session.getAttribute("patientId");
+//        Patient patient = patientService.findPatientById(patientId);
+//
+//
+//        List<Survey> surveyToSave = new ArrayList<>();
+//
+//        for(SurveyDTO surveyDTO : surveyDTOList) {
+//            Survey survey = new Survey();
+//            Sample_question sampleQuestion = surveyService.selectSampleQuestionById(surveyDTO.getQuestionId());
+//            survey.setPatient(patient);
+//            survey.setSample_question(sampleQuestion);
+//            survey.setAnswer(surveyDTO.getAnswer());
+//            surveyToSave.add(survey);
+//        }
+//        surveyRepository.saveAll(surveyToSave);
+//
+//
+//        // message
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+//        Message message = new Message();
+//
+//        message.setCode(200);
+//        message.setMessage("성공");
+//
+//        return new ResponseEntity<>(message, headers, HttpStatus.OK); // ResponseEntity는 사용자의 HttpRequest에 대한 응답 데이터를 포함하는 클래스이다. 따라서 HttpStatus, HttpHeaders, HttpBody를 포함
+//
+//    }
 
 
 
