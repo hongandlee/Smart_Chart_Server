@@ -206,7 +206,7 @@ public class TreatmentStatementController {
 
 
     // 기간별 조회
-    @GetMapping("/period-sales")
+    @PostMapping("/period-sales")
     public ResponseEntity<DoctorPeriodResponse> period_sales (
             @RequestBody DoctorPeriodRequest periodDTO,
             HttpSession session) {
