@@ -20,7 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 
 @Controller
@@ -41,7 +41,7 @@ public class KakaoContorller {
      * @param code
      * @return
      */
-    @GetMapping("/auth/kakao/callback")
+    @PostMapping("/auth/kakao/callback")
     public String kakaoCallback(String code) {
 
         // POST방식으로 key=value 데이터를 요청(카카오쪽으로)

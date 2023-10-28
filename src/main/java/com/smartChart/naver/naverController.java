@@ -20,7 +20,7 @@ public class naverController {
     // start=1&
     // sort=random
 
-    @GetMapping("/naver")
+    @PostMapping("/naver")
     public @ResponseBody String naver(
             @RequestBody naverRequest naverRequest
     ){
