@@ -1,6 +1,6 @@
 name: SmartChart
 run-name: Running
-on:
+on: 
   push:
     branches: [ "develop" ]
   pull_request:
