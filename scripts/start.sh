@@ -2,13 +2,14 @@
 
 ROOT_PATH="/home/ubuntu/spring-github-action/scripts"
 JAR="$ROOT_PATH/application.jar"
+STOP_LOG="$ROOT_PATH/stop.log"
+
+# JAR 파일의 실제 경로로 수정
+JAR_SOURCE="/home/ubuntu/spring-github-action/build/libs/application.jar"
 
 APP_LOG="$ROOT_PATH/application.log"
 ERROR_LOG="$ROOT_PATH/error.log"
 START_LOG="$ROOT_PATH/start.log"
-
-# JAR 파일의 실제 경로로 수정
-JAR_SOURCE="/home/ubuntu/spring-github-action/build/libs/application.jar"
 
 NOW=$(date +%c)
 
