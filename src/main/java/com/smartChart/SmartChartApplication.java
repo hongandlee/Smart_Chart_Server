@@ -9,6 +9,8 @@ public class SmartChartApplication {
 
 
 	public static void main(String[] args) throws Exception {
+
+		
 		SpringApplication.run(SmartChartApplication.class, args);
 	}
 
