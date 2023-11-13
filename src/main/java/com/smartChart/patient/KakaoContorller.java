@@ -57,7 +57,7 @@ public class KakaoContorller {
         //HttpHeader 오브젝트 생성
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-type","application/x-www-form-urlencoded;charset=utf-8");
-
+  
         // * 변수를 만들어서 하는게 더 좋음.
         // HttpBody 오브젝트 생성
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
