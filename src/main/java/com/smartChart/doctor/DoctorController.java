@@ -18,7 +18,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.nio.charset.Charset;
 import java.util.List;
@@ -85,7 +87,8 @@ public class DoctorController {
     @PostMapping("/login")
     public ResponseEntity<DoctorLoginResponse> authenticate(
             @RequestBody DoctorLoginRequest request,
-            HttpServletRequest servletRequest
+            HttpServletRequest servletRequest,
+            HttpServletResponse servletResponse
     ) {
 
         //		비밀번호 인증
@@ -120,6 +123,13 @@ public class DoctorController {
             session.setAttribute("doctorEmail", doctor.getEmail());
             session.setAttribute("doctorHospitalName", doctor.getHospitalName());
             session.setAttribute("doctorHospitalPhoneNumber", doctor.getHospitalPhoneNumber());
+
+            // 쿠키 설정
+            Cookie cookie = new Cookie("JSESSIONID", session.getId());
+            cookie.setPath("/");
+            cookie.setHttpOnly(true);
+            servletResponse.addCookie(cookie);
+
 
         } else {
             response.setCode(500);
