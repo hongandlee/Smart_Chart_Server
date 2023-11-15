@@ -47,12 +47,6 @@ public class PatientController {
 
 
 
-    @GetMapping("/kakaoLogin")
-    public String index() {
-        return "index.html"; // 이 부분은 "index.html"을 의미
-    }
-
-
     /**
      * 환자 회원가입
      * @param request
