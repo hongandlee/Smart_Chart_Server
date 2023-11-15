@@ -12,12 +12,15 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 
+import static com.smartChart.doctor.entity.Role.DOCTOR;
+import static com.smartChart.patient.Permission.Permission.*;
+import static org.springframework.http.HttpMethod.*;
+
 // binding
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfiguration  {
-
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
     private final LogoutHandler logoutHandler;
@@ -37,19 +40,19 @@ public class SecurityConfiguration  {
                 .antMatchers("/","/css/**","/images/**","/js/**","/image/**", "/oauth2/**","/login/oauth2/**","/auth/**", "/websocket/**", "/static/**","/api/**","/naver/**","/kakaoPay/**", "/vertifyIamport/**","/chatting-view/**","/adminAppointment/**", "/adminWaitingList/**","/hospitalPage/**","/accounting/**").permitAll()
                 .antMatchers("/login", "/join").permitAll() // 로그인, 회원가입 접근 가능
                 .antMatchers("/ws/**").permitAll()
-//
-//                .antMatchers(GET,"/patient/**").hasAuthority(PATIENT_READ.name())
-//                .antMatchers(POST,"/patient/**").hasAuthority(PATIENT_CREATE.name())
-//                .antMatchers(PUT,"/patient/**").hasAuthority(PATIENT_UPDATE.name())
-//                .antMatchers(DELETE,"/patient/**").hasAuthority(PATIENT_DELETE.name())
-//
-//
-//                .antMatchers( "/doctor/**").hasRole(DOCTOR.name())
-//
-//                .antMatchers(GET,"/doctor/**").hasAuthority(DOCTOR_READ.name())
-//                .antMatchers(POST,"/doctor/**").hasAuthority(DOCTOR_CREATE.name())
-//                .antMatchers(PUT,"/doctor/**").hasAuthority(DOCTOR_UPDATE.name())
-//                .antMatchers(DELETE,"/doctor/**").hasAuthority(DOCTOR_DELETE.name())
+
+                .antMatchers(GET,"/patient/**").hasAuthority(PATIENT_READ.name())
+                .antMatchers(POST,"/patient/**").hasAuthority(PATIENT_CREATE.name())
+                .antMatchers(PUT,"/patient/**").hasAuthority(PATIENT_UPDATE.name())
+                .antMatchers(DELETE,"/patient/**").hasAuthority(PATIENT_DELETE.name())
+
+
+                .antMatchers( "/doctor/**").hasRole(DOCTOR.name())
+
+                .antMatchers(GET,"/doctor/**").hasAuthority(DOCTOR_READ.name())
+                .antMatchers(POST,"/doctor/**").hasAuthority(DOCTOR_CREATE.name())
+                .antMatchers(PUT,"/doctor/**").hasAuthority(DOCTOR_UPDATE.name())
+                .antMatchers(DELETE,"/doctor/**").hasAuthority(DOCTOR_DELETE.name())
 
                 .anyRequest().authenticated() // 위의 경로 이외에는 모두 인증된 사용자만 접근 가능
                 .and()
