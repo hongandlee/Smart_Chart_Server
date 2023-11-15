@@ -113,15 +113,13 @@ public class DoctorController {
             // 세션에 유저 정보
             HttpSession session = servletRequest.getSession();
 
-            // 세션 만료 시간 설정 (예: 30분)
-            session.setMaxInactiveInterval(30 * 60);
+            // 세션 만료 시간 설정 (예: 3시간)
+            session.setMaxInactiveInterval(180 * 60);
 
             session.setAttribute("doctorId", doctor.getId());
             session.setAttribute("doctorEmail", doctor.getEmail());
             session.setAttribute("doctorHospitalName", doctor.getHospitalName());
             session.setAttribute("doctorHospitalPhoneNumber", doctor.getHospitalPhoneNumber());
-
-
 
 
         } else {

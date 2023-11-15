@@ -114,7 +114,7 @@ public class PatientController {
                 HttpSession session = servletRequest.getSession();
 
                 // 세션 만료 시간 설정 (예: 30분)
-                session.setMaxInactiveInterval(30 * 60);
+                session.setMaxInactiveInterval(180 * 60);
 
                 session.setAttribute("patientId", patient.get().getId()); // .get().getId()는 주로 Java의 스트림(Stream)이나 Optional에서 값을 추출하고 해당 객체의 ID 값을 가져오는 용도로 사용되는 코드 패턴
                 session.setAttribute("patientEmail", patient.get().getEmail());
