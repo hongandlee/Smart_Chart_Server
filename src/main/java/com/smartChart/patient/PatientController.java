@@ -47,6 +47,13 @@ public class PatientController {
 
 
 
+
+    @GetMapping("/test")
+    public String index() {
+        return "smart_chart"; // 이 부분은 "index.html"을 의미
+    }
+
+
     /**
      * 환자 회원가입
      * @param request
