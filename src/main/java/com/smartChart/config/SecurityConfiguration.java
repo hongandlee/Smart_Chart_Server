@@ -43,7 +43,7 @@ public class SecurityConfiguration  {
 
                 .antMatchers(GET,"/patient/**").hasAuthority(PATIENT_READ.name())
                 .antMatchers(POST,"/patient/**").hasAuthority(PATIENT_CREATE.name())
-                .antMatchers(PUT,"/patient/**").hasAuthority(PATIENT_UPDATE.name())
+                .antMatchers(PATCH,"/patient/**").hasAuthority(PATIENT_UPDATE.name())
                 .antMatchers(DELETE,"/patient/**").hasAuthority(PATIENT_DELETE.name())
 
 
@@ -51,7 +51,7 @@ public class SecurityConfiguration  {
 
                 .antMatchers(GET,"/doctor/**").hasAuthority(DOCTOR_READ.name())
                 .antMatchers(POST,"/doctor/**").hasAuthority(DOCTOR_CREATE.name())
-                .antMatchers(PUT,"/doctor/**").hasAuthority(DOCTOR_UPDATE.name())
+                .antMatchers(PATCH,"/doctor/**").hasAuthority(DOCTOR_UPDATE.name())
                 .antMatchers(DELETE,"/doctor/**").hasAuthority(DOCTOR_DELETE.name())
 
                 .anyRequest().authenticated() // 위의 경로 이외에는 모두 인증된 사용자만 접근 가능
