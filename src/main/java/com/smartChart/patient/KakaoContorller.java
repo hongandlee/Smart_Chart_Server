@@ -63,7 +63,7 @@ public class KakaoContorller {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type","authorization_code");
         params.add("client_id","338b152f34fe502634c3e709272cd726");
-        params.add("redirect_uri","http://localhost:3000/auth/kakao/callback");
+        params.add("redirect_uri","http://localhost:8080/auth/kakao/callback");
         params.add("code",code);
 
         // 위 headers와 params의 값을 갔고 있는 entity 생성
