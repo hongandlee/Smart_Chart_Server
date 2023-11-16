@@ -60,7 +60,6 @@ public class SecurityConfiguration  {
                 .and()
 
 
-
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .logout()
