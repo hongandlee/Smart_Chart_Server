@@ -23,6 +23,8 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class KakaoContorller {
 
@@ -42,7 +44,7 @@ public class KakaoContorller {
      * @return
      */
     @PostMapping("/auth/kakao/callback")
-    public String kakaoCallback(String code) {
+    public String kakaoCallback(HttpServletRequest request) {
 
         // POST방식으로 key=value 데이터를 요청(카카오쪽으로)
         // <3가지 요청방식>
@@ -50,6 +52,8 @@ public class KakaoContorller {
         //OKHttp
         //RestTemplate
 
+        // 프론트엔드에서 코드를 받지 않고, 백엔드에서 직접 HttpServletRequest를 통해 코드 추출
+        String code = request.getParameter("code");
 
         RestTemplate rt = new RestTemplate();
 
