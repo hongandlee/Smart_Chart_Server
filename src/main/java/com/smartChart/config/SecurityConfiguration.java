@@ -58,6 +58,15 @@ public class SecurityConfiguration  {
                 .sessionManagement()
 //                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
+
+                .formLogin()
+                .loginPage("/patient/login") // 로그인 페이지 URL
+                .loginProcessingUrl("/patient/login") // 로그인 처리 URL
+//                .defaultSuccessUrl("/home") // 로그인 성공 후 이동할 URL
+                .permitAll()
+                .and()
+
+
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .logout()
