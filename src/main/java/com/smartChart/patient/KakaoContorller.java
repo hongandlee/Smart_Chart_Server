@@ -2,6 +2,7 @@ package com.smartChart.patient;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.smartChart.Response.Message;
 import com.smartChart.patient.Service.PatientService;
 import com.smartChart.patient.dto.RequestDto.KakaoProfile;
 import com.smartChart.patient.dto.RequestDto.OAuthToken;
@@ -13,10 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -24,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
+import java.nio.charset.Charset;
 
 @Controller
 public class KakaoContorller {
@@ -44,7 +43,8 @@ public class KakaoContorller {
      * @return
      */
     @PostMapping("/auth/kakao/callback")
-    public String kakaoCallback(HttpServletRequest request) {
+    public ResponseEntity<Message> kakaoCallback(
+            HttpServletRequest request) {
 
         // POST방식으로 key=value 데이터를 요청(카카오쪽으로)
         // <3가지 요청방식>
@@ -183,6 +183,15 @@ public class KakaoContorller {
         patientService.authenticate(kakaoLoginRequest);
 
 
-        return "redirect:/patient/page-view";
+
+        // message
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+        Message message = new Message();
+
+        message.setCode(200);
+        message.setMessage("카카오톡 로그인 성공");
+
+
+        return new ResponseEntity<>(message,  HttpStatus.OK);
     }
 }
