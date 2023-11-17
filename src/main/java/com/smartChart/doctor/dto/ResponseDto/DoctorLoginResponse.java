@@ -17,4 +17,6 @@ public class DoctorLoginResponse {
 
     private String Role;
 
+    private String session;
+
 }

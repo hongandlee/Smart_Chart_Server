@@ -106,12 +106,14 @@ public class DoctorController {
         DoctorLoginResponse response = new DoctorLoginResponse();
 
         if (doctor != null) {
+            // 세션에 유저 정보
+            HttpSession session = servletRequest.getSession();
+
             response.setCode(200);
             response.setMessage("성공");
             response.setRole("DOCTOR");
+            response.setSession(session.getId());
 
-            // 세션에 유저 정보
-            HttpSession session = servletRequest.getSession();
 
             // 세션 만료 시간 설정 (예: 3시간)
             session.setMaxInactiveInterval(180 * 60);
