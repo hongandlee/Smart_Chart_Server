@@ -114,15 +114,21 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 
 
  // 환자 대기 관리 조회
+//  @Query(value = "SELECT A.id, A.reservationDate AS reservationDate, A.reservationTime, B.name AS patientName\n" +
+//          "FROM reservation A\n" +
+//          "LEFT join patient AS B\n" +
+//          "on B.id = A.patientId\n" +
+//          "WHERE A.reservationDate = (SELECT MAX(reservationDate) FROM reservation WHERE doctorId = :doctorId)", nativeQuery = true)
+//  List<WaitingInterface> findRecentReservations(
+//          @Param("doctorId") int doctorId);
+
+
+
   @Query(value = "SELECT A.id, A.reservationDate AS reservationDate, A.reservationTime, B.name AS patientName\n" +
           "FROM reservation A\n" +
           "LEFT join patient AS B\n" +
           "on B.id = A.patientId\n" +
-          "WHERE A.reservationDate = (SELECT MAX(reservationDate) FROM reservation WHERE doctorId = :doctorId)", nativeQuery = true)
-  List<WaitingInterface> findRecentReservations(
-          @Param("doctorId") int doctorId);
-
-
-
+          "WHERE A.doctorId = :doctorId AND A.reservationDate >= CURRENT_DATE AND A.reservationDate < CURRENT_DATE + INTERVAL 1 DAY;", nativeQuery = true)
+  List<WaitingInterface> findRecentReservations(@Param("doctorId") int doctorId);
 
 }
