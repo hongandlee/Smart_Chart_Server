@@ -13,7 +13,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) { // registerStompEndpoints : SockJs Fallback을 이용해 노출할 STOMP endpoint를 설정한다.
         registry.addEndpoint("/ws/chat")  // sockJs 클라이언트가 Websocket 핸드셰이크를 하기 위해 연결할 endpoint를 지정할 수 있다.
- //               .setAllowedOrigins("*") // 원하는 도메인 추가
+                .setAllowedOrigins("*") // 원하는 도메인 추가  // 도메인 설정 나중에 추가 필요, 기존의 주석처리 되어있었음.
                 .setAllowedOriginPatterns("*")
                 .withSockJS();
     }
