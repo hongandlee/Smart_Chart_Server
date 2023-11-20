@@ -17,8 +17,11 @@
 - 트러블 슈팅 모음집 : https://github.com/orgs/hongandlee/projects/1/views/1?pane=issue&itemId=36500724
 
 
-
+<br><br>
 <img width="813" alt="스크린샷 2023-09-12 오후 7 52 50" src="https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/a1da4e13-2a2e-4085-a570-da2256d7abf8">
+<br><br>
 <img width="813" alt="스크린샷 2023-09-12 오후 7 52 50" src="https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/eed6601f-d69e-4166-85a3-53a94b54cbab">
+<br><br>
 <img width="775" alt="스크린샷 2023-09-15 오후 8 22 23" src="https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/e3a9c60e-09ad-492b-8cb0-0fcc1c561d45">
+<br><br>
 <img width="768" alt="스크린샷 2023-09-15 오후 8 20 36" src="https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/6ed052f0-a076-419b-9d24-cf39147bec29">
