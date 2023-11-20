@@ -13,10 +13,10 @@
 
 <br><br>
 
-- Back-End : JAVA , SpringBoot, Spring, SpringSecurity, JWT, WebSocket, SocketJS, Stomp
-- DB : MySQL, MyBatis, JPA
-- SERVER : Ubuntu, AmazonS3, AmazonEC2, AmazonRDS, Github Actions, AmazonDeploy, Amazon AWS
-- TOOLS : IntelliJ IDEA, POSTMAN, FIGMA, Github,  SpringToolSuit4, Visual Studio Code
+  - Back-End : JAVA , SpringBoot, Spring, SpringSecurity, JWT, WebSocket, SocketJS, Stomp
+  - DB : MySQL, MyBatis, JPA
+  - SERVER : Ubuntu, AmazonS3, AmazonEC2, AmazonRDS, Github Actions, AmazonDeploy, Amazon AWS
+  - TOOLS : IntelliJ IDEA, POSTMAN, FIGMA, Github,  SpringToolSuit4, Visual Studio Code
 
 <br><br><br><br>
 
