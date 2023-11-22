@@ -5,6 +5,7 @@ import com.smartChart.doctor.entity.Doctor;
 import com.smartChart.reservation.entity.Reservation;
 import com.smartChart.reservation.repository.ReservationRepository;
 import com.smartChart.treatment.dto.DoctorTreatmentInterface;
+import com.smartChart.treatment.dto.TreatmentInterface;
 import com.smartChart.treatment.entity.Treatment;
 import com.smartChart.treatment.repository.TreatmentRepository;
 import lombok.RequiredArgsConstructor;
@@ -49,4 +50,8 @@ public class TreatmentService {
         return treatment;
 
     }
+
+
+    // select - 진료 관리 의사 소견서 조회
+    public List<TreatmentInterface> selectInfoByReservationId(int reservationId) { return treatmentRepository.finListByReservationId(reservationId);}
 }

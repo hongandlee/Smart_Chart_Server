@@ -84,6 +84,11 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 
 
 
+
+
+
+
+
     @Query(nativeQuery = true, value =  "select A.id, B.name,A.patientId, A.reservationDate, A.reservationTime, B.phoneNumber, A.reservationStatus, A.paymentStatus\n" +
             "from reservation AS A\n" +
             "join patient AS B\n" +
@@ -123,7 +128,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 //          @Param("doctorId") int doctorId);
 
 
-
+  // 환자 대기 관리 조회
   @Query(value = "SELECT A.id, A.reservationDate AS reservationDate, A.reservationTime, B.name AS patientName\n" +
           "FROM reservation A\n" +
           "LEFT join patient AS B\n" +

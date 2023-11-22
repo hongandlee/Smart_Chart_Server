@@ -4,10 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smartChart.Response.Message;
 import com.smartChart.patient.Service.PatientService;
-import com.smartChart.patient.dto.RequestDto.KakaoProfile;
-import com.smartChart.patient.dto.RequestDto.OAuthToken;
-import com.smartChart.patient.dto.RequestDto.PatientJoinRequest;
-import com.smartChart.patient.dto.RequestDto.PatientLoginRequest;
+import com.smartChart.patient.dto.RequestDto.*;
 import com.smartChart.patient.entity.Patient;
 import com.smartChart.patient.entity.Role;
 import org.slf4j.Logger;
@@ -19,9 +16,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.client.RestTemplate;
 
-import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.Charset;
 
 @Controller
@@ -38,13 +35,17 @@ public class KakaoContorller {
 
 
     /**
-     * 카카오톡 로그인
+     * 카카오 로그인
      * @param code
      * @return
      */
     @PostMapping("/auth/kakao/callback")
     public ResponseEntity<Message> kakaoCallback(
-            HttpServletRequest request) {
+            @RequestBody kakaoRequest request) {
+
+
+        //HttpServletRequest request
+
 
         // POST방식으로 key=value 데이터를 요청(카카오쪽으로)
         // <3가지 요청방식>
@@ -53,7 +54,9 @@ public class KakaoContorller {
         //RestTemplate
 
         // 프론트엔드에서 코드를 받지 않고, 백엔드에서 직접 HttpServletRequest를 통해 코드 추출
-        String code = request.getParameter("code");
+        //String code = request.getParameter("code");
+
+        String code = request.getCode();
 
         RestTemplate rt = new RestTemplate();
 

@@ -7,6 +7,7 @@ import com.smartChart.doctor.service.DoctorService;
 import com.smartChart.reservation.entity.Reservation;
 import com.smartChart.reservation.service.ReservationService;
 import com.smartChart.treatment.dto.DoctorTreatmentInterface;
+import com.smartChart.treatment.dto.TreatmentInterface;
 import com.smartChart.treatment.dto.TreatmentRequest;
 import com.smartChart.treatment.dto.TreatmentResponse;
 import com.smartChart.treatment.entity.Treatment;
@@ -52,6 +53,7 @@ public class TreatmentController {
         Integer doctorId = (Integer) session.getAttribute("doctorId");
 
         // db
+        List<TreatmentInterface> treatmentInterfaces = treatmentService.selectInfoByReservationId(reservationId);
         List<DoctorTreatmentInterface> treatment = treatmentService.selectTreatmentByReservationId(reservationId);
 
 
