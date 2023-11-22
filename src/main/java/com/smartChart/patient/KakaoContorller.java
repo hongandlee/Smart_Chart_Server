@@ -17,6 +17,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.nio.charset.Charset;
@@ -82,13 +83,38 @@ public class KakaoContorller {
                 new HttpEntity<>(params,headers);
 
         // 실제 요청
-        // Http 요청하기 - Post방식으로 - response 변수의 응답 받음.
-        ResponseEntity<String> response = rt.exchange( // exchange()함수는 HttpEntity를 담게 되어있음 , 그래서 위에 HttpEntity를 만듬
-                "https://kauth.kakao.com/oauth/token",
-                HttpMethod.POST,
-                kakaoTokenRequest, // header 값과 body 값이 들어있음
-                String.class // 응답은 String으로 받음
-        );
+        // Http 요청하기 - Post방식으로 - response 변수의 응답 받음. // 여기서 에러남...!!!!!
+//        ResponseEntity<String> response = rt.exchange( // exchange()함수는 HttpEntity를 담게 되어있음 , 그래서 위에 HttpEntity를 만듬
+//                "https://kauth.kakao.com/oauth/token",
+//                HttpMethod.POST,
+//                kakaoTokenRequest, // header 값과 body 값이 들어있음
+//                String.class // 응답은 String으로 받음
+//        );
+
+
+
+        
+
+        try {
+            ResponseEntity<String> response = rt.exchange(
+                    "https://kauth.kakao.com/oauth/token",
+                    HttpMethod.POST,
+                    kakaoTokenRequest,
+                    String.class
+            );
+
+            // 여기에 정상적인 응답을 처리하는 코드 추가
+            // ...
+
+        } catch (HttpClientErrorException e) {
+            // 여기에 예외 처리 코드 추가
+            System.out.println("HTTP Status Code: " + e.getRawStatusCode());
+            System.out.println("Response Body: " + e.getResponseBodyAsString());
+        }
+
+
+
+
 
 
         // 라이브러리 종류 - Gson, Json Simple, ObjectMapper
