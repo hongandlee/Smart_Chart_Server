@@ -84,19 +84,19 @@ public class KakaoContorller {
 
         // 실제 요청
         // Http 요청하기 - Post방식으로 - response 변수의 응답 받음. // 여기서 에러남...!!!!!
-//        ResponseEntity<String> response = rt.exchange( // exchange()함수는 HttpEntity를 담게 되어있음 , 그래서 위에 HttpEntity를 만듬
-//                "https://kauth.kakao.com/oauth/token",
-//                HttpMethod.POST,
+//       ResponseEntity<String> response = rt.exchange( // exchange()함수는 HttpEntity를 담게 되어있음 , 그래서 위에 HttpEntity를 만듬
+//               "https://kauth.kakao.com/oauth/token",
+//               HttpMethod.POST,
 //                kakaoTokenRequest, // header 값과 body 값이 들어있음
-//                String.class // 응답은 String으로 받음
+//               String.class // 응답은 String으로 받음
 //        );
 
 
 
-        
+        ResponseEntity<String> response;
 
         try {
-            ResponseEntity<String> response = rt.exchange(
+            response = rt.exchange(
                     "https://kauth.kakao.com/oauth/token",
                     HttpMethod.POST,
                     kakaoTokenRequest,
@@ -110,7 +110,18 @@ public class KakaoContorller {
             // 여기에 예외 처리 코드 추가
             System.out.println("HTTP Status Code: " + e.getRawStatusCode());
             System.out.println("Response Body: " + e.getResponseBodyAsString());
+
+            // 추가: 오류 메시지를 로깅
+            logger.error("Kakao Token API Error - Status Code: " + e.getRawStatusCode() +
+                    ", Response Body: " + e.getResponseBodyAsString());
+
+            // 원인에 따라 다른 처리를 하거나 예외를 다시 던질 수 있습니다.
+            // 예를 들어, 응답 본문에서 오류 메시지를 추출하여 사용자에게 알려줄 수 있습니다.
+
+            // response를 null이 아닌 다른 값으로 초기화하여 변수가 null이 되지 않도록 합니다.
+            response = new ResponseEntity<>(e.getResponseBodyAsString(), e.getResponseHeaders(), e.getRawStatusCode());
         }
+
 
 
 
