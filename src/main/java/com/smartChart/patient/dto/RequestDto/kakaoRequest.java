@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor // 파라미터가 없는 기본 생성자를 생성
 public class kakaoRequest {
 
-    String code;
+    private String code;
 }
