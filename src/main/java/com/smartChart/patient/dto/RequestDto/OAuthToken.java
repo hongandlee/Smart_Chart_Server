@@ -15,30 +15,35 @@ public class OAuthToken {
 
 
     @JsonProperty("access_token")
-    private String accessToken;
+    private String access_token;
 
     @JsonProperty("token_type")
-    private String tokenType;
+    private String token_type;
 
     @JsonProperty("refresh_token")
-    private String refreshToken;
+    private String refresh_token;
 
     @JsonProperty("expires_in")
-    private int expiresIn;
+    private int expires_in;
 
     @JsonProperty("scope")
     private String scope;
 
     @JsonProperty("refresh_token_expires_in")
-    private int refreshTokenExpiresIn;
+    private int refresh_token_expires_in;
 
     // 추가: error 관련 필드
     private String error;
 
     @JsonProperty("error_description")
-    private String errorDescription;
+    private String error_description;
 
     @JsonProperty("error_code")
-    private String errorCode;
+    private String error_code;
+
+    // 추가: 에러 처리 메서드
+    public boolean hasError() {
+        return error != null;
+    }
 
 }
