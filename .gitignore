@@ -37,26 +37,26 @@ out/
 .vscode/
 
 ## .yml
-##*.yml
+*.yml
 
 ## scripts
 scripts/
 
 
 ## mail
-##mail/
+mail/
 
 ## naver
-##naver/
+naver/
 
 ## 아임포트 컨트롤러
-##PayController/
+PayController/
 
 
 
 ## 자바스크립트
-##js/
+js/
 
 
 ## html
-##*.html
+*.html
