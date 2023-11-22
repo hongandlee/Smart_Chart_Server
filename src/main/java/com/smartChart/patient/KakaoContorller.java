@@ -56,7 +56,10 @@ public class KakaoContorller {
         // 프론트엔드에서 코드를 받지 않고, 백엔드에서 직접 HttpServletRequest를 통해 코드 추출
         //String code = request.getParameter("code");
 
+
+
         String code = request.getCode();
+        System.out.println(code);
 
         RestTemplate rt = new RestTemplate();
 
