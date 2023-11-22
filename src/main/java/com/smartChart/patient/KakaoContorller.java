@@ -15,7 +15,7 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.client.RestTemplate;
 
@@ -36,10 +36,10 @@ public class KakaoContorller {
 
     /**
      * 카카오 로그인
-     * @param code
+     * @param request
      * @return
      */
-    @PostMapping("/auth/kakao/callback")
+    @GetMapping("/auth/kakao/callback")
     public ResponseEntity<Message> kakaoCallback(
             @RequestBody kakaoRequest request) {
 
