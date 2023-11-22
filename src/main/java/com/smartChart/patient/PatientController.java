@@ -3,6 +3,7 @@ package com.smartChart.patient;
 
 import com.smartChart.Response.Message;
 import com.smartChart.auth.AuthenticationResponse;
+import com.smartChart.cost.service.TreatmentStatementService;
 import com.smartChart.doctor.repository.HospitalInterface;
 import com.smartChart.doctor.service.DoctorService;
 import com.smartChart.patient.Service.PatientService;
@@ -10,6 +11,7 @@ import com.smartChart.patient.dto.RequestDto.*;
 import com.smartChart.patient.dto.ResponseDto.MailResponse;
 import com.smartChart.patient.dto.ResponseDto.PatientLoginResponse;
 import com.smartChart.patient.entity.Patient;
+import com.smartChart.reservation.entity.Reservation;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,6 +48,7 @@ public class PatientController {
     private final PatientService patientService;
 
 
+    private final TreatmentStatementService treatmentStatementService;
 
 
     @GetMapping("/test")
@@ -313,7 +316,8 @@ public class PatientController {
         // session
         Integer patientId = (Integer) session.getAttribute("patientId");
 
-        patientService.deleteReservationById(request.getReservationId());
+        treatmentStatementService.deleteReservationById(request.getReservationId());
+        Reservation reservation = patientService.deleteReservationById(request.getReservationId());
 
 
         // message
@@ -321,8 +325,15 @@ public class PatientController {
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
         Message message = new Message();
 
-        message.setCode(200);
-        message.setMessage("예약이 삭제 되었습니다.");
+        if (reservation != null) {
+            message.setCode(200);
+            message.setMessage("예약이 삭제 되었습니다.");
+
+        } else {
+            message.setCode(500);
+            message.setMessage("관리자에게 문의하세요.");
+
+        }
 
         return new ResponseEntity<>(message, headers, HttpStatus.OK);
 

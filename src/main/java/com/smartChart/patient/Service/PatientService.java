@@ -261,11 +261,12 @@ public class PatientService {
 
 
     // 마이페이지 취소
-    public void deleteReservationById(int reservationId) {
+    public Reservation deleteReservationById(int reservationId) {
+
         Reservation reservation = reservationRepository.findById(reservationId);
         if (reservation != null) {
             reservationRepository.delete(reservation);
         }
+        return reservation;
     }
-
 }

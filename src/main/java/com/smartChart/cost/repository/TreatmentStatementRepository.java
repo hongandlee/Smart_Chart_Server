@@ -330,4 +330,9 @@ public interface TreatmentStatementRepository extends JpaRepository<Treatment_st
 
 
 
+
+    // 예약아이디로 조회
+    List<Treatment_statement> findByReservationId(int reservationId);
+
+
 }

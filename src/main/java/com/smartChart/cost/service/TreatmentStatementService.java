@@ -3,6 +3,7 @@ package com.smartChart.cost.service;
 
 import com.smartChart.cost.dto.*;
 import com.smartChart.cost.entity.Cost;
+import com.smartChart.cost.entity.Treatment_statement;
 import com.smartChart.cost.repository.CostRepository;
 import com.smartChart.cost.repository.TreatmentStatementRepository;
 import com.smartChart.doctor.entity.Doctor;
@@ -161,6 +162,15 @@ public class TreatmentStatementService {
     // 기간별 매출이 많은 순
     public List<DoctorPeriodInterface> selectSalesPeriodDoctorId(int doctorId, Date startDate, Date endDate) {
         return treatmentStatementRepository.findSalesPeriodByDoctorIdAndStartDateAndEndDate(doctorId, startDate, endDate);
+    }
+
+
+    public void deleteReservationById(int reservationId) {
+        List<Treatment_statement> treatment_statement = treatmentStatementRepository.findByReservationId(reservationId);
+        if (treatment_statement != null) {
+            treatmentStatementRepository.deleteAll(treatment_statement);
+        }
+
     }
 
 }
