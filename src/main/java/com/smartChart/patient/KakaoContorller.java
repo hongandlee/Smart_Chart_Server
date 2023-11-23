@@ -15,6 +15,7 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.client.HttpClientErrorException;
@@ -41,6 +42,7 @@ public class KakaoContorller {
      * @return
      */
     @PostMapping("/auth/kakao/callback")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Message> kakaoCallback(
             @RequestBody kakaoRequest request) {
 
