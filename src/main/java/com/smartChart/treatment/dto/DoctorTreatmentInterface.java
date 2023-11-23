@@ -15,9 +15,15 @@ public interface DoctorTreatmentInterface {
 
     String getName();
 
-    int getPhoneNumber();
+    Integer getPhoneNumber();
 
     String getGender();
 
-    int getAge();
+    Integer getAge();
+
+//    Integer getCost();
+//
+//    String getTreatment();
+//
+//    Integer getSum();
 }

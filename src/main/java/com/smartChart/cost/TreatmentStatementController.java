@@ -10,6 +10,7 @@ import com.smartChart.cost.repository.TreatmentStatementRepository;
 import com.smartChart.cost.service.TreatmentStatementService;
 import com.smartChart.doctor.entity.Doctor;
 import com.smartChart.doctor.service.DoctorService;
+import com.smartChart.reservation.dto.DoctorTreatmentInterface2;
 import com.smartChart.reservation.entity.Reservation;
 import com.smartChart.reservation.service.ReservationService;
 import com.smartChart.treatment.dto.DoctorTreatmentInterface;
@@ -60,12 +61,17 @@ public class TreatmentStatementController {
 
         // db
         List<DoctorTreatmentInterface> treatment = treatmentService.selectTreatmentByReservationId(reservationId);
+        List<DoctorTreatmentInterface2> treatment2 = treatmentService.selectTreatmentByReservationId2(reservationId);
         List<DoctorCostInterface> costList = treatmentStatementService.selectCostList(doctorId);
+
+
+
 
 
         TreatmentResponse response = new TreatmentResponse();
         response.setData(treatment);
         response.setData2(costList);
+        response.setData3(treatment2);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

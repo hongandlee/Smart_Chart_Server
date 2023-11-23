@@ -2,6 +2,7 @@ package com.smartChart.treatment.service;
 
 
 import com.smartChart.doctor.entity.Doctor;
+import com.smartChart.reservation.dto.DoctorTreatmentInterface2;
 import com.smartChart.reservation.entity.Reservation;
 import com.smartChart.reservation.repository.ReservationRepository;
 import com.smartChart.treatment.dto.DoctorTreatmentInterface;
@@ -27,6 +28,11 @@ public class TreatmentService {
     // select - 의사 진료관리 조회
     public List<DoctorTreatmentInterface> selectTreatmentByReservationId(int reservationId) {
         return reservationRepository.findByReservationId(reservationId);
+    }
+
+    // select - 의사 진료관리 조회2
+    public List<DoctorTreatmentInterface2> selectTreatmentByReservationId2(int reservationId) {
+        return reservationRepository.findByReservationId2(reservationId);
     }
 
 
