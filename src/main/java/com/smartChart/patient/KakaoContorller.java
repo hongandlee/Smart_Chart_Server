@@ -42,7 +42,6 @@ public class KakaoContorller {
      * @return
      */
     @PostMapping("/auth/kakao/callback")
-    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<Message> kakaoCallback(
             @RequestBody kakaoRequest request) {
 
