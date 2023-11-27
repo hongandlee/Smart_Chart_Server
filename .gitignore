@@ -60,3 +60,7 @@ js/
 
 ## html
 *.html
+
+
+## kakao
+patient/KakaoContorller.java
