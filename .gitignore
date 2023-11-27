@@ -37,7 +37,7 @@ out/
 .vscode/
 
 ## .yml
-##*.yml
+application.yml
 
 ## scripts
 ##scripts/
@@ -63,4 +63,4 @@ js/
 
 
 ## kakao
-patient/KakaoContorller.java
+**/KakaoContorller.java
