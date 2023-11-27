@@ -65,12 +65,13 @@ public interface TreatmentStatementRepository extends JpaRepository<Treatment_st
 
 
 
-    // 월별 성별 수
+    //##### 월별 성별 수
     @Query(nativeQuery = true, value =  " SELECT CONCAT(YEAR(B.reservationDate), '-', LPAD(MONTH(B.reservationDate), 2, '0')) AS `YEAR_MONTH`,\n" +
             "SUM(A.cost) AS `SUM`,\n" +
             "COUNT(DISTINCT B.id) AS `patientCount`,\n" +
             "COUNT(DISTINCT CASE WHEN C.gender = '남자' THEN B.id END) AS `MaleCount`,\n" +
-            "COUNT(DISTINCT CASE WHEN C.gender = '여자' THEN B.id END) AS `FemaleCount`\n" +
+            "COUNT(DISTINCT CASE WHEN C.gender = '여자' THEN B.id END) AS `FemaleCount`,\n" +
+            "AVG(C.age) AS `averageAge`\n" +
             "FROM `reservation` AS B\n" +
             "JOIN `treatment_statement` AS A ON B.id = A.reservationId\n" +
             "JOIN `patient` AS C ON B.patientId = C.id\n" +

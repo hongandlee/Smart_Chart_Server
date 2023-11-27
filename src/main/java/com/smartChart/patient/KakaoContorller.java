@@ -3,6 +3,7 @@ package com.smartChart.patient;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smartChart.Response.Message;
+import com.smartChart.config.JwtService;
 import com.smartChart.patient.Service.PatientService;
 import com.smartChart.patient.dto.RequestDto.*;
 import com.smartChart.patient.entity.Patient;
@@ -15,10 +16,8 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.nio.charset.Charset;
@@ -28,6 +27,9 @@ public class KakaoContorller {
 
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    @Autowired
+    private  JwtService jwtService;
 
     @Value("${cos.key}")
     private String cosKey;
@@ -61,15 +63,14 @@ public class KakaoContorller {
 
 
         String code = request.getCode();
-        System.out.println(code);
+
 
         RestTemplate rt = new RestTemplate();
-
 
         //HttpHeader 오브젝트 생성
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-type","application/x-www-form-urlencoded;charset=utf-8");
-  
+
         // * 변수를 만들어서 하는게 더 좋음.
         // HttpBody 오브젝트 생성
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
@@ -78,6 +79,7 @@ public class KakaoContorller {
         params.add("redirect_uri","http://localhost:3000/auth/kakao/callback");
         params.add("code",code);
 
+
         // 위 headers와 params의 값을 갔고 있는 entity 생성
         // HttpHeader와 HttpBody를 하나의 오브젝트에 담기
         HttpEntity<MultiValueMap<String,String>> kakaoTokenRequest =
@@ -85,43 +87,43 @@ public class KakaoContorller {
 
         // 실제 요청
         // Http 요청하기 - Post방식으로 - response 변수의 응답 받음. // 여기서 에러남...!!!!!
-//       ResponseEntity<String> response = rt.exchange( // exchange()함수는 HttpEntity를 담게 되어있음 , 그래서 위에 HttpEntity를 만듬
-//               "https://kauth.kakao.com/oauth/token",
-//               HttpMethod.POST,
-//                kakaoTokenRequest, // header 값과 body 값이 들어있음
-//               String.class // 응답은 String으로 받음
-//        );
+       ResponseEntity<String> response = rt.exchange( // exchange()함수는 HttpEntity를 담게 되어있음 , 그래서 위에 HttpEntity를 만듬
+               "https://kauth.kakao.com/oauth/token",
+               HttpMethod.POST,
+                kakaoTokenRequest, // header 값과 body 값이 들어있음
+               String.class // 응답은 String으로 받음
+        );
 
 
 
-        ResponseEntity<String> response;
-
-        try {
-            response = rt.exchange(
-                    "https://kauth.kakao.com/oauth/token",
-                    HttpMethod.POST,
-                    kakaoTokenRequest,
-                    String.class
-            );
-
-            // 여기에 정상적인 응답을 처리하는 코드 추가
-            // ...
-
-        } catch (HttpClientErrorException e) {
-            // 여기에 예외 처리 코드 추가
-            System.out.println("HTTP Status Code: " + e.getRawStatusCode());
-            System.out.println("Response Body: " + e.getResponseBodyAsString());
-
-            // 추가: 오류 메시지를 로깅
-            logger.error("Kakao Token API Error - Status Code: " + e.getRawStatusCode() +
-                    ", Response Body: " + e.getResponseBodyAsString());
-
-            // 원인에 따라 다른 처리를 하거나 예외를 다시 던질 수 있습니다.
-            // 예를 들어, 응답 본문에서 오류 메시지를 추출하여 사용자에게 알려줄 수 있습니다.
-
-            // response를 null이 아닌 다른 값으로 초기화하여 변수가 null이 되지 않도록 합니다.
-            response = new ResponseEntity<>(e.getResponseBodyAsString(), e.getResponseHeaders(), e.getRawStatusCode());
-        }
+//        ResponseEntity<String> response;
+//
+//        try {
+//            response = rt.exchange(
+//                    "https://kauth.kakao.com/oauth/token",
+//                    HttpMethod.POST,
+//                    kakaoTokenRequest,
+//                    String.class
+//            );
+//
+//            // 여기에 정상적인 응답을 처리하는 코드 추가
+//            // ...
+//
+//        } catch (HttpClientErrorException e) {
+//            // 여기에 예외 처리 코드 추가
+//            System.out.println("HTTP Status Code: " + e.getRawStatusCode());
+//            System.out.println("Response Body: " + e.getResponseBodyAsString());
+//
+//            // 추가: 오류 메시지를 로깅
+//            logger.error("Kakao Token API Error - Status Code: " + e.getRawStatusCode() +
+//                    ", Response Body: " + e.getResponseBodyAsString());
+//
+//            // 원인에 따라 다른 처리를 하거나 예외를 다시 던질 수 있습니다.
+//            // 예를 들어, 응답 본문에서 오류 메시지를 추출하여 사용자에게 알려줄 수 있습니다.
+//
+//            // response를 null이 아닌 다른 값으로 초기화하여 변수가 null이 되지 않도록 합니다.
+//            response = new ResponseEntity<>(e.getResponseBodyAsString(), e.getResponseHeaders(), e.getRawStatusCode());
+//        }
 
 
 
@@ -135,7 +137,7 @@ public class KakaoContorller {
         OAuthToken oAuthToken = null;
 
         try {
-           oAuthToken = objectMapper.readValue(response.getBody(), OAuthToken.class);
+            oAuthToken = objectMapper.readValue(response.getBody(), OAuthToken.class);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
@@ -185,7 +187,7 @@ public class KakaoContorller {
         logger.info("####################### 카카오 이메일 : " + kakaoProfile.getKakao_account().getEmail());
 
 
-       // System.out.println("환자 이름 : " + kakaoProfile.getKakao_account().getEmail() + "_" + kakaoProfile.getId()); //   // 예를 들어 유저네임 중복 안되게 하기 위한 tip
+        // System.out.println("환자 이름 : " + kakaoProfile.getKakao_account().getEmail() + "_" + kakaoProfile.getId()); //   // 예를 들어 유저네임 중복 안되게 하기 위한 tip
         logger.info("####################### 환자 이름 : " + kakaoProfile.getProperties().getNickname());
         logger.info("####################### 환자 이메일 :" + kakaoProfile.getKakao_account().getEmail());
         // UUID란 -> 중복되지 않는 어떤 특정 값을 만들어내는 알고리즘
@@ -195,15 +197,15 @@ public class KakaoContorller {
 
         // dto 값 넣기
         PatientJoinRequest kakaoRequest = PatientJoinRequest.builder()
-                        .email(kakaoProfile.getKakao_account().getEmail())
-                        .password(cosKey)
-                        .name(kakaoProfile.getProperties().getNickname())
-                        .gender("null")
-                        .age(0)
-                        .phoneNumber(0)
-                        .role(Role.PATIENT)
-                        .oauth("kakao")
-                        .build();
+                .email(kakaoProfile.getKakao_account().getEmail())
+                .password(cosKey)
+                .name(kakaoProfile.getProperties().getNickname())
+                .gender("null")
+                .age(0)
+                .phoneNumber(0)
+                .role(Role.PATIENT)
+                .oauth("kakao")
+                .build();
 
         PatientLoginRequest kakaoLoginRequest = PatientLoginRequest.builder()
                 .email(kakaoProfile.getKakao_account().getEmail())
@@ -217,14 +219,14 @@ public class KakaoContorller {
 
 
         // 비가입자일 경우 -> 회원가입
-        if(originPatient.getEmail() == null) {
+        if(originPatient == null) {
             logger.info("####################### 기존 회원이 아니기에 자동 회원가입을 진행합니다.");
             patientService.register(kakaoRequest);
+        } else {
+            logger.info("####################### 자동 로그인을 진행합니다.");
+            // 가입자일 경우 -> 로그인
+            patientService.authenticate(kakaoLoginRequest);
         }
-
-        logger.info("####################### 자동 로그인을 진행합니다.");
-        // 가입자일 경우 -> 로그인
-        patientService.authenticate(kakaoLoginRequest);
 
 
 
@@ -238,4 +240,6 @@ public class KakaoContorller {
 
         return new ResponseEntity<>(message,  HttpStatus.OK);
     }
+
+
 }

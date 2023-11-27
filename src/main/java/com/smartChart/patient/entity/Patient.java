@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-@ToString // 객체 예쁘게 출력
+
 @Getter
 @AllArgsConstructor // 모든 값이 있는 생성자
 @NoArgsConstructor // 기본 생성자
