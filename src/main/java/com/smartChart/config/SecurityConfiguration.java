@@ -33,7 +33,7 @@ public class SecurityConfiguration  {
                 .antMatchers("/codes/**").permitAll()
                 .antMatchers( "/doctor/**")
                 .permitAll()
-                .antMatchers("/","/css/**","/images/**","/js/**","/image/**", "/oauth2/**","/login/oauth2/**","/auth/**","/auth/kakao/callback","/websocket/**", "/static/**","/api/**","/naver/**","/kakaoPay/**", "/vertifyIamport/**","/chatting-view/**","/adminAppointment/**", "/adminWaitingList/**","/hospitalPage/**","/accounting/**").permitAll()
+                .antMatchers("/","/css/**","/images/**","/js/**","/image/**", "/oauth2/**","/login/oauth2/**","/auth/**","/auth/kakao/callback","/websocket/**", "/static/**","/api/**","/naver/**","/kakaoPay/**", "/vertifyIamport/**","/chatting-view/**","/adminAppointment/**", "/adminWaitingList/**","/hospitalPage/**","/accounting/**","https://smartchart.vercel.app/**").permitAll()
                 .antMatchers("/login", "/join").permitAll() // 로그인, 회원가입 접근 가능
                 .antMatchers("/ws/**").permitAll()
 
