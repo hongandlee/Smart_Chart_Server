@@ -17,9 +17,11 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:8080", "http://localhost:3000","http://13.125.227.145:8080","https://smartchart.vercel.app/") // 허용할 출처
+                .allowedOrigins("http://localhost:8080/", "http://localhost:3000","http://13.125.227.145:8080","https://smartchart.vercel.app/","ws://localhost:8080/ws/chat/") // 허용할 출처
                 .allowedMethods("GET", "POST", "DELETE", "PATCH", "PUT") // 허용할 HTTP method
                 .allowCredentials(true) // 쿠키 인증 요청 허용
                 .maxAge(10800); // 원하는 시간만큼 pre-flight 리퀘스트를 캐싱
     }
+
+
 }

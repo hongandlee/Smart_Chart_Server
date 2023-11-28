@@ -53,7 +53,7 @@ public class PatientController {
 
     @GetMapping("/test")
     public String index() {
-        return "smart_chart"; // 이 부분은 "index.html"을 의미
+        return "smart_chart"; // 이 부분은 "kakaoLogin.html"을 의미
     }
 
 

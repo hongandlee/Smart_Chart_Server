@@ -10,11 +10,18 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 @EnableWebSocketMessageBroker // @EnableWebSocketMessageBroker 으로 Websocket 기능을 활성화시킨다.
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
+//    @Override
+//    public void registerStompEndpoints(StompEndpointRegistry registry) { // registerStompEndpoints : SockJs Fallback을 이용해 노출할 STOMP endpoint를 설정한다.
+//        registry.addEndpoint("/ws/chat")  // sockJs 클라이언트가 Websocket 핸드셰이크를 하기 위해 연결할 endpoint를 지정할 수 있다.
+//                .setAllowedOrigins("*") // 원하는 도메인 추가  // 도메인 설정 나중에 추가 필요, 기존의 주석처리 되어있었음.
+//                .setAllowedOriginPatterns("*")
+//                .withSockJS();
+//    }
+
     @Override
-    public void registerStompEndpoints(StompEndpointRegistry registry) { // registerStompEndpoints : SockJs Fallback을 이용해 노출할 STOMP endpoint를 설정한다.
-        registry.addEndpoint("/ws/chat")  // sockJs 클라이언트가 Websocket 핸드셰이크를 하기 위해 연결할 endpoint를 지정할 수 있다.
-                .setAllowedOrigins("*") // 원하는 도메인 추가  // 도메인 설정 나중에 추가 필요, 기존의 주석처리 되어있었음.
-                .setAllowedOriginPatterns("*")
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
+        registry.addEndpoint("/ws/chat")
+                .setAllowedOriginPatterns("http://localhost:8080", "http://localhost:3000", "http://13.125.227.145:8080", "https://smartchart.vercel.app")
                 .withSockJS();
     }
 
