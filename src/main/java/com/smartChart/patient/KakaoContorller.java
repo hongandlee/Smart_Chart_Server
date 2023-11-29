@@ -81,6 +81,7 @@ public class KakaoContorller {
         params.add("redirect_uri","http://localhost:3000/auth/kakao/callback");
         params.add("code",code);
 
+        
 
         // 위 headers와 params의 값을 갔고 있는 entity 생성
         // HttpHeader와 HttpBody를 하나의 오브젝트에 담기
