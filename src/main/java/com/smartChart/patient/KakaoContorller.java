@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.nio.charset.Charset;
 
 @Controller
@@ -45,7 +47,8 @@ public class KakaoContorller {
      */
     @PostMapping("/auth/kakao/callback")
     public ResponseEntity<Message> kakaoCallback(
-            @RequestBody kakaoRequest request) {
+            @RequestBody kakaoRequest request,
+            HttpServletRequest servletRequest) {
 
        //
        // @RequestParam("code") String code
@@ -225,10 +228,30 @@ public class KakaoContorller {
         if(originPatient.getEmail() == null) {
             logger.info("####################### 기존 회원이 아니기에 자동 회원가입을 진행합니다.");
             patientService.register(kakaoRequest);
+
+            // 세션 생성
+            HttpSession session = servletRequest.getSession();
+
+            // 세션 만료 시간 설정 (예: 30분)
+            session.setMaxInactiveInterval(180 * 60);
+
+            session.setAttribute("patientId", originPatient.getId()); // .get().getId()는 주로 Java의 스트림(Stream)이나 Optional에서 값을 추출하고 해당 객체의 ID 값을 가져오는 용도로 사용되는 코드 패턴
+            session.setAttribute("patientEmail", originPatient.getEmail());
+            session.setAttribute("patientName", originPatient.getName());
         } else {
             logger.info("####################### 자동 로그인을 진행합니다.");
             // 가입자일 경우 -> 로그인
             patientService.authenticate(kakaoLoginRequest);
+
+            // 세션 생성
+            HttpSession session = servletRequest.getSession();
+
+            // 세션 만료 시간 설정 (예: 30분)
+            session.setMaxInactiveInterval(180 * 60);
+
+            session.setAttribute("patientId", originPatient.getId()); // .get().getId()는 주로 Java의 스트림(Stream)이나 Optional에서 값을 추출하고 해당 객체의 ID 값을 가져오는 용도로 사용되는 코드 패턴
+            session.setAttribute("patientEmail", originPatient.getEmail());
+            session.setAttribute("patientName", originPatient.getName());
         }
 
 
