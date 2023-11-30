@@ -35,12 +35,11 @@ spring:
             client-id: 338b152f34fe502634c3e709272cd726
             client-secret: 0L8IZ0nrmteqS73N0CSe8JTkBqEYyDkg
             scope:
-              - profile
               - account_email
             client-name: Kakao
             client-authentication-method: POST
             authorization-grant-type: authorization_code
-            redirect-uri: http://localhost:3000/auth/kakao/callback
+            redirect-uri: http://13.125.227.145:8080/auth/kakao/callback
 
             # 네이버, 카카오는 OAuth2.0 공식 지원대상이 아니라서 provider 설정이 필요하다.
             # 요청주소도 다르고, 응답 데이터도 다르기 때문이다.
