@@ -78,7 +78,7 @@ public class KakaoContorller {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type","authorization_code");
         params.add("client_id","338b152f34fe502634c3e709272cd726");
-        params.add("redirect_uri","https://smartchart.vercel.app/auth/kakao/callback");
+        params.add("redirect_uri","http://localhost:3000/auth/kakao/callback");
         params.add("code",code);
 
         
@@ -191,7 +191,7 @@ public class KakaoContorller {
 
 
         // System.out.println("환자 이름 : " + kakaoProfile.getKakao_account().getEmail() + "_" + kakaoProfile.getId()); //   // 예를 들어 유저네임 중복 안되게 하기 위한 tip
-        logger.info("####################### 환자 이름 : " + kakaoProfile.getProperties().getNickname());
+       logger.info("####################### 환자 이름 : " + kakaoProfile.getProperties().getProfile_nickname());
         logger.info("####################### 환자 이메일 :" + kakaoProfile.getKakao_account().getEmail());
         // UUID란 -> 중복되지 않는 어떤 특정 값을 만들어내는 알고리즘
         //UUID garbagePassword = UUID.randomUUID();  // 임시방편으로 넣으 놓은 비밀번호임. (결국 쓰레기 비밀번호)
@@ -202,7 +202,7 @@ public class KakaoContorller {
         PatientJoinRequest kakaoRequest = PatientJoinRequest.builder()
                 .email(kakaoProfile.getKakao_account().getEmail())
                 .password(cosKey)
-                .name(kakaoProfile.getProperties().getNickname())
+                .name(kakaoProfile.getProperties().getProfile_nickname())
                 .gender("null")
                 .age(0)
                 .phoneNumber(0)
