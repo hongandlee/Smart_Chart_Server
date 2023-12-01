@@ -21,7 +21,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws/chat")
-                .setAllowedOriginPatterns("http://localhost:8080", "http://localhost:3000", "http://13.125.227.145:8080", "https://smartchart.vercel.app")
+                .setAllowedOriginPatterns("http://localhost:8080", "http://localhost:3000", "http://13.125.227.145:8080", "https://smartchart.vercel.app","https://smartchart.p-e.kr")
                 .withSockJS();
     }
 
