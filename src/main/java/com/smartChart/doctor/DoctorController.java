@@ -26,7 +26,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/doctor")
 @RequiredArgsConstructor
-public class DoctorController {
+public class  DoctorController {
 
     private final DoctorService doctorService;
 
