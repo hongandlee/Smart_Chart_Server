@@ -42,11 +42,7 @@ public class KakaoContorller {
 
 
 
-    @RequestMapping(value = "/**/{path:[^\\.]*}")
-    public String forward() {
-        return "forward:/index.html";
-    }
-
+    
     /**
      * 카카오 로그인
      * @param request
