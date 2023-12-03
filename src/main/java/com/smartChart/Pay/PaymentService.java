@@ -53,6 +53,7 @@ public class PaymentService {
             //아임포트에서 서버쪽 결제내역과 DB의 결제 내역 금액이 같으면 DB에 결제 정보를 삽입.
             reservation = reservation.toBuilder()
                     .amount(amount)
+                    .patientPaymentStatus("완료")
                     .build();
             reservationRepository.save(reservation);
         }
