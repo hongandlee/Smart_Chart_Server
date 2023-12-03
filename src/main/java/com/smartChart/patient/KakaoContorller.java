@@ -42,7 +42,10 @@ public class KakaoContorller {
 
 
 
-   
+    @GetMapping("/index.html")
+    public String forward() {
+        return "forward:/index.html";
+    }
 
 
     /**
