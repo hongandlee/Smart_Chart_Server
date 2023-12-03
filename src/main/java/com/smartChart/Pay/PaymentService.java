@@ -49,7 +49,8 @@ public class PaymentService {
         } else if (amount!=sum){
             log.info("##########결제된 금액과 Database 서버 내역의 금액이 다릅니다.");
             throw new RuntimeException("결제된 금액과 Database 서버 내역의 금액이 다릅니다."); //DB에서 물건가격과 실제 결제금액이 일치하는지 확인하기. 만약 다르면 예외 발생시키기.!
-        } else {
+        }
+        else {
             //아임포트에서 서버쪽 결제내역과 DB의 결제 내역 금액이 같으면 DB에 결제 정보를 삽입.
             reservation = reservation.toBuilder()
                     .amount(amount)

@@ -29,6 +29,6 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         // /auth/kakao/callback 경로로 요청이 오면 index.html로 포워딩
-        registry.addViewController("/auth/kakao/callback").setViewName("forward:/index.html");
+        registry.addViewController("/auth/kakao/callback").setViewName("forward:/soket.html");
     }
 }
