@@ -42,10 +42,7 @@ public class KakaoContorller {
 
 
 
-    @GetMapping("/**/{[path:[^\\.]*}")
-    public String forward() {
-        return "forward:/index.html";
-    }
+   
 
 
     /**
