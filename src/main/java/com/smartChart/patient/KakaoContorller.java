@@ -16,9 +16,9 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,9 +42,9 @@ public class KakaoContorller {
 
 
 
-    @GetMapping(value = {"/", "/{[path:[^\\.]*}"})
+    @RequestMapping(value = "/**/{path:[^\\.]*}")
     public String forward() {
-        return "/index.html";
+        return "forward:/index.html";
     }
 
     /**
