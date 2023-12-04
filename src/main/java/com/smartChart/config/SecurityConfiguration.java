@@ -28,12 +28,12 @@ public class SecurityConfiguration  {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .antMatchers( "/patient/**")
+                .antMatchers(  "/patient/**","/error")
                 .permitAll()
                 .antMatchers("/codes/**").permitAll()
                 .antMatchers( "/doctor/**")
                 .permitAll()
-                .antMatchers("/","/error", "/oauth2/**","/login/oauth2/**","/auth/**","/auth/kakao/callback","/websocket/**", "/static/**","/api/**","/naver/**","/kakaoPay/**", "/vertifyIamport/**","/chatting-view/**","/adminAppointment/**", "/adminWaitingList/**","/hospitalPage/**","/accounting/**","https://smartchart.vercel.app/**","https://smartchart.vercel.app/auth/kakao/callback").permitAll()
+                .antMatchers("/","/css/**","/socket.html","/main.js","/images/**","/js/**","/image/**","/oauth2/**","/login/oauth2/**","/auth/**","/auth/kakao/callback","/websocket/**", "/static/**","/api/**","/naver/**","/kakaoPay/**", "/vertifyIamport/**","/chatting-view/**","/adminAppointment/**", "/adminWaitingList/**","/hospitalPage/**","/accounting/**","https://smartchart.vercel.app/**","https://smartchart.vercel.app/auth/kakao/callback").permitAll()
                 .antMatchers("/login", "/join").permitAll() // 로그인, 회원가입 접근 가능
                 .antMatchers("/ws/**","/ws/chat").permitAll()
 
@@ -44,7 +44,7 @@ public class SecurityConfiguration  {
 //
 //
 //                .antMatchers( "/doctor/**").hasRole(DOCTOR.name())
-//
+//H
 //                .antMatchers(GET,"/doctor/**").hasAuthority(DOCTOR_READ.name())
 //                .antMatchers(POST,"/doctor/**").hasAuthority(DOCTOR_CREATE.name())
 //                .antMatchers(PATCH,"/doctor/**").hasAuthority(DOCTOR_UPDATE.name())
