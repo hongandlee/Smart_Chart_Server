@@ -2,7 +2,6 @@ package com.smartChart.BackEnd;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
@@ -26,9 +25,9 @@ public class WebConfig implements WebMvcConfigurer {
 
 
 
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        // /auth/kakao/callback 경로로 요청이 오면 index.html로 포워딩
-        registry.addViewController("/auth/kakao/callback").setViewName("forward:/soket.html");
-    }
+//    @Override
+//    public void addViewControllers(ViewControllerRegistry registry) {
+//        // /auth/kakao/callback 경로로 요청이 오면 index.html로 포워딩
+//        registry.addViewController("/auth/kakao/callback").setViewName("forward:/soket.html");
+//    }
 }
