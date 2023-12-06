@@ -13,6 +13,7 @@ import com.smartChart.patient.dto.ResponseDto.PatientLoginResponse;
 import com.smartChart.patient.entity.Patient;
 import com.smartChart.reservation.entity.Reservation;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -30,7 +31,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-
+@Slf4j
 @RestController
 @RequestMapping("/patient")
 @RequiredArgsConstructor
@@ -100,6 +101,7 @@ public class PatientController {
     ) {
         // token
         AuthenticationResponse authenticationResponse = service.authenticate(request);
+        logger.info("환자 로그인 reqeust =", request);
 
         PatientLoginResponse response = new PatientLoginResponse();
 
