@@ -100,3 +100,7 @@ naver:
     secret: 5rdfphHO_E
 
 
+logging:
+  file:
+    path: /smart_chart/log/directory
+    name: my-application.log
