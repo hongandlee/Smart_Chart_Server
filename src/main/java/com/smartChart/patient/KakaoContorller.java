@@ -47,7 +47,7 @@ public class KakaoContorller {
      * @param request
      * @return
      */
-    @PostMapping("/auth/kakao/callback")
+    @PostMapping("/code")
     public ResponseEntity<Message> kakaoCallback(
             @RequestBody kakaoRequest request,
             HttpServletRequest servletRequest) {
