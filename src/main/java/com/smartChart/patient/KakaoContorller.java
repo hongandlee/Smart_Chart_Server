@@ -8,6 +8,7 @@ import com.smartChart.patient.Service.PatientService;
 import com.smartChart.patient.dto.RequestDto.*;
 import com.smartChart.patient.entity.Patient;
 import com.smartChart.patient.entity.Role;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.nio.charset.Charset;
 
+@Slf4j
 @Controller
 public class KakaoContorller {
 
@@ -47,7 +49,7 @@ public class KakaoContorller {
      * @param request
      * @return
      */
-    @PostMapping("/code")
+    @PostMapping("/auth/kakao/callback")
     public ResponseEntity<Message> kakaoCallback(
             @RequestBody kakaoRequest request,
             HttpServletRequest servletRequest) {
@@ -71,6 +73,7 @@ public class KakaoContorller {
 
         String code = request.getCode();
 
+        logger.info("code log =", code);
 
         RestTemplate rt = new RestTemplate();
 
