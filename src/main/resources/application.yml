@@ -102,5 +102,5 @@ naver:
 
 logging:
   file:
-    path: /smart_chart/log/directory
+    path: /home/ubuntu/smart_chart/log/directory
     name: my-application.log
