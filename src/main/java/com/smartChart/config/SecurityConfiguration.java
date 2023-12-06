@@ -33,7 +33,7 @@ public class SecurityConfiguration  {
                 .antMatchers("/codes/**").permitAll()
                 .antMatchers( "/doctor/**")
                 .permitAll()
-                .antMatchers("/","/css/**","/kakao.html","/socket.html","/main.js","/images/**","/js/**","/image/**","/oauth2/**","/login/oauth2/**","/auth/**","/auth/kakao/callback","/websocket/**", "/static/**","/api/**","/naver/**","/kakaoPay/**", "/vertifyIamport/**","/chatting-view/**","/adminAppointment/**", "/adminWaitingList/**","/hospitalPage/**","/accounting/**","https://smartchart.vercel.app/**","https://smartchart.vercel.app/auth/kakao/callback/**","http://13.125.227.145/**").permitAll()
+                .antMatchers("/","/css/**","/kakao.html","/socket.html","/main.js","/images/**","/js/**","/image/**","/oauth2/**","/login/oauth2/**","/auth/**","/auth/kakao/callback","/websocket/**", "/static/**","/api/**","/naver/**","/kakaoPay/**", "/vertifyIamport/**","/chatting-view/**","/adminAppointment/**", "/adminWaitingList/**","/hospitalPage/**","/accounting/**","https://smartchart.vercel.app/**","https://smartchart.vercel.app/auth/kakao/callback/**","http://13.125.227.145/**","https://13.125.227.145/**").permitAll()
                 .antMatchers("/login", "/join").permitAll() // 로그인, 회원가입 접근 가능
                 .antMatchers("/ws/**","/ws/chat").permitAll()
 
