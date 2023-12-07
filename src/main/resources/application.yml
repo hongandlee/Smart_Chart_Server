@@ -120,7 +120,3 @@ logging:
     name: my-application.log
 
 
-# 프록시 설정
-proxy:
-  host: your-backend-server-ip
-  port: your-backend-server-port
