@@ -105,7 +105,7 @@ public class TreatmentStatementController {
             treatmentStatement.setTreatment(treatmentStatementDTO.getTreatment());
             treatmentStatement.setCost(treatmentStatementDTO.getCost());
             treatmentStatementsToSave.add(treatmentStatement);
-            reservation.setReservationStatus("완료");
+            reservation.setPaymentStatus("완료");
         }
         treatmentStatementRepository.saveAll(treatmentStatementsToSave);
 
