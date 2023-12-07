@@ -16,4 +16,6 @@ public interface WaitingInterface {
 
     String getPatientName();
 
+    String getWaitingStatus();
+
 }
