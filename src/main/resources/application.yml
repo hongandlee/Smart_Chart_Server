@@ -1,6 +1,20 @@
 server:
-  address: 0.0.0.0
   port: 8080
+
+# 배포한 서버의 주소
+backend:
+  url: http://13.125.227.145:8080
+
+# 프록시 설정
+tomcat:
+  accesslog:
+    enabled: true  # 접근 로그를 활성화
+
+  connector:
+    scheme: http
+    proxyName: 13.125.227.145  # 프록시 서버의 IP 주소
+    proxyPort: 8080  # 프록시 서버의 포트
+
 
 
 
@@ -104,3 +118,9 @@ logging:
   file:
     path: /home/ubuntu/smart_chart/log/directory
     name: my-application.log
+
+
+# 프록시 설정
+proxy:
+  host: your-backend-server-ip
+  port: your-backend-server-port
