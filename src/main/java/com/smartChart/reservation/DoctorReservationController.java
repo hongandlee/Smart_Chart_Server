@@ -7,6 +7,7 @@ import com.smartChart.doctor.service.DoctorService;
 import com.smartChart.patient.Service.PatientService;
 import com.smartChart.reservation.dto.*;
 import com.smartChart.reservation.entity.Reservation;
+import com.smartChart.reservation.repository.ReservationRepository;
 import com.smartChart.reservation.service.ReservationService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -34,6 +35,10 @@ public class DoctorReservationController {
     private final DoctorService doctorService;
 
     private final ReservationService reservationService;
+
+    private final ReservationRepository reservationRepository;
+
+
 
 
     public static final String CURRENT_DATE = LocalDate.now().toString();
@@ -129,6 +134,12 @@ public class DoctorReservationController {
         //db
         Reservation reservation = reservationService.findById(request.getReservationId());
         reservation.setWaitingStatus(request.getWaitingStatus());
+        if(request.getWaitingStatus() != null) {
+            reservation = reservation.toBuilder()
+                    .waitingStatus(request.getWaitingStatus())
+                    .build();
+            reservation = reservationRepository.save(reservation);
+        }
 
         // message
         HttpHeaders headers= new HttpHeaders();
