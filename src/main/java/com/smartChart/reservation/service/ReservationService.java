@@ -30,6 +30,7 @@ public class ReservationService {
 
 
 
+
     // 예약 조회 by ID
     public Reservation findById(int reservationId) {
         return reservationRepository.findById(reservationId);

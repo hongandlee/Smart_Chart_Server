@@ -13,6 +13,7 @@ import java.util.Date;
 
 @ToString // 객체 예쁘게 출력
 @Getter
+@Setter
 @AllArgsConstructor // 모든 값이 있는 생성자
 @NoArgsConstructor // 기본 생성자
 @Builder(toBuilder = true) // 수정 시 기존 객체 그대로, 세팅한 값만 변경

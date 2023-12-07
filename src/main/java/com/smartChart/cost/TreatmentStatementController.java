@@ -45,6 +45,7 @@ public class TreatmentStatementController {
     private final CostRepository costRepository;
 
 
+
     /**
      * 진료비 청구 화면 조회
      * @param reservationId
@@ -104,6 +105,7 @@ public class TreatmentStatementController {
             treatmentStatement.setTreatment(treatmentStatementDTO.getTreatment());
             treatmentStatement.setCost(treatmentStatementDTO.getCost());
             treatmentStatementsToSave.add(treatmentStatement);
+            reservation.setReservationStatus("완료");
         }
         treatmentStatementRepository.saveAll(treatmentStatementsToSave);
 
