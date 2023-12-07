@@ -26,4 +26,6 @@ public interface ReservationInterface {
     String getReservationStatus();
 
     String getPaymentStatus();
+
+
 }

@@ -51,6 +51,10 @@ public class Reservation {
     private String patientPaymentStatus;
 
 
+    @Column(name = "waitingStatus")
+    private String waitingStatus;
+
+
     @Column(name = "amount")
     private Integer amount;
 

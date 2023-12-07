@@ -2,21 +2,23 @@ package com.smartChart.reservation;
 
 
 import com.smartChart.Response.DataResponse;
+import com.smartChart.Response.Message;
 import com.smartChart.doctor.service.DoctorService;
 import com.smartChart.patient.Service.PatientService;
-import com.smartChart.reservation.dto.ReservationInterface;
-import com.smartChart.reservation.dto.SearchRequest;
-import com.smartChart.reservation.dto.SearchResponse;
-import com.smartChart.reservation.dto.WaitingInterface;
+import com.smartChart.reservation.dto.*;
+import com.smartChart.reservation.entity.Reservation;
 import com.smartChart.reservation.service.ReservationService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -88,7 +90,11 @@ public class DoctorReservationController {
     }
 
 
-
+    /**
+     * 의사 환자 대기 관리
+     * @param session
+     * @return
+     */
     @GetMapping("/waiting-list-view")
     public ResponseEntity<DataResponse> waiting_list_view(
             HttpSession session) {
@@ -104,6 +110,35 @@ public class DoctorReservationController {
         response.setData(reservationList);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+
+    /**
+     * 의사 환자 대기 관리 데이터 변경
+     * @param request
+     * @return
+     */
+    @PatchMapping("/waiting-list-status")
+    public ResponseEntity<Message> waiting_list_status(
+            @RequestBody WaitingRequest request,
+            HttpSession session
+    ){
+        // session
+        Integer doctorId = (Integer) session.getAttribute("doctorId");
+
+        //db
+        Reservation reservation = reservationService.findById(request.getReservationId());
+        reservation.setWaitingStatus(request.getWaitingStatus());
+
+        // message
+        HttpHeaders headers= new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+        Message message = new Message();
+
+        message.setCode(200);
+        message.setMessage("대기 상태가 변경되었습니다.");
+
+        return new ResponseEntity<>(message, headers, HttpStatus.OK);
     }
 
 

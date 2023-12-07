@@ -162,7 +162,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 
 
   // 환자 대기 관리 조회
-  @Query(value = "SELECT A.id, A.reservationDate AS reservationDate, A.reservationTime, B.name AS patientName\n" +
+  @Query(value = "SELECT A.id, A.reservationDate AS reservationDate, A.reservationTime,A.waitingStatus, B.name AS patientName\n" +
           "FROM reservation A\n" +
           "LEFT join patient AS B\n" +
           "on B.id = A.patientId\n" +

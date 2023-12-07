@@ -82,6 +82,7 @@ public class ReservationService {
                             .reservationStatus("미완료")
                             .paymentStatus("미완료")
                             .patientPaymentStatus("미완료")
+                            .waitingStatus("대기중")
                             .build());
             return reservation;
 
