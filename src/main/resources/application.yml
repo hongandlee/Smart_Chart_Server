@@ -3,7 +3,7 @@ server:
 
 # 배포한 서버의 주소
 backend:
-  url: http://13.125.227.145:8080
+  url: http://13.125.227.145
 
 # 프록시 설정
 tomcat:
