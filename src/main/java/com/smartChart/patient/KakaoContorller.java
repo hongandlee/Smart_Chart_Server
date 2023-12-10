@@ -5,7 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smartChart.Response.Message;
 import com.smartChart.config.JwtService;
 import com.smartChart.patient.Service.PatientService;
-import com.smartChart.patient.dto.RequestDto.*;
+import com.smartChart.patient.dto.RequestDto.KakaoProfile;
+import com.smartChart.patient.dto.RequestDto.OAuthToken;
+import com.smartChart.patient.dto.RequestDto.PatientJoinRequest;
+import com.smartChart.patient.dto.RequestDto.PatientLoginRequest;
 import com.smartChart.patient.entity.Patient;
 import com.smartChart.patient.entity.Role;
 import lombok.extern.slf4j.Slf4j;
@@ -17,8 +20,7 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
@@ -49,9 +51,9 @@ public class KakaoContorller {
      * @param request
      * @return
      */
-    @PostMapping("/auth/kakao/callback")
+    @GetMapping("/auth/kakao/callback")
     public ResponseEntity<Message> kakaoCallback(
-            @RequestBody kakaoRequest request,
+//            @RequestBody kakaoRequest request,
             HttpServletRequest servletRequest) {
 
        //
@@ -66,12 +68,12 @@ public class KakaoContorller {
         //RestTemplate
 
         // 프론트엔드에서 코드를 받지 않고, 백엔드에서 직접 HttpServletRequest를 통해 코드 추출
-        //String code = request.getParameter("code");
+        String code = servletRequest.getParameter("code");
 
 
 
 
-        String code = request.getCode();
+  //      String code = request.getCode();
 
         logger.info("code log =", code);
 
@@ -86,7 +88,7 @@ public class KakaoContorller {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type","authorization_code");
         params.add("client_id","338b152f34fe502634c3e709272cd726");
-        params.add("redirect_uri","https://smartchart.vercel.app/auth/kakao/callback");
+        params.add("redirect_uri","http://13.125.227.145:8080/auth/kakao/callback");
         params.add("code",code);
 
         
