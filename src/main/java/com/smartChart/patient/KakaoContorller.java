@@ -80,15 +80,12 @@ public class KakaoContorller {
         RestTemplate rt = new RestTemplate();
 
 
-        // 카카오톡 로그인이 성공한 경우, React 주소로 리다이렉트
-        String redirectUrl = "https://smartchart.vercel.app";  // React 앱의 주소로 변경
 
-
-
+        
         //HttpHeader 오브젝트 생성
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-type","application/x-www-form-urlencoded;charset=utf-8");
-        headers.add("Location", redirectUrl);
+
 
         // * 변수를 만들어서 하는게 더 좋음.
         // HttpBody 오브젝트 생성
@@ -278,10 +275,7 @@ public class KakaoContorller {
         message.setMessage("카카오톡 로그인 성공");
 
 
-         return ResponseEntity.status(HttpStatus.FOUND)
-                .header(HttpHeaders.CONTENT_TYPE, "application/x-www-form-urlencoded;charset=utf-8")
-                .header(HttpHeaders.LOCATION, redirectUrl)
-                .build();
+        return new ResponseEntity<>(message,  HttpStatus.OK);
     }
 
 
