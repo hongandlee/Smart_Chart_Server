@@ -278,7 +278,7 @@ public class KakaoContorller {
         message.setMessage("카카오톡 로그인 성공");
 
 
-        return new ResponseEntity<>(headers, HttpStatus.FOUND);
+        return new ResponseEntity<>(message,  HttpStatus.OK);
     }
 
 
