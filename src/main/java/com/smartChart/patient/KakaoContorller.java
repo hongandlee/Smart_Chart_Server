@@ -81,7 +81,7 @@ public class KakaoContorller {
 
 
 
-        
+
         //HttpHeader 오브젝트 생성
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-type","application/x-www-form-urlencoded;charset=utf-8");
@@ -92,7 +92,7 @@ public class KakaoContorller {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type","authorization_code");
         params.add("client_id","338b152f34fe502634c3e709272cd726");
-        params.add("redirect_uri","http://13.125.227.145:8080/auth/kakao/callback");
+        params.add("redirect_uri","https://smartchart.vercel.app/auth/kakao/callback");
         params.add("code",code);
 
         
