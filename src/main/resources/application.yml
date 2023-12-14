@@ -12,8 +12,8 @@ tomcat:
 
   connector:
     scheme: http
-    proxyName: 13.125.227.145  # 프록시 서버의 IP 주소
-    proxyPort: 8080  # 프록시 서버의 포트
+#    proxyName: 13.125.227.145  # 프록시 서버의 IP 주소
+#    proxyPort: 8080  # 프록시 서버의 포트
 
 
 
