@@ -1,19 +1,17 @@
 server:
-  port: 8080
+  port: 8080  # HTTP 프로토콜을 위한 포트
 
-# 배포한 서버의 주소
 backend:
-  url: http://13.125.227.145
+  url: https://www.smartchart.store  # 수정된 도메인
 
-# 프록시 설정
 tomcat:
   accesslog:
-    enabled: true  # 접근 로그를 활성화
+    enabled: true
 
   connector:
     scheme: https
-#    proxyName: 13.125.227.145  # 프록시 서버의 IP 주소
-#    proxyPort: 8080  # 프록시 서버의 포트
+    proxyName: www.smartchart.store  # 도메인으로 수정
+    proxyPort: 443  # HTTPS는 일반적으로 443 포트 사용
 
 
 
@@ -55,7 +53,7 @@ spring:
             client-name: Kakao
             client-authentication-method: POST
             authorization-grant-type: authorization_code
-            redirect-uri: https://smartchart.vercel.app/auth/kakao/callback
+            redirect-uri: https://www.smartchart.store/auth/kakao/callback
 
             # 네이버, 카카오는 OAuth2.0 공식 지원대상이 아니라서 provider 설정이 필요하다.
             # 요청주소도 다르고, 응답 데이터도 다르기 때문이다.
