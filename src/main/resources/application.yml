@@ -1,12 +1,8 @@
 server:
-  port: 8080  # HTTP 프로토콜을 위한 포트
+  port: 80  # HTTP 프로토콜을 위한 포트
 
 backend:
   url: http://13.125.227.145  # 백엔드 서버 주소
-
-nginx:
-  server_name: smartchart.shop;  # 도메인으로 수정
-  listen_port: 80  # HTTP는 일반적으로 80 포트 사용
 
 
 
