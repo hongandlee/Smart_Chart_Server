@@ -2,16 +2,12 @@ server:
   port: 8080  # HTTP 프로토콜을 위한 포트
 
 backend:
-  url: https://www.smartchart.store  # 수정된 도메인
+  url: http://13.125.227.145  # 백엔드 서버 주소
 
-tomcat:
-  accesslog:
-    enabled: true
+nginx:
+  server_name: smartchart.shop;  # 도메인으로 수정
+  listen_port: 80  # HTTP는 일반적으로 80 포트 사용
 
-  connector:
-    scheme: https
-    proxyName: www.smartchart.store  # 도메인으로 수정
-    proxyPort: 443  # HTTPS는 일반적으로 443 포트 사용
 
 
 
