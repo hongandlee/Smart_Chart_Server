@@ -5,7 +5,7 @@
 
 //    @RequestMapping("/error")
 //    public String handleError() {
-//        return "/index.html";
+//        return "/kakao.html";
 //    }
 //
 //
