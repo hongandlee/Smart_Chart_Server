@@ -1,7 +1,6 @@
 server:
   port: 8080  # HTTP 프로토콜을 위한 포트
-  servlet:
-    context-path: /api
+
 
 backend:
   url: http://13.125.227.145  # 백엔드 서버 주소
