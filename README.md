@@ -37,7 +37,8 @@
 <br><br><br><br>
 
 
-<img width="1145" alt="스크린샷 2023-12-18 오후 5 52 25" src="https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/2399fb46-b698-4578-b0ce-6805eec96b6d">
+
+![스크린샷 2023-12-18 오후 5 55 43](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/c890b463-4f50-4c1f-97fe-b00a5b053102)
 
 <br><br><br><br>
 <img width="813" alt="스크린샷 2023-09-12 오후 7 52 50" src="https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/eed6601f-d69e-4166-85a3-53a94b54cbab">
