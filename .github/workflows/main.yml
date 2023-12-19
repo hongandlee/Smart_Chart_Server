@@ -43,9 +43,9 @@ jobs:
 
       - name: Set up environment
         run: |
-          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}"
-          echo "KAKAO_CLIENT_SECRET=${{ secrets.KAKAO_CLIENT_SECRET }}"
-          echo "Contents of .env file:"
+          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
+          echo "KAKAO_CLIENT_SECRET=${{ secrets.KAKAO_CLIENT_SECRET }}" >> .env
+          # Print the contents of .env file for debugging
           cat .env
 
       
