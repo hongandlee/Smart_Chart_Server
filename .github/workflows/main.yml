@@ -47,20 +47,13 @@ jobs:
       - name: Find .env file
         run: find /home/runner/work/Smart_Chart_Server/Smart_Chart_Server -name .env
 
+      - name: Create .env file
+        run: |
+          echo "DB_PASSWORD=your_database_password" >> /home/runner/work/Smart_Chart_Server/Smart_Chart_Server/.env
+          echo "KAKAO_CLIENT_SECRET=your_kakao_client_secret" >> /home/runner/work/Smart_Chart_Server/Smart_Chart_Server/.env
+
       - name: Print .env file content
         run: cat /home/runner/work/Smart_Chart_Server/Smart_Chart_Server/.env
-        env:
-          PROJECT_NAME: smart_chart
-          BUCKET_NAME: smartchartbucket
-          CODE_DEPLOY_APP_NAME: moduform_cicd
-          DEPLOYMENT_GROUP_NAME: moduform_instance
-          JAVA_HOME_17.0.9_x64: /opt/hostedtoolcache/jdk/17.0.9/x64
-          JAVA_HOME: /opt/hostedtoolcache/jdk/17.0.9/x64
-          JAVA_HOME_17_0_9_X64: /opt/hostedtoolcache/jdk/17.0.9/x64
-          AWS_DEFAULT_REGION: ap-northeast-2
-          AWS_REGION: ap-northeast-2
-          aws-access-key-id: ${{ secrets.CICD_ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.CICD_SECRET_KEY }}
 
 
       - name: List workspace contents
