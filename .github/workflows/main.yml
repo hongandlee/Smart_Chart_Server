@@ -42,15 +42,6 @@ jobs:
           aws-region: ap-northeast-2
 
 
-      - name: Set Yaml
-        uses: microsoft/variable-substitution@v1
-        with:
-         files: ./src/main/resources/application.yml 
-        env:
-         spring.datasource.password: ${{ secrets.DB_PASSWORD }} 
-         security.oauth2.client.registration.kakao.client-secret: ${{ secrets.KAKAO_CLIENT_SECRET }}
-
-
       
       - name: Upload to S3
         run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://$BUCKET_NAME/$PROJECT_NAME/$GITHUB_SHA.zip
