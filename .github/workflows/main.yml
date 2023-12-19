@@ -47,6 +47,9 @@ jobs:
       - name: Find .env file
         run: find /home/runner/work/Smart_Chart_Server/Smart_Chart_Server -name .env
 
+      - name: Create .env file
+        run: echo "DB_PASSWORD=your_password" >> /home/runner/work/Smart_Chart_Server/Smart_Chart_Server/.env
+
 
       - name: List workspace contents
         run: ls -R /github/workspace
