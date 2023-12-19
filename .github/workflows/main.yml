@@ -43,6 +43,7 @@ jobs:
 
       - name: Print current directory
         run: pwd
+        working-directory: ./Smart_Chart_Server/Smart_Chart_Server
 
       - name: Create .env file
         run: |
@@ -52,8 +53,15 @@ jobs:
       - name: Print .env file content
         run: cat .env
 
-      - name: List workspace contents
-        run: ls -R /github/workspace
+      - name: Set up environment
+        run: |
+          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
+          echo "KAKAO_CLIENT_SECRET=${{ secrets.KAKAO_CLIENT_SECRET }}" >> .env
+          # Print the contents of .env file for debugging
+          cat .env
+        working-directory: /home/runner/work/Smart_Chart_Server/Smart_Chart_Server
+
+      
 
 
 
