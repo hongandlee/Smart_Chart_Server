@@ -43,8 +43,10 @@ jobs:
 
       - name: Set up environment
         run: |
-          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
-          echo "KAKAO_CLIENT_SECRET=${{ secrets.KAKAO_CLIENT_SECRET }}" >> .env
+          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}"
+          echo "KAKAO_CLIENT_SECRET=${{ secrets.KAKAO_CLIENT_SECRET }}"
+          echo "Contents of .env file:"
+          cat .env
 
       
       - name: Upload to S3
