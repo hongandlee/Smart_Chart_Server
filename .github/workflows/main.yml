@@ -48,6 +48,10 @@ jobs:
           # Print the contents of .env file for debugging
           cat .env
 
+
+      - name: Find .env file
+        run: find /github/workspace -name .env
+
       
       - name: Upload to S3
         run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://$BUCKET_NAME/$PROJECT_NAME/$GITHUB_SHA.zip
