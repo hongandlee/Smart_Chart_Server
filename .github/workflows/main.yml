@@ -44,27 +44,17 @@ jobs:
       - name: Print current directory
         run: pwd
 
-      - name: Find .env file
-        run: find /home/runner/work/Smart_Chart_Server/Smart_Chart_Server -name .env
-
       - name: Create .env file
         run: |
-          echo "DB_PASSWORD=your_database_password" >> /home/runner/work/Smart_Chart_Server/Smart_Chart_Server/.env
-          echo "KAKAO_CLIENT_SECRET=your_kakao_client_secret" >> /home/runner/work/Smart_Chart_Server/Smart_Chart_Server/.env
+          echo "DB_PASSWORD=your_database_password" >> .env
+          echo "KAKAO_CLIENT_SECRET=your_kakao_client_secret" >> .env
 
       - name: Print .env file content
-        run: cat /home/runner/work/Smart_Chart_Server/Smart_Chart_Server/.env
-
+        run: cat .env
 
       - name: List workspace contents
         run: ls -R /github/workspace
 
-      - name: Set up environment
-        run: |
-          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
-          echo "KAKAO_CLIENT_SECRET=${{ secrets.KAKAO_CLIENT_SECRET }}" >> .env
-          # Print the contents of .env file for debugging
-          cat .env
 
 
       
