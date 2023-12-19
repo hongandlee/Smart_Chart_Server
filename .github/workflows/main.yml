@@ -44,6 +44,9 @@ jobs:
       - name: Print current directory
         run: pwd
 
+      - name: Find .env file
+        run: find /home/runner/work/Smart_Chart_Server/Smart_Chart_Server -name .env
+
 
       - name: List workspace contents
         run: ls -R /github/workspace
@@ -55,9 +58,6 @@ jobs:
           # Print the contents of .env file for debugging
           cat .env
 
-
-      - name: Find .env file
-        run: find /github/workspace -name .env
 
       
       - name: Upload to S3
