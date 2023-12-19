@@ -49,7 +49,8 @@ jobs:
         run: |
           echo "DB_PASSWORD=your_database_password" >> .env
           echo "KAKAO_CLIENT_SECRET=your_kakao_client_secret" >> .env
-
+      - name: Remove duplicates from .env
+        run: awk '!seen[$0]++' .env > .env.tmp && mv .env.tmp .env
       - name: Print .env file content
         run: cat .env
 
@@ -57,9 +58,8 @@ jobs:
         run: |
           echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
           echo "KAKAO_CLIENT_SECRET=${{ secrets.KAKAO_CLIENT_SECRET }}" >> .env
-          # Print the contents of .env file for debugging
-          cat .env
         working-directory: /home/runner/work/Smart_Chart_Server/Smart_Chart_Server
+      
 
       
 
