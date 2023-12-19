@@ -43,7 +43,7 @@ jobs:
 
       - name: Print current directory
         run: pwd
-        working-directory: ./Smart_Chart_Server
+      
 
       - name: Create .env file
         run: |
