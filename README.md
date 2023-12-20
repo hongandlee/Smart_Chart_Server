@@ -16,8 +16,8 @@
 
 <br>
 
- - Back-End : JAVA , SpringBoot, Spring, SpringSecurity, JWT, WebSocket, SocketJS, Stomp
- - DB : MySQL, MyBatis, JPA
+ - Back-End : JAVA , SpringBoot, Spring, SpringSecurity, JWT, WebSocket, SocketJS, Stomp , JPA
+ - DB : MySQL, MyBatis
  - SERVER : Ubuntu, AmazonS3, AmazonEC2, AmazonRDS, Github Actions, AmazonDeploy, Amazon AWS, NGINX
  - TOOLS : IntelliJ IDEA, POSTMAN, FIGMA, Github,  SpringToolSuit4, Visual Studio Code
 
