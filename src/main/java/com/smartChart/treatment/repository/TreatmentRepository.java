@@ -19,7 +19,7 @@ public interface TreatmentRepository extends JpaRepository<Treatment, Integer> {
             "from treatment AS B\n" +
             "join reservation AS A\n" +
             "on B.reservationId = A.id\n" +
-            "where B.id = :reservationId"
+            "where A.id = :reservationId"
     )
     public List<TreatmentInterface> finListByReservationId(
             @Param("reservationId") int reservationId);

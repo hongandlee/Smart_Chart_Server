@@ -30,6 +30,8 @@ public class TreatmentService {
         return reservationRepository.findByReservationId(reservationId);
     }
 
+
+
     // select - 의사 진료관리 조회2
     public List<DoctorTreatmentInterface2> selectTreatmentByReservationId2(int reservationId) {
         return reservationRepository.findByReservationId2(reservationId);

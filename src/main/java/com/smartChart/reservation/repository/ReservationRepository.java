@@ -103,6 +103,11 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 
 
 
+
+
+
+
+
   // 진료 관리 조회 2 - 과거 진료비, 총합
   @Query(nativeQuery = true, value =
           "select D.id, D.treatment, D.cost,\n" +

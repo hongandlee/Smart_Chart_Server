@@ -58,11 +58,26 @@ public class TreatmentController {
 
 
 
+
         TreatmentResponse response = new TreatmentResponse();
         response.setData(treatment);
+        response.setData2(treatmentInterfaces);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     /**
