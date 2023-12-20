@@ -36,7 +36,8 @@
 
 
 
-![스크린샷 2023-12-18 오후 5 55 43](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/c890b463-4f50-4c1f-97fe-b00a5b053102)
+![Service Architecture](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/67f82385-7118-4ba4-a37c-161988d45a16)
+
 
 <br><br><br><br>
 ![스크린샷 2023-11-20 오후 10 48 08](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/44af57d3-3cab-4e2d-937f-aac4b21d4fcf)
