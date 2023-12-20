@@ -1,6 +1,7 @@
 package com.smartChart.reservation.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +16,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class ReservationRequest {
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date reservationDate;
 
     private Time reservationTime;
