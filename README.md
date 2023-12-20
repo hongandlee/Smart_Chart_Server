@@ -8,16 +8,17 @@
 <br><br><br>
 
 ## Description
-- 프로젝트 기간 : 2023.09 ~ 2023.11 (백엔드 1명, 프론트 엔드 2명)
+**역할**
 
+- 백엔드 : 홍유리 (1명)
+- 프론트엔드 : 홍왕렬, 이정민 (2명)
+- API 설계 : 홍유리 (기여도 100%)
+- DB 설계 : 홍유리 (기여도 100%)
+- 콘텐츠 기획 및 제작 : 홍유리 (기여도 90%) , 홍왕렬, 이정민
 
+**기간**
 
-<br>
-
- - Back-End : JAVA , SpringBoot, Spring, SpringSecurity, JWT, WebSocket, SocketJS, Stomp , JPA
- - DB : MySQL, MyBatis
- - SERVER : Ubuntu, AmazonS3, AmazonEC2, AmazonRDS, Github Actions, AmazonDeploy, Amazon AWS, NGINX
- - TOOLS : IntelliJ IDEA, POSTMAN, FIGMA, Github,  SpringToolSuit4, Visual Studio Code
+- 2023.09 ~ 2023.11
 
 <br><br><br><br>
 
