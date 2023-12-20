@@ -8,7 +8,7 @@
 <br><br><br>
 
 ## Description
-- 프로젝트 기간 : 현재 진행 중 입니다. (백엔드 1명, 프론트 엔드 2명)
+- 프로젝트 기간 : 2023.09 ~ 2023.11 (백엔드 1명, 프론트 엔드 2명)
 
 <br>
 
@@ -18,7 +18,7 @@
 
  - Back-End : JAVA , SpringBoot, Spring, SpringSecurity, JWT, WebSocket, SocketJS, Stomp
  - DB : MySQL, MyBatis, JPA
- - SERVER : Ubuntu, AmazonS3, AmazonEC2, AmazonRDS, Github Actions, AmazonDeploy, Amazon AWS
+ - SERVER : Ubuntu, AmazonS3, AmazonEC2, AmazonRDS, Github Actions, AmazonDeploy, Amazon AWS, NGINX
  - TOOLS : IntelliJ IDEA, POSTMAN, FIGMA, Github,  SpringToolSuit4, Visual Studio Code
 
 <br><br><br><br>
