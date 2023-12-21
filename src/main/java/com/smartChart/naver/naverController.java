@@ -1,6 +1,7 @@
 package com.smartChart.naver;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,11 @@ public class naverController {
     // query=%EC%A3%BC%EC%8B%9D&display=10&
     // start=1&
     // sort=random
+
+
+    @Value("${naver-secret.key}")
+    private String naversecret;
+
 
     @PostMapping("/naver")
     public @ResponseBody String naver(
@@ -43,7 +49,7 @@ public class naverController {
         RequestEntity<Void> req = (RequestEntity<Void>) RequestEntity
                 .get(uri)
                 .header("X-Naver-Client-Id","yM8RRFvCe5dD3Ki1IREe")
-                .header("X-Naver-Client-Secret","5rdfphHO_E")
+                .header("X-Naver-Client-Secret",naversecret)
                 .build();
 
         //주소 로그 확인
