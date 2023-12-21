@@ -1,5 +1,6 @@
 package com.smartChart.mail;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -9,13 +10,24 @@ import java.util.Properties;
 
 @Configuration
 public class MailConfig {
+
+    @Value("${mailUsername.key}")
+    private String mailUsername;
+
+
+    @Value("${mailPassword.key}")
+    private String mailPassword;
+
+
+
+
     @Bean
     public JavaMailSender javaMailService() {
         JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
 
         javaMailSender.setHost("smtp.gmail.com");
-        javaMailSender.setUsername("dbfl720@gmail.com");
-        javaMailSender.setPassword("lavwqdbcspqkjaxm");
+        javaMailSender.setUsername(mailUsername);
+        javaMailSender.setPassword(mailPassword);
 
         javaMailSender.setPort(587);
 
