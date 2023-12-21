@@ -52,14 +52,14 @@
     - Nginx로 HTTPS 구축 시 발생한 이슈 해결
         - Nginx와 같은 포트 번호사용을 인한 무한루프 발생으로 다른 포트 적용(8080)으로 해결
         
-        [Let's Encrypt와 Nginx로 HTTPS 만들기](https://dbfl720.tistory.com/878)
+      [Let's Encrypt와 Nginx로 HTTPS 만들기](https://dbfl720.tistory.com/878)
       <br><br>  
 
 3. 병원 매출관리를 위한  다양한 조회 로직 구현
     - 월별, 년도별, 일별, 주간별, 기간별, 나이별, 성별, 최신순, 매출순
     - 월별 성별에 따른 조회 JPA
     
-    [월별 성별에 따른 조회 JPA - nativeQuery](https://dbfl720.tistory.com/849)
+      [월별 성별에 따른 조회 JPA - nativeQuery](https://dbfl720.tistory.com/849)
      <br><br>
      
 4. Spring Security를 이용한 개발 및 이슈처리
