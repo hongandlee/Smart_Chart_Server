@@ -36,7 +36,7 @@ public class  DoctorController {
 
 
     /**
-     * 회원가입
+     * 회원가입 **
      *
      * @param request
      * @return
