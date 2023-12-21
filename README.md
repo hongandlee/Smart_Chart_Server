@@ -5,9 +5,9 @@
 - 의사는 예약/진료 관리, 환자 대기 관리, 매출관리, 실시간 진료상담을 이용할 수 있습니다.
 <br><br>
 
-Smart_Chart 링크 : https://smartchart.vercel.app/ <br>
-의사  - ID: doctor@gmail.com     / password : doctor <br>
-환자 - ID : patient@gmail.com     / password : patient 
+  Smart_Chart 링크 : https://smartchart.vercel.app/ <br>
+  의사  - ID: doctor@gmail.com     / password : doctor <br>
+  환자 - ID : patient@gmail.com     / password : patient 
 
 <br><br><br><br>
 
