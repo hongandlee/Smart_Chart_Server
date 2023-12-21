@@ -29,7 +29,7 @@ public class PaymentService {
     /**
      * 아임포트 서버쪽 결제내역과 DB에 물건가격을 비교하는 서비스.
      * 다름 -> 예외 발생
-     * 같음 -> 결제정보를 DB에 저장
+     * 같음 -> 결제정보를 DB에 저장!!
      * @param irsp (아임포트쪽 결제 내역 조회 정보)
      * @param reservationId (내 DB에서 물건가격 알기위한  번호)
      */
