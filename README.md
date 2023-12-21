@@ -1,11 +1,14 @@
 # ✨ Smart_Chart_Server
 
-- 환자와 의사를 위해 병원에서 빠른 일처리를 돕는 smart_chart 서비스 입니다. 환자는 병원 예약, 진료비 내기, 기본 건강체크, 실시간 진료상담을 할 수 있으며,
-의사는 예약/진료 관리, 환자 대기 관리, 매출관리, 실시간 진료상담 등의 서비스를 이용할 수 있습니다.<br>
+- 환자와 의사를 위해 병원에서 빠른 일처리를 돕는 smart_chart 서비스 입니다.
+- 환자는 병원 예약, 진료비 내기, 기본 건강체크, 실시간 진료상담을 이용할 수 있습니다.
+- 의사는 예약/진료 관리, 환자 대기 관리, 매출관리, 실시간 진료상담을 이용할 수 있습니다.
+<br><br>
 
-Smart_Chart 링크 : https://smartchart.vercel.app/ <br>
-의사  - ID: doctor@gmail.com     / password : doctor <br>
-환자 - ID : patient@gmail.com     / password : patient 
+
+    Smart_Chart 링크 : https://smartchart.vercel.app/ <br>
+    의사  - ID: doctor@gmail.com     / password : doctor <br>
+    환자 - ID : patient@gmail.com     / password : patient 
 
 <br><br><br><br>
 
