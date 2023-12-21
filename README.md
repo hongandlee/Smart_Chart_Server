@@ -5,7 +5,7 @@
 
 
 
-<br><br><br>
+<br><br><br><br>
 
 ## Description
 **역할**
@@ -15,11 +15,58 @@
 - API 설계 : 홍유리 (기여도 100%)
 - DB 설계 : 홍유리 (기여도 100%)
 - 콘텐츠 기획 및 제작 : 홍유리 (기여도 90%) , 홍왕렬, 이정민
-<br><br>
+<br>
 
 **기간**
 
-- 2023.09 ~ 2023.11
+- 2023.09 ~ 2023.12
+<br><br><br><br>
+
+## **핵심 기능**
+
+- Chart.js로 병원 매출관리 조회 기능 (월별, 년도별, 일별, 주간별, 기간별, 나이별, 성별, 최신순, 매출순)
+- Websocket을 이용한 실시간 진료 상담을 위한 실시간 채팅 기능
+- i’mort, KakaoPay를 이용한 치료비 결제 기능
+- 네이버 지역정보 검색 기능
+- Gamil SMTP로 예약 확정 체크 문자 서비스
+- 오늘의 환자 대기 관리 기능
+- kakaomap 병원 검색 및 예약
+- 환자 기본 건강체크 서비스
+- 의사 진료 관리 서비스
+- 의사 예약 관리 서비스
+<br><br><br><br>
+
+
+## **담당업무**
+
+1. Github Actions, S3, Code Deploy를 이용한 CI / CD 구축
+    
+    [DevOps - CI/CD 구축하기 #1 ( Github Actions, S3, Code Deploy, EC2)](https://dbfl720.tistory.com/866)
+    
+    [DevOps - CI/CD 구축하기 #2 ( Github Actions, S3, Code Deploy, EC2)](https://dbfl720.tistory.com/867)
+    <br><br>
+
+2. Nginx로 HTTPS 개발 및 리버스 프록시 서버 세팅
+    - Cerbot 설치 및 Let’s Encrypt에서 SSL 인증서 발급
+    - Crontab으로 SSL 인증서 자동 갱신 설정
+    - Nginx로 HTTPS 구축 시 발생한 이슈 해결
+        - Nginx와 같은 포트 번호사용을 인한 무한루프 발생으로 다른 포트 적용(8080)으로 해결
+        
+        [Let's Encrypt와 Nginx로 HTTPS 만들기](https://dbfl720.tistory.com/878)
+      <br><br>  
+
+3. 병원 매출관리를 위한  다양한 조회 로직 구현
+    - 월별, 년도별, 일별, 주간별, 기간별, 나이별, 성별, 최신순, 매출순
+    - 월별 성별에 따른 조회 JPA
+    
+    [월별 성별에 따른 조회 JPA - nativeQuery](https://dbfl720.tistory.com/849)
+     <br><br>
+     
+4. Spring Security를 이용한 개발 및 이슈처리
+    - 403 Forbidden 응답이 반환되는 문제를 별도의 엔트리포인트를 작성하여 스프링 시큐리티에 등록으로 해결 <br>
+    
+      [403 Forbidden 응답이 반환 With Spring Security](https://dbfl720.tistory.com/858)
+  
 
 <br><br><br><br>
 
@@ -31,8 +78,6 @@
 - DB 설계 사이트 : https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=0
 - 환자 API 명세서 사이트 : https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=1565076207
 - 의사 API 명세서 사이트 : https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=368826546
-- 깃헙 Issue 사이트 : https://github.com/orgs/hongandlee/projects/1
-- 트러블 슈팅 모음집 : https://github.com/orgs/hongandlee/projects/1/views/1?pane=issue&itemId=36500724
 
 <br><br><br><br>
 
