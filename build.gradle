@@ -64,3 +64,13 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+
+// git submodule
+task copyYML(type: Copy){
+	copy {
+		from './Smart_Chart_yml'
+		include "*.yml"
+		into 'src/main/resources'
+	}
+}
