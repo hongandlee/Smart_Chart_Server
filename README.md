@@ -6,9 +6,9 @@
 <br><br>
 
 
-        Smart_Chart 링크 : https://smartchart.vercel.app/ <br>
-        의사  - ID: doctor@gmail.com     / password : doctor <br>
-        환자 - ID : patient@gmail.com     / password : patient 
+Smart_Chart 링크 : https://smartchart.vercel.app/ <br>
+의사  - ID: doctor@gmail.com     / password : doctor <br>
+환자 - ID : patient@gmail.com     / password : patient 
 
 <br><br><br><br>
 
