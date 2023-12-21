@@ -70,6 +70,30 @@
 
 <br><br><br><br>
 
+## 개발 환경
+
+**Backend**
+
+- Java / Spring Boot / Spring Security / JWT / WebSocket / SocketJS / Stomp / JSP / JPA
+
+**Database**
+
+- MySQL
+
+**Server**
+
+- Amazon S3 / Amazon EC2 / Amazon RDS / GitHub Actions / Amazon CodeDeploy / Apache Tomcat / NGINX
+
+**OS**
+
+- Ubuntu
+
+**Tools**
+
+- Github / Postman / IntelliJ IDEA / Discord / Figma
+
+
+<br><br><br><br>
 ## Project Proposal
 - 블로그 : https://dbfl720.tistory.com
 - 결제, Jwt 시퀀스 다이어그램 : https://drive.google.com/file/d/1IQdlAdb0iBbZVr_KZd2akMV8AP3Cokz9/view?usp=sharing
