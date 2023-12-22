@@ -51,7 +51,7 @@ application.yml
 
 ## 아임포트 컨트롤러
 ##
-PayController/
+##PayController/
 
 #카카오
 /KakaoController
