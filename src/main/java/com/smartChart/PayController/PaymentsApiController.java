@@ -50,8 +50,7 @@ public class PaymentsApiController {
 
     //생성자로 rest api key와 secret을 입력해서 토큰 바로생성.
     public PaymentsApiController() {
-        this.iamportClientApi = new IamportClient("0605446434620106",
-                "W8JPxGzHas0IClss49iimjvVog91oRmH1rZbsSYPak4xiazXKIRzq1aBXkGMheCTYDfD1X5nwT6PMw5X");
+        this.iamportClientApi = new IamportClient(apiKey, apiSecret);
     }
 
 
