@@ -11,7 +11,7 @@
 
 <br><br><br><br>
 
-## Description
+## 📖 Description
 **역할**
 
 - 백엔드 : 홍유리 (기여도 100%)
@@ -21,7 +21,7 @@
 - 콘텐츠 기획 및 제작 : 홍유리 (기여도 90%) , 홍왕렬, 이정민
 <br>
 
-**📆 기간**
+**기간**
 
 - 2023.09 ~ 2023.12
 <br><br><br><br>
@@ -41,7 +41,7 @@
 <br><br><br><br>
 
 
-## **담당업무**
+## **📌 담당업무**
 
 1. Github Actions, S3, Code Deploy를 이용한 CI / CD 구축
     
@@ -98,7 +98,7 @@
 
 
 <br><br><br><br>
-## Project Proposal
+## 🎀 Project Proposal
 - 블로그 : https://dbfl720.tistory.com
 - DB 설계 사이트 : https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=0
 - 환자 API 명세서 사이트 : https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=1565076207
@@ -110,16 +110,16 @@
 <br><br><br><br>
 
 
-## Service Architecture
+## ⚖ Service Architecture
 ![Service Architecture](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/67f82385-7118-4ba4-a37c-161988d45a16)
 
 
 <br><br><br><br>
-## Database
+## 💾 Database
 ![스크린샷 2023-11-20 오후 10 48 08](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/44af57d3-3cab-4e2d-937f-aac4b21d4fcf)
 
 <br><br><br><br>
-## 결제, JWT Sequence Diagram
+## 🌿 결제, JWT Sequence Diagram
 <img width="775" alt="스크린샷 2023-09-15 오후 8 22 23" src="https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/e3a9c60e-09ad-492b-8cb0-0fcc1c561d45">
 <br><br><br><br>
 <img width="768" alt="스크린샷 2023-09-15 오후 8 20 36" src="https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/6ed052f0-a076-419b-9d24-cf39147bec29">
