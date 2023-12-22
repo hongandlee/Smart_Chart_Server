@@ -53,6 +53,8 @@ application.yml
 ##
 PayController/
 
+#카카오
+/KakaoController
 
 
 ## 자바스크립트
