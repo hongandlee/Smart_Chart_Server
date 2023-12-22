@@ -155,7 +155,7 @@
 ## 🌿 결제, JWT Sequence Diagram
 
 
-<img src="https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/e3a9c60e-09ad-492b-8cb0-0fcc1c561d45"  width="500" height="400"/>
-<img src="https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/6ed052f0-a076-419b-9d24-cf39147bec29"  width="500" height="400"/>
+<img src="https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/e3a9c60e-09ad-492b-8cb0-0fcc1c561d45"  width="450" height="400"/>
+<img src="https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/6ed052f0-a076-419b-9d24-cf39147bec29"  width="450" height="400"/>
 <br><br>
 
