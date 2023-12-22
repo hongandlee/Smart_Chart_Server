@@ -1,3 +1,7 @@
+
+![스크린샷 2023-12-21 오후 2 54 58](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/63027651-b02a-4705-a6e4-b07dfe0a6413)
+
+
 # ✨ Smart_Chart_Server
 
 - 환자와 의사를 위해 병원에서 빠른 일처리를 돕는 smart_chart 서비스 입니다.
