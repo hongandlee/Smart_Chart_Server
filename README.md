@@ -2,7 +2,7 @@
 ![스크린샷 2023-12-21 오후 2 54 58](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/63027651-b02a-4705-a6e4-b07dfe0a6413)
 
 
-# ✨ Smart_Chart_Server
+# ✨ Smart_Chart
 **요약**
 - 환자와 의사를 위해 빠른 일처리를 돕는 smart_chart 서비스 입니다.
 - 환자는 병원 예약, 진료비 내기, 기본 건강체크, 실시간 진료상담을 이용할 수 있습니다.
