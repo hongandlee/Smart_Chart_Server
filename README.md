@@ -83,7 +83,9 @@
     - 403 Forbidden 응답이 반환되는 문제를 별도의 엔트리포인트를 작성하여 스프링 시큐리티에 등록으로 해결 <br>
     
     #### [👉🏻 블로그 글 보러가기](https://dbfl720.tistory.com/858)
-  
+
+
+
 
 <br><br><br><br>
 
@@ -111,19 +113,19 @@
 
 
 <br><br><br><br>
-## 🎀 Project Proposal
-- 블로그
-    #### [👉🏻 블로그 보러가기](https://dbfl720.tistory.com )
-  
-- DB 설계 사이트 : 
-    #### [👉🏻 DB 설계 보러가기](https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=0)
-- 환자 API 명세서 사이트 : 
-    #### [👉🏻 환자 API 명세서 보러가기](https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=1565076207 )
-- 의사 API 명세서 사이트 :
-    #### [👉🏻 의사 API 명세서 보러가기]( https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=368826546 )
-- 결제, Jwt 시퀀스 다이어그램 : 
-    #### [👉🏻 결제, JWT 시퀀스 다이어그램 보러가기](https://drive.google.com/file/d/1IQdlAdb0iBbZVr_KZd2akMV8AP3Cokz9/view?usp=sharing )
 
+  ## 🎀 Project Proposal
+
+
+| 분류       | 사이트                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| 홍유리 블로그            |  [👉🏻 블로그 보러가기](https://dbfl720.tistory.com )                                            |
+| DB 설계 사이트             | [👉🏻 DB 설계 보러가기](https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=0)                                   |
+| 환자 API 명세서 사이트             |[👉🏻 환자 API 명세서 보러가기](https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=1565076207 )                        |
+| 의사 API 명세서 사이트          | [👉🏻 의사 API 명세서 보러가기]( https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=368826546 ) |
+| 결제, Jwt 시퀀스 다이어그램         | [👉🏻 결제, JWT 시퀀스 다이어그램 보러가기](https://drive.google.com/file/d/1IQdlAdb0iBbZVr_KZd2akMV8AP3Cokz9/view?usp=sharing )                                           |
+
+<br />
 
 <br><br><br><br>
 
