@@ -49,31 +49,30 @@
 
 1. Github Actions, S3, Code Deploy를 이용한 CI / CD 구축
     
-    [DevOps - CI/CD 구축하기 #1 ( Github Actions, S3, Code Deploy, EC2)](https://dbfl720.tistory.com/866)
+    #### [👉🏻  블로그 글 보러가기 (1)](https://dbfl720.tistory.com/866)
     
-    [DevOps - CI/CD 구축하기 #2 ( Github Actions, S3, Code Deploy, EC2)](https://dbfl720.tistory.com/867)
+    #### [👉🏻  블로그 글 보러가기 (2)](https://dbfl720.tistory.com/867)
     <br><br>
 
-2. Nginx로 HTTPS 개발 및 리버스 프록시 서버 세팅
+3. Nginx로 HTTPS 개발 및 리버스 프록시 서버 세팅
     - Cerbot 설치 및 Let’s Encrypt에서 SSL 인증서 발급
     - Crontab으로 SSL 인증서 자동 갱신 설정
     - Nginx로 HTTPS 구축 시 발생한 이슈 해결
         - Nginx와 같은 포트 번호사용을 인한 무한루프 발생으로 다른 포트 적용(8080)으로 해결
-        
-      [Let's Encrypt와 Nginx로 HTTPS 만들기](https://dbfl720.tistory.com/878)
+    #### [👉🏻  블로그 글 보러가기](https://dbfl720.tistory.com/878)
       <br><br>  
 
-3. 병원 매출관리를 위한  다양한 조회 로직 구현
+4. 병원 매출관리를 위한  다양한 조회 로직 구현
     - 월별, 년도별, 일별, 주간별, 기간별, 나이별, 성별, 최신순, 매출순
     - 월별 성별에 따른 조회 JPA
     
-      [월별 성별에 따른 조회 JPA - nativeQuery](https://dbfl720.tistory.com/849)
+    #### [👉🏻 블로그 글 보러가기](https://dbfl720.tistory.com/849)
      <br><br>
      
-4. Spring Security를 이용한 개발 및 이슈처리
+5. Spring Security를 이용한 개발 및 이슈처리
     - 403 Forbidden 응답이 반환되는 문제를 별도의 엔트리포인트를 작성하여 스프링 시큐리티에 등록으로 해결 <br>
     
-      [403 Forbidden 응답이 반환 With Spring Security](https://dbfl720.tistory.com/858)
+    #### [👉🏻 블로그 글 보러가기](https://dbfl720.tistory.com/858)
   
 
 <br><br><br><br>
@@ -103,13 +102,19 @@
 
 <br><br><br><br>
 ## 🎀 Project Proposal
-- 블로그 : https://dbfl720.tistory.com
-- DB 설계 사이트 : https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=0
-- 환자 API 명세서 사이트 : https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=1565076207
-- 의사 API 명세서 사이트 : https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=368826546
-- 결제, Jwt 시퀀스 다이어그램 : https://drive.google.com/file/d/1IQdlAdb0iBbZVr_KZd2akMV8AP3Cokz9/view?usp=sharing
-- 기획 Figma 사이트 : https://www.figma.com/file/s4tvcCbhoY5xAF6ZQFh2Gd/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%B0%A8%ED%8A%B8?type=design&node-id=0-1&mode=design&t=cctDsTWrkLHSc4if-0
-
+- 블로그
+  #### [👉🏻 블로그 보러가기](https://dbfl720.tistory.com )
+  
+- DB 설계 사이트 : 
+   #### [👉🏻 DB 설계 보러가기](https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=0)
+- 환자 API 명세서 사이트 : 
+-  #### [👉🏻 환자 API 명세서 보러가기](https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=1565076207 )
+- 의사 API 명세서 사이트 :
+-  #### [👉🏻 의사 API 명세서 보러가기]( https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=368826546 )
+- 결제, Jwt 시퀀스 다이어그램 : 
+-  #### [👉🏻 결제, Jwt 시퀀스 다이어그램 보러가기](https://drive.google.com/file/d/1IQdlAdb0iBbZVr_KZd2akMV8AP3Cokz9/view?usp=sharing )
+- 기획 Figma 사이트 : 
+   #### [👉🏻 기획 Figma 보러가기](https://www.figma.com/file/s4tvcCbhoY5xAF6ZQFh2Gd/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%B0%A8%ED%8A%B8?type=design&node-id=0-1&mode=design&t=cctDsTWrkLHSc4if-0)
 
 <br><br><br><br>
 
