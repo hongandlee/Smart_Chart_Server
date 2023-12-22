@@ -28,6 +28,10 @@ import java.util.Map;
 public class PaymentsApiController {
 
 
+
+
+
+
     @Autowired
     private PaymentService paymentService;
 
@@ -36,21 +40,25 @@ public class PaymentsApiController {
 
 
 
-    @Value("${apiKey.key}")
-    private String apiKey;
+
+    @Value("${api.key}")
+    private String api;
 
 
 
-    @Value("${apiSecret.key}")
-    private String apiSecret;
+    @Value("${secret.key}")
+    private String secret;
 
 
+
+    @Value("${naver-secret.key}")
+    private String naversecret;
 
 
 
     //생성자로 rest api key와 secret을 입력해서 토큰 바로생성.
     public PaymentsApiController() {
-        this.iamportClientApi = new IamportClient( "apiKey", "apiSecret");
+        this.iamportClientApi = new IamportClient( api, secret);
     }
 
 
