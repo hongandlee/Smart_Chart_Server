@@ -16,8 +16,6 @@
 
 
   
-https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/3a5db52e-4adf-46e9-9ea9-ddc33024d855
-
 
 
 <br><br><br><br><br><br><br>
