@@ -109,7 +109,7 @@
 
 **Backend**
 
-- Java / Spring Boot / Spring Security / JWT / WebSocket / SocketJS / Stomp / JSP / JPA
+- Java / Spring Boot / Spring Security / JWT / WebSocket / SocketJS / Stomp / JPA
 
 **Database**
 
