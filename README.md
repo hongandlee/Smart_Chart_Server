@@ -103,18 +103,18 @@
 <br><br><br><br>
 ## 🎀 Project Proposal
 - 블로그
-  #### [👉🏻 블로그 보러가기](https://dbfl720.tistory.com )
+    #### [👉🏻 블로그 보러가기](https://dbfl720.tistory.com )
   
 - DB 설계 사이트 : 
-   #### [👉🏻 DB 설계 보러가기](https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=0)
+    #### [👉🏻 DB 설계 보러가기](https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=0)
 - 환자 API 명세서 사이트 : 
--  #### [👉🏻 환자 API 명세서 보러가기](https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=1565076207 )
+    #### [👉🏻 환자 API 명세서 보러가기](https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=1565076207 )
 - 의사 API 명세서 사이트 :
--  #### [👉🏻 의사 API 명세서 보러가기]( https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=368826546 )
+    #### [👉🏻 의사 API 명세서 보러가기]( https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=368826546 )
 - 결제, Jwt 시퀀스 다이어그램 : 
--  #### [👉🏻 결제, Jwt 시퀀스 다이어그램 보러가기](https://drive.google.com/file/d/1IQdlAdb0iBbZVr_KZd2akMV8AP3Cokz9/view?usp=sharing )
+    #### [👉🏻 결제, JWT 시퀀스 다이어그램 보러가기](https://drive.google.com/file/d/1IQdlAdb0iBbZVr_KZd2akMV8AP3Cokz9/view?usp=sharing )
 - 기획 Figma 사이트 : 
-   #### [👉🏻 기획 Figma 보러가기](https://www.figma.com/file/s4tvcCbhoY5xAF6ZQFh2Gd/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%B0%A8%ED%8A%B8?type=design&node-id=0-1&mode=design&t=cctDsTWrkLHSc4if-0)
+    #### [👉🏻 기획 Figma 보러가기](https://www.figma.com/file/s4tvcCbhoY5xAF6ZQFh2Gd/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%B0%A8%ED%8A%B8?type=design&node-id=0-1&mode=design&t=cctDsTWrkLHSc4if-0)
 
 <br><br><br><br>
 
