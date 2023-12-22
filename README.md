@@ -15,6 +15,16 @@
 
 <br><br><br><br>
 
+## 💪팀원명
+
+ | <img src="https://avatars.githubusercontent.com/u/91598778?v=4" width="120" height="120" /> | <img src="https://avatars.githubusercontent.com/u/116433637?v=4" width="120" height="120" /> | <img src="https://avatars.githubusercontent.com/u/92508550?v=4" width="120" height="120" /> |
+ :-----------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: |
+|                           [jeongmin7](https://github.com/jeongmin7)                           |                                                     [dbfl720](https://github.com/dbfl720)                                                      |                          [hongwr](https://github.com/hongwr)                          |
+|                                         이정민(front)                                          |                                                                   홍유리(Back)                                                                 |                                         홍왕열(front)                                          |
+
+
+<br><br><br><br>
+
 ## 📖 Description
 **역할**
 
