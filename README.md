@@ -117,7 +117,7 @@
 
 **Server**
 
-- Amazon S3 / Amazon EC2 / Amazon RDS / GitHub Actions / Amazon CodeDeploy / Apache Tomcat / NGINX
+- Amazon S3 / Amazon EC2 / Amazon RDS / GitHub Actions / Amazon CodeDeploy / NGINX
 
 **OS**
 
