@@ -73,7 +73,8 @@ public interface CostRepository extends JpaRepository<Cost, Integer> {
     @Query(nativeQuery = true, value =
             "SELECT sum(B.cost) as sum\n" +
                     "FROM treatment_statement AS B\n" +
-                    "WHERE B.reservationId = :reservationId\n"
+                    "WHERE B.reservationId = :reservationId\n" +
+                    "GROUP BY B.reservationId"
     )
     public Integer findSUMbyReservationId(
             @Param("reservationId") int reservationId);

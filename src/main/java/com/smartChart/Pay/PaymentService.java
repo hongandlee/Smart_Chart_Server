@@ -42,11 +42,16 @@ public class PaymentService {
         //실제로 결제된 금액과 아임포트 서버쪽 결제내역 금액과 같은지 확인
         //이때 가격은 BigDecimal이란 데이터 타입으로 주로 금융쪽에서 정확한 값표현을 위해씀.
         //int형으로 비교해주기 위해 형변환 필요.
+//        int money = irsp.getResponse().getAmount().intValue();
+//        log.info("money" + money);
+//        log.info("db money" + sum);
 
-        if(irsp.getResponse().getAmount().intValue()!=amount) {
-            log.info("##########결제된 금액과 아임포트 서버 내역의 금액이 다릅니다.");
-            throw new RuntimeException("결제된 금액과 아임포트 서버 내역의 금액이 다릅니다.");
-        } else if (amount!=sum){
+//        if(irsp.getResponse().getAmount().intValue()!=amount) {
+//            log.info("##########결제된 금액과 아임포트 서버 내역의 금액이 다릅니다.");
+//            throw new RuntimeException("결제된 금액과 아임포트 서버 내역의 금액이 다릅니다.");
+//        } else
+
+            if (amount!=sum){
             log.info("##########결제된 금액과 Database 서버 내역의 금액이 다릅니다.");
             throw new RuntimeException("결제된 금액과 Database 서버 내역의 금액이 다릅니다."); //DB에서 물건가격과 실제 결제금액이 일치하는지 확인하기. 만약 다르면 예외 발생시키기.!
         }
