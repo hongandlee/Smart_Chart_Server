@@ -13,7 +13,9 @@
   의사  - ID: doctor@gmail.com     / password : doctor <br>
   환자 - ID : patient@gmail.com     / password : patient 
 
-<br><br><br><br>
+<br><br><br><br><br>
+
+
 
 ## 💪팀원명
 
@@ -23,7 +25,9 @@
 |                                         이정민(front)                                          |                                                                   홍유리(Back)                                                                 |                                         홍왕열(front)                                          |
 
 
-<br><br><br><br>
+<br><br><br><br><br>
+
+
 
 ## 📖 Description
 **역할**
@@ -38,7 +42,9 @@
 **기간**
 
 - 2023.09 ~ 2023.12
-<br><br><br><br>
+<br><br><br><br><br>
+
+
 
 ## **🔍핵심 기능**
 
@@ -52,7 +58,9 @@
 - 환자 기본 건강체크 서비스
 - 의사 진료 관리 서비스
 - 의사 예약 관리 서비스
-<br><br><br><br>
+<br><br><br><br><br>
+
+
 
 
 ## **📌 담당업무**
@@ -87,7 +95,9 @@
 
 
 
-<br><br><br><br>
+<br><br><br><br><br>
+
+
 
 ## ⚒️ 개발 환경
 
@@ -112,7 +122,9 @@
 - Github / Postman / IntelliJ IDEA / Discord / Figma
 
 
-<br><br><br><br>
+<br><br><br><br><br>
+
+
 
   ## 🎀 Project Proposal
 
@@ -120,25 +132,28 @@
 | 분류       | 사이트                                                         |
 | ---------------- | ------------------------------------------------------------ |
 | 홍유리 블로그            |  [👉🏻 블로그 보러가기](https://dbfl720.tistory.com )                                            |
-| DB 설계 사이트             | [👉🏻 DB 설계 보러가기](https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=0)                                   |
-| 환자 API 명세서 사이트             |[👉🏻 환자 API 명세서 보러가기](https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=1565076207 )                        |
-| 의사 API 명세서 사이트          | [👉🏻 의사 API 명세서 보러가기]( https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=368826546 ) |
+| DB 설계            | [👉🏻 DB 설계 보러가기](https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=0)                                   |
+| 환자 API 명세서             |[👉🏻 환자 API 명세서 보러가기](https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=1565076207 )                        |
+| 의사 API 명세서          | [👉🏻 의사 API 명세서 보러가기]( https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=368826546 ) |
 | 결제, Jwt 시퀀스 다이어그램         | [👉🏻 결제, JWT 시퀀스 다이어그램 보러가기](https://drive.google.com/file/d/1IQdlAdb0iBbZVr_KZd2akMV8AP3Cokz9/view?usp=sharing )                                           |
 
 <br />
 
-<br><br><br><br>
+<br><br><br><br><br>
+
 
 
 ## ⚖ Service Architecture
 ![Service Architecture](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/67f82385-7118-4ba4-a37c-161988d45a16)
 
 
-<br><br><br><br>
+<br><br><br><br><br>
+
 ## 💾 Database
 ![스크린샷 2023-11-20 오후 10 48 08](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/44af57d3-3cab-4e2d-937f-aac4b21d4fcf)
 
-<br><br><br><br>
+
+<br><br><br><br><br>
 ## 🌿 결제, JWT Sequence Diagram
 <img width="775" alt="스크린샷 2023-09-15 오후 8 22 23" src="https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/e3a9c60e-09ad-492b-8cb0-0fcc1c561d45">
 <br><br><br><br>
