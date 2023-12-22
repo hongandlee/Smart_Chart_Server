@@ -1,6 +1,7 @@
 
-![스크린샷 2023-12-21 오후 2 54 58](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/63027651-b02a-4705-a6e4-b07dfe0a6413)
+![스크린샷 2023-12-22 오후 6 29 42](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/398f00da-953a-4544-b619-9fd8c1090bfd)
 
+<br><br>
 
 # ✨ Smart_Chart
 **요약**
