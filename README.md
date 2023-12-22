@@ -15,8 +15,6 @@
   환자 - ID : patient@gmail.com     / PASSWORD : patient 
 
 
-  
-
 
 <br><br><br><br><br><br><br>
 
@@ -138,7 +136,7 @@
 
 | 분류       | 사이트                                                         |
 | ---------------- | ------------------------------------------------------------ |
-| 홍유리 블로그            |  [👉🏻 블로그 보러가기](https://dbfl720.tistory.com )                                            |
+| 홍유리 블로그            |    [👉🏻 블로그 보러가기](https://dbfl720.tistory.com )                                             |
 | DB 설계            | [👉🏻 DB 설계 보러가기](https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=0)                                   |
 | 환자 API 명세서             |[👉🏻 환자 API 명세서 보러가기](https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=1565076207 )                        |
 | 의사 API 명세서          | [👉🏻 의사 API 명세서 보러가기]( https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=368826546 ) |
