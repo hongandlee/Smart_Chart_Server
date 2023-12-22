@@ -144,8 +144,7 @@
 
 
 ## ⚖ Service Architecture
-![Service Architecture](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/67f82385-7118-4ba4-a37c-161988d45a16)
-
+<img src="https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/67f82385-7118-4ba4-a37c-161988d45a16"  width="750" height="500"/>
 
 <br><br><br><br><br><br><br>
 
