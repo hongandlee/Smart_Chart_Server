@@ -25,7 +25,6 @@ import java.util.Map;
 @Slf4j
 @RestController
 @RequiredArgsConstructor // @Autowired를 사용하지 않고 의존성 주입
-//@Configuration //설정파일이야 ~ , Bean 등록할꺼야
 @RequestMapping("/patient")
 public class PaymentsApiController {
 
