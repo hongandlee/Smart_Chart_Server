@@ -21,9 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 import java.util.Map;
 
+
 @Slf4j
 @RestController
-@RequiredArgsConstructor
+@RequiredArgsConstructor // @Autowired를 사용하지 않고 의존성 주입
+//@Configuration //설정파일이야 ~ , Bean 등록할꺼야
 @RequestMapping("/patient")
 public class PaymentsApiController {
 
@@ -35,8 +37,11 @@ public class PaymentsApiController {
     @Autowired
     private PaymentService paymentService;
 
+
+
     //토큰 발급을 위해 아임포트에서 제공해주는 rest api 사용.(gradle로 의존성 추가)
     private final IamportClient iamportClientApi;
+
 
 
 
@@ -55,9 +60,12 @@ public class PaymentsApiController {
 
 
     //생성자로 rest api key와 secret을 입력해서 토큰 바로생성.
+
     public PaymentsApiController() {
         this.iamportClientApi = new IamportClient( "0605446434620106", "W8JPxGzHas0IClss49iimjvVog91oRmH1rZbsSYPak4xiazXKIRzq1aBXkGMheCTYDfD1X5nwT6PMw5X");
     }
+
+
 
 
 
