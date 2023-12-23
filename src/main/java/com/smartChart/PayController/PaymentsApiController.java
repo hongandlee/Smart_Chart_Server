@@ -84,7 +84,7 @@ public class PaymentsApiController {
 
     /**
      * 결제검증을 위한 메서드
-     * map에는 imp_uid, amount, reservationId 이 키값으로 넘어옴.
+     * map에는 imp_uid, amount, reservationId 이 키값으로 넘어옴.!!
      * @param map
      * @return
      * @throws IamportResponseException
