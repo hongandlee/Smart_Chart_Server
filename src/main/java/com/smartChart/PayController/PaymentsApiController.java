@@ -62,7 +62,12 @@ public class PaymentsApiController {
 
     public PaymentsApiController() {
         this.iamportClientApi = new IamportClient( "0605446434620106", "W8JPxGzHas0IClss49iimjvVog91oRmH1rZbsSYPak4xiazXKIRzq1aBXkGMheCTYDfD1X5nwT6PMw5X");
+
     }
+
+
+
+
 
 
 
@@ -112,6 +117,7 @@ public class PaymentsApiController {
             errorMessage.setMessage("실패: " + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(errorMessage);
+
         }
     }
 
