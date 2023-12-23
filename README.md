@@ -11,8 +11,7 @@
 <br><br>
 
 ###  [👉🏻 Smart_Chart 체험하러가기 !](https://smartchart.vercel.app/) 
-  의사  - ID: doctor@gmail.com     / PASSWORD : doctor <br>
-  환자 - ID : patient@gmail.com     / PASSWORD : patient 
+
 
 
 
