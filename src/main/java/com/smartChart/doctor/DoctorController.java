@@ -36,7 +36,7 @@ public class  DoctorController {
 
 
     /**
-     * 회원가입 **
+     * 의사 회원가입 ***
      *
      * @param request
      * @return
@@ -77,7 +77,7 @@ public class  DoctorController {
 
 
     /**
-     * 로그인
+     * 의사 로그인
      ***
      * @param request
      * @param servletRequest
@@ -139,7 +139,7 @@ public class  DoctorController {
 
 
     /**
-     * 로그아웃
+     * 의사 로그아웃
      *
      * @param session
      * @return
@@ -188,7 +188,7 @@ public class  DoctorController {
 
 
     /**
-     * 비밀번호 찾기
+     * 의사 비밀번호 찾기
      * @param mailRequest
      * @return
      */
