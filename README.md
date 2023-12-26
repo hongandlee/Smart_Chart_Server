@@ -122,27 +122,37 @@
 
 
 
-## ⚒️ 개발 환경
+## ⚒️ 기술스택
 
-**Backend**
+**FRONT_ENDd**
+<div align=left>
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white" >
+<img src="https://img.shields.io/badge/Recoil-3578E5?style=for-the-badge&logo=recoil&logoColor=white" />
+<img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white" >
+<img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=Vercel&logoColor=white"/>
+ </div>
 
-- Java / Spring Boot / Spring Security / JWT / WebSocket / SocketJS / Stomp / JPA
 
-**Database**
+**BACK_END**
 
-- MySQL
+<img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=black">  <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=SpringBoot&logoColor=black"> 
+ <img src="https://img.shields.io/badge/springsecurity-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white">
+ <img src="https://img.shields.io/badge/WebSocket-010101?style=for-the-badge&logo=WebSocket&logoColor=white">
+<img src="https://img.shields.io/badge/sockJS-010101?style=for-the-badge&logo=socket.io&logoColor=white"> 
+ <img src="https://img.shields.io/badge/STOMP-010101?style=for-the-badge&logo=STOMP&logoColor=white">
+ <img src="https://img.shields.io/badge/JPA-F0047F?style=for-the-badge&logo=JPA&logoColor=white">
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white">
+  <img src="https://img.shields.io/badge/amazons3-569A31?style=for-the-badge&logo=amazons3&logoColor=black">
+<img src="https://img.shields.io/badge/amazonec2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=black">
+<img src="https://img.shields.io/badge/amazonrds-527FFF?style=for-the-badge&logo=amazonrds&logoColor=black">
+<img src="https://img.shields.io/badge/githubactions-2088FF?style=for-the-badge&logo=githubactions&logoColor=black">
+<img src="https://img.shields.io/badge/amazonCodeDeploy-F7A81B?style=for-the-badge&logo=amazonCodeDeploy&logoColor=black">
+<img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=black">
+<img src="https://img.shields.io/badge/ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=black">
 
-**Server**
 
-- Amazon S3 / Amazon EC2 / Amazon RDS / GitHub Actions / Amazon CodeDeploy / NGINX
 
-**OS**
-
-- Ubuntu
-
-**Tools**
-
-- Github / Postman / IntelliJ IDEA / Discord / Figma
 
 
 <br><br><br><br><br>
