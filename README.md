@@ -1,5 +1,6 @@
 
-![스크린샷 2023-12-22 오후 6 29 42](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/398f00da-953a-4544-b619-9fd8c1090bfd)
+<img src=https://github.com/hongandlee/apuda/assets/91598778/72e3da4d-ee5b-4203-87ee-757c212ab6e0/>
+
 
 <br><br>
 
