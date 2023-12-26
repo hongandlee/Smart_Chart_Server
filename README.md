@@ -86,44 +86,6 @@
 
 
 
-## **📌 담당업무**
-
-
-1. Github Actions, S3, Code Deploy를 이용한 CI / CD 구축
-    
-    #### [👉🏻  블로그 글 보러가기 (1)](https://dbfl720.tistory.com/866)
-    
-    #### [👉🏻  블로그 글 보러가기 (2)](https://dbfl720.tistory.com/867)
-    <br><br>
-
-2. Nginx로 HTTPS 개발 및 리버스 프록시 서버 세팅
-    - Cerbot 설치 및 Let’s Encrypt에서 SSL 인증서 발급
-    - Crontab으로 SSL 인증서 자동 갱신 설정
-    - Nginx로 HTTPS 구축 시 발생한 이슈 해결
-        - Nginx와 같은 포트 번호사용을 인한 무한루프 발생으로 다른 포트 적용(8080)으로 해결
-    #### [👉🏻  블로그 글 보러가기](https://dbfl720.tistory.com/878)
-      <br><br>  
-
-3. 병원 매출관리를 위한  다양한 조회 로직 구현
-    - 월별, 년도별, 일별, 주간별, 기간별, 나이별, 성별, 최신순, 매출순
-    - 월별 성별에 따른 조회 
-    
-    #### [👉🏻 블로그 글 보러가기](https://dbfl720.tistory.com/849)
-     <br><br>
-
-4. Spring Security를 이용한 개발 및 이슈처리
-    - 403 Forbidden 응답이 반환되는 문제를 별도의 엔트리포인트를 작성하여 스프링 시큐리티에 등록으로 해결 
-    
-    #### [👉🏻 블로그 글 보러가기](https://dbfl720.tistory.com/858)
-<br><br>
-
-
-
-
-
-<br><br><br><br><br>
-
-
 
 ## ⚒️ 기술스택
 
@@ -162,22 +124,6 @@
 
 
 
-  ## 🎀 Project Proposal
-
-
-| 분류       | 사이트                                                         |
-| ---------------- | ------------------------------------------------------------ |
-| 홍유리 블로그            |    [👉🏻 블로그 보러가기](https://dbfl720.tistory.com )                                             |
-| DB 설계            | [👉🏻 DB 설계 보러가기](https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=0)                                   |
-| 환자 API 명세서             |[👉🏻 환자 API 명세서 보러가기](https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=1565076207 )                        |
-| 의사 API 명세서          | [👉🏻 의사 API 명세서 보러가기]( https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=368826546 ) |
-| 결제, Jwt 시퀀스 다이어그램         | [👉🏻 결제, JWT 시퀀스 다이어그램 보러가기](https://drive.google.com/file/d/1IQdlAdb0iBbZVr_KZd2akMV8AP3Cokz9/view?usp=sharing )                                           |
-
-<br />
-
-<br><br><br><br><br>
-
-
 
 ## ⚖ Service Architecture
 <img src="https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/67f82385-7118-4ba4-a37c-161988d45a16"  width="750" height="500"/>
@@ -193,7 +139,54 @@
 
 <img src="https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/e3a9c60e-09ad-492b-8cb0-0fcc1c561d45"  width="400" height="400"/>
 <img src="https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/6ed052f0-a076-419b-9d24-cf39147bec29"  width="400" height="400"/>
-<br><br><br><br>
+<br><br><br><br><br>
+
+
+  ## 🎀 Project Proposal
+
+
+| 분류       | 사이트                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| 홍유리 블로그            |    [👉🏻 블로그 보러가기](https://dbfl720.tistory.com )                                             |
+| DB 설계            | [👉🏻 DB 설계 보러가기](https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=0)                                   |
+| 환자 API 명세서             |[👉🏻 환자 API 명세서 보러가기](https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=1565076207 )                        |
+| 의사 API 명세서          | [👉🏻 의사 API 명세서 보러가기]( https://docs.google.com/spreadsheets/d/1XeGVaTzEo_Z2p7Sk135XaQQoKZsWAnsB9j8veAh58tQ/edit#gid=368826546 ) |
+| 결제, Jwt 시퀀스 다이어그램         | [👉🏻 결제, JWT 시퀀스 다이어그램 보러가기](https://drive.google.com/file/d/1IQdlAdb0iBbZVr_KZd2akMV8AP3Cokz9/view?usp=sharing )                                           |
+
+<br />
+
+<br><br><br><br><br>
+
+## **📌 담당업무**
+
+
+1. Github Actions, S3, Code Deploy를 이용한 CI / CD 구축
+    
+    #### [👉🏻  블로그 글 보러가기 (1)](https://dbfl720.tistory.com/866)
+    
+    #### [👉🏻  블로그 글 보러가기 (2)](https://dbfl720.tistory.com/867)
+    <br><br>
+
+2. Nginx로 HTTPS 개발 및 리버스 프록시 서버 세팅
+    - Cerbot 설치 및 Let’s Encrypt에서 SSL 인증서 발급
+    - Crontab으로 SSL 인증서 자동 갱신 설정
+    - Nginx로 HTTPS 구축 시 발생한 이슈 해결
+        - Nginx와 같은 포트 번호사용을 인한 무한루프 발생으로 다른 포트 적용(8080)으로 해결
+    #### [👉🏻  블로그 글 보러가기](https://dbfl720.tistory.com/878)
+      <br><br>  
+
+3. 병원 매출관리를 위한  다양한 조회 로직 구현
+    - 월별, 년도별, 일별, 주간별, 기간별, 나이별, 성별, 최신순, 매출순
+    - 월별 성별에 따른 조회 
+    
+    #### [👉🏻 블로그 글 보러가기](https://dbfl720.tistory.com/849)
+     <br><br>
+
+4. Spring Security를 이용한 개발 및 이슈처리
+    - 403 Forbidden 응답이 반환되는 문제를 별도의 엔트리포인트를 작성하여 스프링 시큐리티에 등록으로 해결 
+    
+    #### [👉🏻 블로그 글 보러가기](https://dbfl720.tistory.com/858)
+<br><br><br><br><br>
 
 
 
