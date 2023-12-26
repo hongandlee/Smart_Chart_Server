@@ -89,15 +89,16 @@
     - 403 Forbidden 응답이 반환되는 문제를 별도의 엔트리포인트를 작성하여 스프링 시큐리티에 등록으로 해결 <br>
     
     #### [👉🏻 블로그 글 보러가기](https://dbfl720.tistory.com/858)
+   <br><br>
 
-2. Github Actions, S3, Code Deploy를 이용한 CI / CD 구축
+3. Github Actions, S3, Code Deploy를 이용한 CI / CD 구축
     
     #### [👉🏻  블로그 글 보러가기 (1)](https://dbfl720.tistory.com/866)
     
     #### [👉🏻  블로그 글 보러가기 (2)](https://dbfl720.tistory.com/867)
     <br><br>
 
-3. Nginx로 HTTPS 개발 및 리버스 프록시 서버 세팅
+4. Nginx로 HTTPS 개발 및 리버스 프록시 서버 세팅
     - Cerbot 설치 및 Let’s Encrypt에서 SSL 인증서 발급
     - Crontab으로 SSL 인증서 자동 갱신 설정
     - Nginx로 HTTPS 구축 시 발생한 이슈 해결
@@ -105,12 +106,12 @@
     #### [👉🏻  블로그 글 보러가기](https://dbfl720.tistory.com/878)
       <br><br>  
 
-4. 병원 매출관리를 위한  다양한 조회 로직 구현
+5. 병원 매출관리를 위한  다양한 조회 로직 구현
     - 월별, 년도별, 일별, 주간별, 기간별, 나이별, 성별, 최신순, 매출순
     - 월별 성별에 따른 조회 
     
     #### [👉🏻 블로그 글 보러가기](https://dbfl720.tistory.com/849)
-     <br><br>
+     
      
 
 
