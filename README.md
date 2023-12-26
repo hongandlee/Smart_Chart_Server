@@ -109,9 +109,9 @@
      <br><br>
 
  4. Spring Security를 이용한 개발 및 이슈처리
-- 403 Forbidden 응답이 반환되는 문제를 별도의 엔트리포인트를 작성하여 스프링 시큐리티에 등록으로 해결 <br>
+   - 403 Forbidden 응답이 반환되는 문제를 별도의 엔트리포인트를 작성하여 스프링 시큐리티에 등록으로 해결 <br>
 
-#### [👉🏻 블로그 글 보러가기](https://dbfl720.tistory.com/858)
+    #### [👉🏻 블로그 글 보러가기](https://dbfl720.tistory.com/858)
 <br><br>
 
 
