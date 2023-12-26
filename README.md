@@ -77,7 +77,7 @@
 
 | 환자 로그인, 마이페이지 | 의사 비밀번호 찾기, 회원가입 |
 |:------:|:------:|
-| ![7환자 로그인, 마이페이지](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/f77fc076-aa43-4da7-9b2c-f4920a79004d) | ![8의사 비밀번호 찾기, 회원가입](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/f77fc076-aa43-4da7-9b2c-f4920a79004d) |
+| ![7환자 로그인, 마이페이지](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/f77fc076-aa43-4da7-9b2c-f4920a79004d) | ![8의사 비밀번호 찾기, 회원가입](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/164ddd69-a202-44d8-bf56-2cffaad9f411) |
 
 <br><br><br><br><br>
 
