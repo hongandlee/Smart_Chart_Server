@@ -70,7 +70,7 @@
 |:------:|:------:|
 | ![1의사 매출관리](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/6a17e8eb-9105-419b-9bf0-2aa77ff528fd) | ![2실시간 진료 상담](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/3dd2e828-f7a9-440c-bdde-2a646e0b8fdb) |
 
-| 의사 예약관리 | 의사 환자 대기 관리 |
+| 의사 예약관리 | 환자 대기 관리 |
 |:------:|:------:|
 | ![3의사 예약관리](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/384f9bc2-0d69-44df-8c6e-a4d121ede6fd) | ![4의사 환자 대기 관리](https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/6a8ddabb-25a1-4a2b-b930-db19aded488e) |
 
