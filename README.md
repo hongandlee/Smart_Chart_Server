@@ -130,7 +130,7 @@
 
 <br><br><br><br><br>
 
-## 💾 Database
+## 💾 ERD
 <img src="https://github.com/hongandlee/Smart_Chart_Server/assets/116433637/44af57d3-3cab-4e2d-937f-aac4b21d4fcf"  width="750" height="500"/>
 
 <br><br><br><br><br>
