@@ -14,7 +14,8 @@
 <br><br>
 
 ###  [👉🏻 Smart_Chart 체험하러가기 !](https://smartchart.vercel.app/) 
-
+의사 로그인: 아이디 - doctor@gmail.com 비밀번호 - doctor <br>
+환자 로그인 : 아이디 patient@naver.com 비밀번호 - patient
 
 
 
